@@ -2393,18 +2393,22 @@ async function submitContactForm() {
   btn.disabled = true;
   btn.textContent = 'Отправка...';
 
-  const body = new FormData();
-  body.append('form-name', 'zayavka');
-  body.append('name',      name);
-  body.append('phone',     phone);
-  body.append('from',      from || 'не указано');
-  body.append('to',        to   || 'не указано');
-  body.append('cargo_type',cargo);
-  body.append('weight',    weight || 'не указан');
-  body.append('comment',   comment || 'нет');
+  const params = new URLSearchParams();
+  params.append('form-name', 'zayavka');
+  params.append('name',      name);
+  params.append('phone',     phone);
+  params.append('from',      from || 'не указано');
+  params.append('to',        to   || 'не указано');
+  params.append('cargo_type',cargo);
+  params.append('weight',    weight || 'не указан');
+  params.append('comment',   comment || 'нет');
 
   try {
-    const res = await fetch('/', { method:'POST', body });
+    const res = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: params.toString()
+    });
     if (res.ok) {
       document.getElementById('cf-form').style.display = 'none';
       document.getElementById('cf-success').style.display = 'block';
