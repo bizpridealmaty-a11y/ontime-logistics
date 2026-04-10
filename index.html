@@ -1415,123 +1415,15 @@ navigate('/');
 
 <!-- ══ FLOATING WIDGET ══ -->
 <style>
-.fab{position:fixed;bottom:28px;right:28px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:12px;}
-.fab-btn{width:58px;height:58px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(201,168,76,.45);transition:all .25s;flex-shrink:0;}
-.fab-btn:hover{background:var(--gold-l);transform:scale(1.08);}
-.fab-btn svg{width:24px;height:24px;color:var(--dark);transition:transform .3s;}
-.fab-btn.open svg.icon-pen{display:none;}
-.fab-btn.open svg.icon-x{display:block!important;}
-
-.fab-popup{
-  width:320px;background:var(--dark2);border:1px solid var(--border);
-  border-radius:16px;box-shadow:0 12px 48px rgba(0,0,0,.6);
-  overflow:hidden;
-  transform:scale(.85) translateY(16px);opacity:0;pointer-events:none;
-  transition:transform .25s cubic-bezier(.34,1.56,.64,1),opacity .2s;
-  transform-origin:bottom right;
-}
-.fab-popup.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all;}
-
-.fp-head{background:var(--gold);padding:16px 18px;display:flex;align-items:center;gap:10px;}
-.fp-head-icon{font-size:22px;}
-.fp-head-text{flex:1;}
-.fp-head-title{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;color:var(--dark);line-height:1;}
-.fp-head-sub{font-size:10px;color:rgba(10,10,11,.65);letter-spacing:1px;margin-top:2px;}
-.fp-pulse{width:8px;height:8px;border-radius:50%;background:#2d7a4f;box-shadow:0 0 0 0 rgba(45,122,79,.4);animation:pulse 1.8s infinite;}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(45,122,79,.4);}70%{box-shadow:0 0 0 8px rgba(45,122,79,0);}100%{box-shadow:0 0 0 0 rgba(45,122,79,0);}}
-
-.fp-body{padding:16px 18px;}
-.fp-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:6px;display:block;}
-.fp-input{width:100%;background:var(--dark4);border:1px solid var(--border2);border-radius:8px;padding:10px 12px;color:var(--text);font-family:'Manrope',sans-serif;font-size:13px;outline:none;transition:border .2s;margin-bottom:10px;}
-.fp-input:focus{border-color:var(--gold);}
-.fp-input::placeholder{color:var(--text3);}
-.fp-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-.fp-btn{width:100%;background:var(--gold);color:var(--dark);border:none;border-radius:8px;padding:12px;font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px;}
-.fp-btn:hover{background:var(--gold-l);}
-.fp-btn svg{width:13px;}
-.fp-note{font-size:10px;color:var(--text3);text-align:center;margin-top:8px;line-height:1.5;}
-.fp-success{display:none;text-align:center;padding:20px 10px;}
-.fp-success-icon{font-size:40px;margin-bottom:10px;}
-.fp-success-title{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--gold);letter-spacing:2px;margin-bottom:6px;}
-.fp-success-sub{font-size:12px;color:var(--text2);line-height:1.6;}
+.fab-wa-btn{position:fixed;bottom:28px;right:28px;z-index:9999;width:60px;height:60px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(37,211,102,.5);transition:transform .25s,box-shadow .25s;text-decoration:none;}
+.fab-wa-btn:hover{transform:scale(1.1);box-shadow:0 6px 32px rgba(37,211,102,.7);}
 </style>
 
-<div class="fab">
-  <div class="fab-popup" id="fabPopup">
-    <div class="fp-head">
-      <div class="fp-head-icon">🚛</div>
-      <div class="fp-head-text">
-        <div class="fp-head-title">Заявка на перевозку</div>
-        <div class="fp-head-sub">On Time Service · Алматы</div>
-      </div>
-      <div class="fp-pulse"></div>
-    </div>
-    <div class="fp-body" id="fabForm">
-      <span class="fp-label">Ваше имя</span>
-      <input class="fp-input" placeholder="Иван Иванов" id="fp_name">
-      <span class="fp-label">Телефон</span>
-      <input class="fp-input" placeholder="+7 (___) ___-__-__" id="fp_phone" type="tel">
-      <div class="fp-row">
-        <div>
-          <span class="fp-label">Откуда</span>
-          <input class="fp-input" placeholder="Алматы" id="fp_from">
-        </div>
-        <div>
-          <span class="fp-label">Куда</span>
-          <input class="fp-input" placeholder="Астана" id="fp_to">
-        </div>
-      </div>
-      <button class="fp-btn" onclick="fabSubmit()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        Отправить заявку
-      </button>
-      <div class="fp-note">Перезвоним в течение 30 минут</div>
-    </div>
-    <div class="fp-success" id="fabSuccess">
-      <div class="fp-success-icon">✅</div>
-      <div class="fp-success-title">Заявка принята!</div>
-      <div class="fp-success-sub">Наш менеджер свяжется<br>с вами в течение 30 минут</div>
-    </div>
-  </div>
-
-  <button class="fab-btn" id="fabBtn" onclick="toggleFab()" title="Оставить заявку">
-    <svg class="icon-pen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-      <path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
-    </svg>
-    <svg class="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none">
-      <path d="M18 6L6 18M6 6l12 12"/>
-    </svg>
-  </button>
-</div>
-
-<script>
-function toggleFab() {
-  const popup = document.getElementById('fabPopup');
-  const btn = document.getElementById('fabBtn');
-  popup.classList.toggle('open');
-  btn.classList.toggle('open');
-}
-
-function fabSubmit() {
-  const name  = document.getElementById('fp_name').value.trim();
-  const phone = document.getElementById('fp_phone').value.trim();
-  if (!name || !phone) {
-    document.getElementById('fp_phone').style.borderColor = '#c94c4c';
-    document.getElementById('fp_name').style.borderColor  = !name ? '#c94c4c' : '';
-    return;
-  }
-  document.getElementById('fabForm').style.display    = 'none';
-  document.getElementById('fabSuccess').style.display = 'block';
-  setTimeout(() => {
-    document.getElementById('fabPopup').classList.remove('open');
-    document.getElementById('fabBtn').classList.remove('open');
-    setTimeout(() => {
-      document.getElementById('fabForm').style.display    = '';
-      document.getElementById('fabSuccess').style.display = 'none';
-      ['fp_name','fp_phone','fp_from','fp_to'].forEach(id => document.getElementById(id).value = '');
-    }, 400);
-  }, 3000);
-}
-</script>
+<a class="fab-wa-btn" href="https://wa.me/77752427744?text=%D0%9F%D1%80%D0%BE%D1%88%D1%83%20%D1%80%D0%B0%D1%81%D1%81%D1%87%D0%B8%D1%82%D0%B0%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C%20%D1%83%D1%81%D0%BB%D1%83%D0%B3%20%D0%BF%D0%BE%20%D0%B4%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BA%D0%B5%20%D0%B3%D1%80%D1%83%D0%B7%D0%B0" target="_blank" rel="noopener" title="Написать в WhatsApp">
+  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" width="30" height="30">
+    <path d="M16 2C8.268 2 2 8.268 2 16c0 2.48.675 4.8 1.85 6.787L2 30l7.4-1.825A13.94 13.94 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2z" fill="#25D366"/>
+    <path d="M22.1 19.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.78-1.68-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51H11.5c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.89.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35z" fill="#fff"/>
+  </svg>
+</a>
 </body>
 </html>
