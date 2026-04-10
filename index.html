@@ -194,10 +194,12 @@ h3.title{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,3vw,46px);lett
 
 /* ─── HERO ─── */
 .hero{min-height:calc(100vh - 68px);display:flex;align-items:center;position:relative;overflow:hidden;padding:0 56px;}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 55% 45%,rgba(201,168,76,.05),transparent 60%);}
-.hero-horse{position:absolute;right:0;top:50%;transform:translateY(-50%);width:48%;pointer-events:none;opacity:.1;}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.35;}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,11,.85) 45%,rgba(10,10,11,.4) 100%),radial-gradient(ellipse 70% 50% at 55% 45%,rgba(201,168,76,.08),transparent 60%);z-index:1;}
+.hero-horse{display:none;}
 .hero-horse svg{width:100%;}
 .hero-content{position:relative;z-index:2;max-width:700px;}
+.hero-stats{position:absolute;right:56px;bottom:52px;display:flex;gap:44px;z-index:2;}
 .hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:24px;}
 .hero-eyebrow-line{width:32px;height:1px;background:var(--gold);}
 .hero-eyebrow span{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);}
@@ -579,6 +581,9 @@ const ARR = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-w
 PAGES['/'] = () => `
 <section class="hero">
   <div class="hero-bg"></div>
+  <video class="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+    <source src="video (1).mp4" type="video/mp4">
+  </video>
   <div class="hero-horse" aria-hidden="true">
     <svg viewBox="0 0 500 420" xmlns="http://www.w3.org/2000/svg">
       <defs>
