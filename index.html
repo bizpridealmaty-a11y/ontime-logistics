@@ -2045,6 +2045,7 @@ const BLOG_POSTS = [
   },
   {
     slug:'almaty-astana', icon:IC.road, cat:'Направления', readTime:'5 мин', date:'2025-04-06', dateDisplay:'6 апреля 2025',
+    mapEmbed:'https://maps.google.com/maps?f=d&saddr=Almaty,Kazakhstan&daddr=Astana,Kazakhstan&output=embed',
     imgId:'1601584115197-04ecc0da31d7',
     title:'Грузоперевозки Алматы - Астана: расстояние, сроки, цены',
     h1:'Грузоперевозки Алматы - Астана',
@@ -2331,11 +2332,16 @@ function blogArticlePage(post) {
         <p>${post.pullquote}</p>
       </div>
       ${post.content}
-      <div class="blog-illustration" role="img" aria-label="${post.altIll}" style="flex-direction:column;gap:8px;background:linear-gradient(135deg,var(--dark2),#1a2a1a);">
-        <div style="font-size:36px;">🗺️</div>
-        <div style="font-size:12px;text-align:center;padding:0 20px;">${post.altIll}</div>
-        <div style="font-size:11px;color:var(--text2);opacity:.6;">800×450px · Добавить иллюстрацию или схему</div>
-      </div>
+      ${post.mapEmbed
+        ? `<div style="margin:28px 0;border-radius:10px;overflow:hidden;border:1px solid var(--border2);">
+             <iframe src="${post.mapEmbed}" width="100%" height="450" style="border:none;display:block;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="${post.altIll}"></iframe>
+             <div style="padding:10px 14px;background:var(--dark2);font-size:12px;color:var(--text2);">${post.altIll}</div>
+           </div>`
+        : `<div class="blog-illustration" role="img" aria-label="${post.altIll}" style="flex-direction:column;gap:8px;background:linear-gradient(135deg,var(--dark2),#1a2a1a);">
+             <div style="font-size:12px;text-align:center;padding:0 20px;">${post.altIll}</div>
+             <div style="font-size:11px;color:var(--text2);opacity:.6;">800×450px · Добавить иллюстрацию или схему</div>
+           </div>`
+      }
       <div class="blog-cta-block">
         <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--gold);margin-bottom:8px;">Нужна перевозка?</div>
         <p>Рассчитаем стоимость за 30 минут. Работаем по всему Казахстану и СНГ с 2005 года.</p>
