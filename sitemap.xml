@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Главная -->
+  <!-- ГЛАВНАЯ -->
   <url>
     <loc>https://ontime-logistics.netlify.app/</loc>
     <lastmod>2026-04-10</lastmod>
@@ -10,7 +9,7 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- Услуги -->
+  <!-- ОСНОВНЫЕ СТРАНИЦЫ -->
   <url>
     <loc>https://ontime-logistics.netlify.app/uslugi</loc>
     <lastmod>2026-04-10</lastmod>
@@ -18,116 +17,10 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://ontime-logistics.netlify.app/uslugi/avtoperevozki</loc>
-    <lastmod>2026-04-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ontime-logistics.netlify.app/uslugi/negabarit</loc>
-    <lastmod>2026-04-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ontime-logistics.netlify.app/uslugi/tral</loc>
-    <lastmod>2026-04-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ontime-logistics.netlify.app/uslugi/kitay</loc>
-    <lastmod>2026-04-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ontime-logistics.netlify.app/uslugi/rossiya-sng</loc>
-    <lastmod>2026-04-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ontime-logistics.netlify.app/uslugi/dostavka-po-gorodu</loc>
-    <lastmod>2026-04-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ontime-logistics.netlify.app/uslugi/sbornyy-gruz</loc>
-    <lastmod>2026-04-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ontime-logistics.netlify.app/uslugi/po-kazakhstanu</loc>
-    <lastmod>2026-04-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Регионы — высокий приоритет (Алматы и Астана) -->
-  <url>
-    <loc>https://ontime-logistics.netlify.app/regiony</loc>
-    <lastmod>2026-04-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://ontime-logistics.netlify.app/region/almaty</loc>
-    <lastmod>2026-04-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://ontime-logistics.netlify.app/region/astana</loc>
-    <lastmod>2026-04-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://ontime-logistics.netlify.app/region/shymkent</loc>
-    <lastmod>2026-04-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://ontime-logistics.netlify.app/region/karaganda</loc>
-    <lastmod>2026-04-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://ontime-logistics.netlify.app/region/atyrau</loc>
-    <lastmod>2026-04-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://ontime-logistics.netlify.app/region/aktau</loc>
-    <lastmod>2026-04-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://ontime-logistics.netlify.app/region/kostanay</loc>
-    <lastmod>2026-04-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://ontime-logistics.netlify.app/region/pavlodar</loc>
-    <lastmod>2026-04-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Прочие страницы -->
-  <url>
     <loc>https://ontime-logistics.netlify.app/napravleniya</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ontime-logistics.netlify.app/o-kompanii</loc>
@@ -145,7 +38,143 @@
     <loc>https://ontime-logistics.netlify.app/kontakty</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ontime-logistics.netlify.app/karta-sayta</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- СТРАНИЦЫ УСЛУГ -->
+  <url>
+    <loc>https://ontime-logistics.netlify.app/uslugi/avtoperevozki</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ontime-logistics.netlify.app/uslugi/negabarit</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ontime-logistics.netlify.app/uslugi/tral</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ontime-logistics.netlify.app/uslugi/kitay</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ontime-logistics.netlify.app/uslugi/rossiya-sng</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://ontime-logistics.netlify.app/uslugi/dostavka-po-gorodu</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ontime-logistics.netlify.app/uslugi/sbornyy-gruz</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ontime-logistics.netlify.app/uslugi/po-kazakhstanu</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- РЕГИОНАЛЬНЫЕ СТРАНИЦЫ — Алматы и Астана = наивысший приоритет -->
+  <url>
+    <loc>https://ontime-logistics.netlify.app/regiony</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ontime-logistics.netlify.app/region/almaty</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://ontime-logistics.netlify.app/region/astana</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://ontime-logistics.netlify.app/region/shymkent</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ontime-logistics.netlify.app/region/karaganda</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ontime-logistics.netlify.app/region/atyrau</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://ontime-logistics.netlify.app/region/aktau</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://ontime-logistics.netlify.app/region/kostanay</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ontime-logistics.netlify.app/region/pavlodar</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ontime-logistics.netlify.app/region/ust-kamenogorsk</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ontime-logistics.netlify.app/region/taraz</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ontime-logistics.netlify.app/region/aktobe</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ontime-logistics.netlify.app/region/semey</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
 </urlset>
