@@ -1,9 +1,102 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" prefix="og: https://ogp.me/ns#">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>On Time Service — Грузоперевозки Казахстан</title>
+
+<!-- ═══ PRIMARY SEO ═══ -->
+<title>Грузоперевозки Алматы | On Time Service — Транспортная компания Казахстан</title>
+<meta name="description" content="On Time Service — грузоперевозки по Алматы, Астане и всему Казахстану. Доставка грузов от 100 кг до 100 тонн. Автоперевозки, негабарит, грузы из Китая. Работаем с 2005 года. Звоните: +7 775 242 77 44">
+<meta name="keywords" content="грузоперевозки Алматы, грузоперевозки Астана, транспортная компания Казахстан, доставка грузов Алматы, перевозка грузов Алматы, логистика Алматы, грузоперевозки по Казахстану, грузоперевозки из Китая, негабаритные грузы Казахстан, On Time Service">
+<meta name="author" content="On Time Service">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<link rel="canonical" href="https://ontime-logistics.netlify.app/">
+
+<!-- ═══ GEO TAGS (важно для Яндекса) ═══ -->
+<meta name="geo.region" content="KZ-ALA">
+<meta name="geo.placename" content="Алматы, Казахстан">
+<meta name="geo.position" content="43.238949;76.889709">
+<meta name="ICBM" content="43.238949, 76.889709">
+<meta name="DC.title" content="Грузоперевозки Алматы | On Time Service">
+
+<!-- ═══ OPEN GRAPH ═══ -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ontime-logistics.netlify.app/">
+<meta property="og:title" content="Грузоперевозки Алматы | On Time Service">
+<meta property="og:description" content="Транспортная компания Алматы с 2005 года. Грузоперевозки по Казахстану, России, Китаю и СНГ. Любой груз от 100 кг до 100 тонн — точно в срок.">
+<meta property="og:locale" content="ru_KZ">
+<meta property="og:site_name" content="On Time Service">
+
+<!-- ═══ SCHEMA.ORG — LocalBusiness + TransportCompany ═══ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "MovingCompany"],
+  "@id": "https://ontime-logistics.netlify.app/#organization",
+  "name": "On Time Service",
+  "alternateName": "Он Тайм Сервис",
+  "description": "Транспортная компания. Грузоперевозки по Алматы, Астане и всему Казахстану. Автоперевозки, негабаритные грузы, перевозки из Китая.",
+  "url": "https://ontime-logistics.netlify.app/",
+  "telephone": "+77752427744",
+  "email": "info@ontimeservice.kz",
+  "foundingDate": "2005",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "г. Алматы",
+    "addressLocality": "Алматы",
+    "addressRegion": "Алматинская область",
+    "addressCountry": "KZ",
+    "postalCode": "050000"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 43.238949,
+    "longitude": 76.889709
+  },
+  "areaServed": [
+    {"@type": "City", "name": "Алматы"},
+    {"@type": "City", "name": "Астана"},
+    {"@type": "City", "name": "Шымкент"},
+    {"@type": "City", "name": "Карагандa"},
+    {"@type": "AdministrativeArea", "name": "Алматинская область"},
+    {"@type": "Country", "name": "Казахстан"}
+  ],
+  "serviceType": ["Грузоперевозки", "Автоперевозки", "Негабаритные перевозки", "Доставка грузов из Китая"],
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "00:00",
+    "closes": "23:59"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+77752427744",
+    "contactType": "customer service",
+    "areaServed": "KZ",
+    "availableLanguage": ["Russian", "Kazakh"]
+  },
+  "sameAs": [
+    "https://github.com/bizpridealmaty-a11y/ontime-logistics"
+  ]
+}
+</script>
+
+<!-- ═══ BREADCRUMB SCHEMA (главная) ═══ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Главная",
+      "item": "https://ontime-logistics.netlify.app/"
+    }
+  ]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -419,7 +512,53 @@ function renderPage(path) {
     '/kontakty': 'Контакты | On Time Service',
     '/karta-sayta': 'Карта сайта | On Time Service',
   };
-  document.title = titles[path] || 'On Time Service';
+  // ═══ SEO: динамические мета-теги для каждой страницы ═══
+  const metaDesc = {
+    '/': 'On Time Service — грузоперевозки по Алматы, Астане и всему Казахстану. Доставка грузов от 100 кг до 100 тонн. Работаем с 2005 года. Звоните: +7 775 242 77 44',
+    '/uslugi': 'Услуги грузоперевозок в Алматы и по всему Казахстану. Автоперевозки, негабаритные грузы, доставка из Китая, сборные грузы. On Time Service — надёжно и точно в срок.',
+    '/uslugi/avtoperevozki': 'Автоперевозки по Казахстану из Алматы. Доставка сборных и полных грузов по всем городам РК. Гарантия сроков. On Time Service — с 2005 года.',
+    '/uslugi/negabarit': 'Перевозка негабаритных грузов по Казахстану. Алматы, Астана, все регионы. Специализированная техника, разрешения, сопровождение. On Time Service.',
+    '/uslugi/tral': 'Перевозка тралом по Казахстану. Спецтехника, строительное оборудование, крупногабаритные грузы из Алматы. On Time Service — опыт с 2005 года.',
+    '/uslugi/kitay': 'Грузоперевозки из Китая в Казахстан (Алматы, Астана). Автомобильные и ж/д перевозки, таможенное оформление. On Time Service — прямые поставки из КНР.',
+    '/uslugi/rossiya-sng': 'Грузоперевозки между Казахстаном и Россией, СНГ. Из Алматы и Астаны в Москву, Новосибирск и другие города. On Time Service.',
+    '/uslugi/dostavka-po-gorodu': 'Доставка грузов по Алматы. Быстро, надёжно, в любую точку города. Газели, фуры, паллеты. On Time Service — ваша транспортная компания в Алматы.',
+    '/uslugi/sbornyy-gruz': 'Сборные грузы по Казахстану. Выгодная отправка небольших партий из Алматы в любой город РК. On Time Service — экономия до 40%.',
+    '/uslugi/po-kazakhstanu': 'Перевозки по всему Казахстану из Алматы и Астаны. Алматы, Астана, Шымкент, Карагандa, Атырау и другие регионы. On Time Service.',
+    '/regiony': 'Грузоперевозки по всем регионам Казахстана. Алматы, Астана, Шымкент, Карагандa, Атырау, Актау, Костанай, Павлодар. On Time Service — покрываем всю страну.',
+    '/region/almaty': 'Грузоперевозки по Алматы и Алматинской области. Доставка грузов по городу и пригороду. Опытные водители, своя техника. On Time Service с 2005 года.',
+    '/region/astana': 'Грузоперевозки в Астану из Алматы и других городов. Быстрая доставка грузов в столицу Казахстана. On Time Service — точно в срок.',
+    '/region/shymkent': 'Грузоперевозки в Шымкент и из Шымкента. Доставка грузов из Алматы в Шымкент за 1 день. On Time Service Казахстан.',
+    '/region/karaganda': 'Грузоперевозки в Карагандy. Доставка грузов из Алматы и Астаны в Карагандy. On Time Service — надёжная транспортная компания.',
+    '/region/atyrau': 'Грузоперевозки в Атырау из Алматы. Нефтяное оборудование, промышленные грузы. On Time Service — опыт работы с нефтегазовым сектором.',
+    '/region/aktau': 'Грузоперевозки в Актау. Доставка грузов на Мангышлак из Алматы и Астаны. On Time Service — опытная транспортная компания.',
+    '/region/kostanay': 'Грузоперевозки в Костанай. Доставка из Алматы и Астаны в Костанайскую область. On Time Service Казахстан.',
+    '/region/pavlodar': 'Грузоперевозки в Павлодар из Алматы и Астаны. Доставка промышленных и коммерческих грузов. On Time Service.',
+    '/napravleniya': 'Направления грузоперевозок On Time Service. Казахстан, Россия, Китай, СНГ. Все маршруты из Алматы и Астаны.',
+    '/o-kompanii': 'On Time Service — транспортная компания в Алматы с 2005 года. 20 лет опыта грузоперевозок по Казахстану, России и Китаю. Надёжность и точность.',
+    '/o-logistike': 'О транспортной логистике в Казахстане. Полезные статьи о грузоперевозках, таможне и выборе транспортной компании. On Time Service.',
+    '/kontakty': 'Контакты On Time Service Алматы. Телефон: +7 775 242 77 44. Грузоперевозки по Казахстану — звоните круглосуточно.',
+  };
+  const canonical = {
+    '/': 'https://ontime-logistics.netlify.app/',
+    '/uslugi': 'https://ontime-logistics.netlify.app/uslugi',
+    '/regiony': 'https://ontime-logistics.netlify.app/regiony',
+    '/o-kompanii': 'https://ontime-logistics.netlify.app/o-kompanii',
+    '/kontakty': 'https://ontime-logistics.netlify.app/kontakty',
+  };
+
+  document.title = titles[path] || 'On Time Service — Грузоперевозки Алматы';
+
+  let descTag = document.querySelector('meta[name="description"]');
+  if (descTag) descTag.setAttribute('content', metaDesc[path] || metaDesc['/']);
+
+  let ogTitle = document.querySelector('meta[property="og:title"]');
+  if (ogTitle) ogTitle.setAttribute('content', titles[path] || titles['/']);
+
+  let ogDesc = document.querySelector('meta[property="og:description"]');
+  if (ogDesc) ogDesc.setAttribute('content', metaDesc[path] || metaDesc['/']);
+
+  let canonTag = document.querySelector('link[rel="canonical"]');
+  if (canonTag && canonical[path]) canonTag.setAttribute('href', canonical[path]);
 }
 
 // Breadcrumb helper
@@ -461,8 +600,8 @@ PAGES['/'] = () => `
       <span class="tag" style="margin-left:8px;">Алматы · КЗ</span>
     </div>
     <h1 class="hero-h anim-2">ON TIME<span class="gold">SERVICE</span></h1>
-    <div class="hero-sub anim-2">Транспортная логистика</div>
-    <p class="hero-p anim-3">Грузоперевозки по Казахстану, России, Китаю и СНГ. Любой груз от 100 кг до 100 тонн — точно в срок и профессионально.</p>
+    <div class="hero-sub anim-2">Грузоперевозки Алматы и Астана</div>
+    <p class="hero-p anim-3">Транспортная компания Казахстан — грузоперевозки по Алматы, Астане и всем регионам РК. Доставка в Россию, Китай и СНГ. Любой груз от 100 кг до 100 тонн — точно в срок.</p>
     <div class="hero-btns anim-4">
       <button class="btn btn-gold" onclick="navigate('/kontakty')">${ARR} Рассчитать доставку</button>
       <button class="btn btn-outline" onclick="navigate('/uslugi')">Наши услуги</button>
