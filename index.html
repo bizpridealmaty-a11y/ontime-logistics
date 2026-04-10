@@ -283,11 +283,12 @@ h1.hero-h .gold{display:block;}
 .two-col-40{display:grid;grid-template-columns:1fr 1.4fr;gap:60px;align-items:start;}
 
 /* ─── INFO CARD ─── */
-.info-card{background:var(--dark3);border:1px solid var(--border);border-radius:var(--r);padding:32px;position:relative;overflow:hidden;}
-.info-card::before{content:'';position:absolute;top:0;right:0;width:120px;height:120px;background:radial-gradient(circle,var(--gold-d),transparent);pointer-events:none;}
-.metric-val{font-family:'Bebas Neue',sans-serif;font-size:56px;color:var(--gold);line-height:1;letter-spacing:2px;}
+.info-card{background:var(--dark3);border:1px solid var(--border);border-radius:var(--r);padding:28px 20px;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:150px;}
+.metric-val{font-family:'Bebas Neue',sans-serif;font-size:80px;color:var(--gold);line-height:1;letter-spacing:3px;transition:transform .15s ease,opacity .15s ease;}
+.metric-val.tick{transform:scale(1.12);opacity:.7;}
 .metric-unit{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--gold-l);}
-.metric-label{font-size:11px;color:var(--text2);letter-spacing:1px;margin-top:6px;}
+.metric-label{font-size:11px;color:var(--text2);letter-spacing:1.5px;text-transform:uppercase;margin-top:10px;}
+@keyframes numTick{0%{transform:scale(1.14);opacity:.6;}100%{transform:scale(1);opacity:1;}}
 
 /* ─── ROUTE CARD ─── */
 .route-card{background:var(--dark3);border:1px solid var(--border2);border-radius:var(--r);padding:28px;cursor:pointer;transition:all .3s;}
@@ -944,8 +945,17 @@ PAGES['/'] = () => `
       <button class="btn btn-outline" onclick="navigate('/o-kompanii')" style="margin-top:20px;">Подробнее ${ARR}</button>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;" class="fade">
-      ${[['20+','лет на рынке'],['70Т','максимальный груз'],['12','регионов КЗ'],['3','страны']]
-        .map(([v,l]) => `<div class="info-card"><div class="metric-val">${v}</div><div class="metric-label">${l}</div></div>`).join('')}
+      ${[
+        {from:5, to:20, suffix:'+', label:'лет на рынке'},
+        {from:60,to:70, suffix:'Т', label:'максимальный груз'},
+        {from:5, to:12, suffix:'',  label:'регионов КЗ'},
+        {from:1, to:3,  suffix:'',  label:'страны'}
+      ].map(({from,to,suffix,label}) =>
+        `<div class="info-card" data-from="${from}" data-to="${to}" data-suffix="${suffix}">
+          <div class="metric-val">${from}${suffix}</div>
+          <div class="metric-label">${label}</div>
+        </div>`
+      ).join('')}
     </div>
   </div>
 </section>
@@ -2577,6 +2587,28 @@ navigate('/');
   }
   initCounters();
   document.addEventListener('navigate-done', initCounters);
+
+  /* ── NEW: Loop counters (about section) ── */
+  function initLoopCounters() {
+    document.querySelectorAll('.info-card[data-from]').forEach(card => {
+      if (card.dataset.looping) return;
+      card.dataset.looping = '1';
+      const from   = parseInt(card.dataset.from);
+      const to     = parseInt(card.dataset.to);
+      const suffix = card.dataset.suffix || '';
+      const valEl  = card.querySelector('.metric-val');
+      let cur = from;
+      setInterval(() => {
+        cur = cur >= to ? from : cur + 1;
+        valEl.style.animation = 'none';
+        valEl.offsetHeight; // reflow
+        valEl.style.animation = 'numTick .35s ease';
+        valEl.textContent = cur + suffix;
+      }, 2000);
+    });
+  }
+  initLoopCounters();
+  document.addEventListener('navigate-done', initLoopCounters);
 
   /* ── NEW: 3D scroll reveal ── */
   function initReveal3D() {
