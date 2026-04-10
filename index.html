@@ -345,6 +345,12 @@ footer{background:var(--dark2);border-top:1px solid var(--border2);padding:56px;
 .anim-3{animation:fadeUp .7s .4s both;}
 .anim-4{animation:fadeUp .7s .55s both;}
 
+/* ── 3D SCROLL REVEAL ── */
+.reveal-3d{opacity:0;transform:perspective(900px) rotateX(14deg) translateY(48px) scale(0.95);transition:opacity .75s ease,transform .8s cubic-bezier(.16,1,.3,1);transform-origin:center top;will-change:transform,opacity;}
+.reveal-3d.visible{opacity:1;transform:perspective(900px) rotateX(0deg) translateY(0) scale(1);}
+.d1{transition-delay:.05s}.d2{transition-delay:.18s}.d3{transition-delay:.31s}
+.d4{transition-delay:.44s}.d5{transition-delay:.57s}.d6{transition-delay:.70s}
+
 /* ─── MOBILE ─── */
 @media(max-width:900px){
   #nav{padding:0 20px;}
@@ -1007,27 +1013,27 @@ ${bc([{label:'Главная',path:'/'},{label:'Услуги',path:'/uslugi'},{l
 <section class="sec">
   <div class="two-col-40">
     <div>
-      <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Подробнее</span></div>
-      <h3 class="title fade" style="margin-bottom:20px;">Что входит<br>в услугу</h3>
-      <div class="feat-list fade">
-        ${data.features.map(f => `<div class="feat-item"><div class="feat-icon">${f.icon}</div><div><div class="feat-title">${f.title}</div><div class="feat-desc">${f.desc}</div></div></div>`).join('')}
+      <div class="sec-label reveal-3d"><div class="sec-label-line"></div><span class="sec-label-text">Подробнее</span></div>
+      <h3 class="title reveal-3d d1" style="margin-bottom:20px;">Что входит<br>в услугу</h3>
+      <div class="feat-list">
+        ${data.features.map((f,i) => `<div class="feat-item reveal-3d d${i+1}"><div class="feat-icon">${f.icon}</div><div><div class="feat-title">${f.title}</div><div class="feat-desc">${f.desc}</div></div></div>`).join('')}
       </div>
     </div>
     <div>
-      <div class="seo-block fade">
+      <div class="seo-block reveal-3d d1">
         <h3 style="font-size:18px;font-weight:600;margin-bottom:16px;">${data.seoTitle}</h3>
         ${data.seoText.map(p => `<p>${p}</p>`).join('')}
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;">
-        ${data.stats.map(([v,l]) => `<div class="info-card fade"><div class="metric-val">${v}</div><div class="metric-label">${l}</div></div>`).join('')}
+        ${data.stats.map(([v,l],i) => `<div class="info-card reveal-3d d${i+1}"><div class="metric-val">${v}</div><div class="metric-label">${l}</div></div>`).join('')}
       </div>
     </div>
   </div>
 </section>
 <section class="sec-sm" style="background:var(--dark2);">
-  <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Смотрите также</span></div>
+  <div class="sec-label reveal-3d"><div class="sec-label-line"></div><span class="sec-label-text">Смотрите также</span></div>
   <div class="grid3" style="margin-top:20px;">
-    ${data.related.map(([icon,title,path]) => `<div class="card card-link fade" onclick="navigate('${path}')"><div class="card-icon">${icon}</div><div class="card-title">${title}</div><div class="card-arr">${ARR}</div></div>`).join('')}
+    ${data.related.map(([icon,title,path],i) => `<div class="card card-link reveal-3d d${i+1}" onclick="navigate('${path}')"><div class="card-icon">${icon}</div><div class="card-title">${title}</div><div class="card-arr">${ARR}</div></div>`).join('')}
   </div>
 </section>
 `;
@@ -1241,33 +1247,33 @@ ${bc([{label:'Главная',path:'/'},{label:'Регионы',path:'/regiony'}
 <section class="sec">
   <div class="two-col-40">
     <div>
-      <div class="seo-block fade">
+      <div class="seo-block reveal-3d">
         <h3 style="font-size:17px;font-weight:600;margin-bottom:14px;">Грузоперевозки в/из ${data.name}</h3>
         ${data.seoText.map(p => `<p>${p}</p>`).join('')}
       </div>
       <div style="margin-top:24px;">
-        <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Популярные маршруты</span></div>
+        <div class="sec-label reveal-3d d1"><div class="sec-label-line"></div><span class="sec-label-text">Популярные маршруты</span></div>
         <div style="margin-top:14px;display:flex;flex-direction:column;gap:8px;">
-          ${data.routes.map(r => `<div class="region-card fade" onclick="navigate('/kontakty')"><div class="rc-icon">🚛</div><div class="rc-info"><div class="rc-name">${r.from} → ${r.to}</div><div class="rc-sub">${r.desc}</div></div><div class="rc-arr">${ARR}</div></div>`).join('')}
+          ${data.routes.map((r,i) => `<div class="region-card reveal-3d d${i+1}" onclick="navigate('/kontakty')"><div class="rc-icon">${IC.truck}</div><div class="rc-info"><div class="rc-name">${r.from} → ${r.to}</div><div class="rc-sub">${r.desc}</div></div><div class="rc-arr">${ARR}</div></div>`).join('')}
         </div>
       </div>
     </div>
     <div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
-        ${data.stats.map(([v,l]) => `<div class="info-card fade"><div class="metric-val">${v}</div><div class="metric-label">${l}</div></div>`).join('')}
+        ${data.stats.map(([v,l],i) => `<div class="info-card reveal-3d d${i+1}"><div class="metric-val">${v}</div><div class="metric-label">${l}</div></div>`).join('')}
       </div>
-      <div class="card fade" style="margin-bottom:14px;">
+      <div class="card reveal-3d d2" style="margin-bottom:14px;">
         <div class="card-title" style="margin-bottom:14px;">Актуальные услуги для региона</div>
-        ${data.services.map(s => `<div class="feat-item" style="padding:12px 0;"><div class="feat-icon">${s.icon}</div><div><div class="feat-title" style="font-size:13px;">${s.title}</div><div class="feat-desc">${s.desc}</div></div></div>`).join('')}
+        ${data.services.map((s,i) => `<div class="feat-item reveal-3d d${i+1}" style="padding:12px 0;"><div class="feat-icon">${s.icon}</div><div><div class="feat-title" style="font-size:13px;">${s.title}</div><div class="feat-desc">${s.desc}</div></div></div>`).join('')}
       </div>
       <button class="btn btn-gold" onclick="navigate('/kontakty')" style="width:100%;">${ARR} Рассчитать доставку в ${data.name}</button>
     </div>
   </div>
 </section>
 <section class="sec-sm" style="background:var(--dark2);">
-  <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Другие регионы</span></div>
+  <div class="sec-label reveal-3d"><div class="sec-label-line"></div><span class="sec-label-text">Другие регионы</span></div>
   <div class="grid4" style="margin-top:16px;">
-    ${data.related.map(([icon,name,path]) => `<div class="card card-link fade" onclick="navigate('${path}')"><div class="card-icon">${icon}</div><div class="card-title">Грузоперевозки ${name}</div><div class="card-arr">${ARR}</div></div>`).join('')}
+    ${data.related.map(([icon,name,path],i) => `<div class="card card-link reveal-3d d${i+1}" onclick="navigate('${path}')"><div class="card-icon">${icon}</div><div class="card-title">Грузоперевозки ${name}</div><div class="card-arr">${ARR}</div></div>`).join('')}
   </div>
 </section>
 `;
@@ -2573,6 +2579,37 @@ navigate('/');
   initCounters();
   document.addEventListener('navigate-done', initCounters);
 
+  /* ── NEW: 3D scroll reveal ── */
+  function initReveal3D() {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, {threshold: 0.08, rootMargin: '0px 0px -20px 0px'});
+    document.querySelectorAll('.reveal-3d').forEach(el => {
+      if (!el.dataset.r3d) { el.dataset.r3d = '1'; obs.observe(el); }
+    });
+  }
+  initReveal3D();
+  document.addEventListener('navigate-done', initReveal3D);
+
+  /* ── NEW: Page icon parallax float ── */
+  function initPageParallax() {
+    const icon = document.querySelector('.page-icon');
+    if (!icon) return;
+    let raf = null;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        icon.style.transform = `translateY(${window.scrollY * 0.12}px)`;
+        raf = null;
+      });
+    };
+    setTimeout(() => window.addEventListener('scroll', onScroll, {passive: true}), 900);
+  }
+  initPageParallax();
+  document.addEventListener('navigate-done', initPageParallax);
+
   /* ── 5. 3D card tilt ── */
   function initTilt() {
     document.querySelectorAll('.card').forEach(card => {
@@ -2646,7 +2683,7 @@ navigate('/');
     window.navigate = function(path) {
       _orig(path);
       setTimeout(() => {
-        initTilt(); initMagnetic(); initCounters(); initBlogTOC();
+        initTilt(); initMagnetic(); initCounters(); initBlogTOC(); initReveal3D(); initPageParallax();
         document.dispatchEvent(new Event('navigate-done'));
       }, 100);
     };
