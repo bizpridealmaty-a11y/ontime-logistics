@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>On Time Service — Грузоперевозки Казахстан</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C9A84C;--gold-l:#E8C96E;--gold-d:rgba(201,168,76,0.12);
+  --dark:#0A0A0B;--dark2:#111114;--dark3:#17171C;--dark4:#202026;
+  --text:#F0EDE6;--text2:#9A9590;--text3:#5C5A56;
+  --border:rgba(201,168,76,0.18);--border2:rgba(255,255,255,0.07);
+  --r:12px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--dark);color:var(--text);font-family:'Manrope',sans-serif;overflow-x:hidden;min-height:100vh;}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-thumb{background:var(--gold);}
+a{text-decoration:none;color:inherit;}
+
+/* ─── NAV ─── */
+#nav{position:fixed;top:0;left:0;right:0;z-index:200;transition:background .3s;padding:0 56px;}
+#nav.solid{background:rgba(10,10,11,.97);border-bottom:1px solid var(--border2);}
+.nav-inner{display:flex;align-items:center;height:68px;gap:0;}
+.nav-brand{display:flex;flex-direction:column;margin-right:52px;cursor:pointer;}
+.nav-brand-main{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:3px;color:var(--gold);line-height:1;}
+.nav-brand-sub{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--text3);}
+.nav-menu{display:flex;gap:0;list-style:none;flex:1;}
+.nav-item{position:relative;}
+.nav-link{display:flex;align-items:center;gap:5px;padding:0 16px;height:68px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text2);cursor:pointer;transition:color .2s;border:none;background:none;font-family:'Manrope',sans-serif;white-space:nowrap;}
+.nav-link:hover,.nav-link.active{color:var(--gold);}
+.nav-link svg{width:10px;transition:transform .2s;}
+.nav-item:hover .nav-link svg{transform:rotate(180deg);}
+.nav-link::after{content:'';position:absolute;bottom:0;left:16px;right:16px;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .2s;}
+.nav-link.active::after{transform:scaleX(1);}
+
+/* Dropdown */
+.dropdown{position:absolute;top:68px;left:0;min-width:240px;background:var(--dark2);border:1px solid var(--border2);border-top:2px solid var(--gold);border-radius:0 0 var(--r) var(--r);padding:8px 0;opacity:0;visibility:hidden;transform:translateY(-8px);transition:all .2s;z-index:300;}
+.nav-item:hover .dropdown{opacity:1;visibility:visible;transform:translateY(0);}
+.dropdown a,.dropdown-item{display:flex;align-items:center;gap:10px;padding:10px 18px;font-size:12px;color:var(--text2);cursor:pointer;transition:all .2s;}
+.dropdown a:hover,.dropdown-item:hover{color:var(--gold);background:var(--gold-d);padding-left:22px;}
+.drop-icon{font-size:14px;width:20px;text-align:center;}
+.drop-divider{height:1px;background:var(--border2);margin:6px 0;}
+.drop-label{padding:8px 18px 4px;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text3);}
+.dropdown.wide{min-width:520px;display:grid;grid-template-columns:1fr 1fr;}
+.dropdown.wide .drop-col{padding:8px 0;}
+.nav-cta{margin-left:auto;background:var(--gold);color:var(--dark);padding:10px 22px;border-radius:4px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;border:none;font-family:'Manrope',sans-serif;transition:all .2s;white-space:nowrap;}
+.nav-cta:hover{background:var(--gold-l);transform:translateY(-1px);}
+
+/* ─── MAIN CONTENT ─── */
+#page{padding-top:68px;min-height:100vh;}
+
+/* ─── BREADCRUMB ─── */
+.breadcrumb{padding:14px 56px;background:var(--dark2);border-bottom:1px solid var(--border2);display:flex;align-items:center;gap:8px;font-size:11px;color:var(--text3);}
+.breadcrumb span{cursor:pointer;transition:color .2s;}
+.breadcrumb span:hover{color:var(--gold);}
+.breadcrumb .sep{color:var(--text3);}
+.breadcrumb .current{color:var(--text2);}
+
+/* ─── COMMON ─── */
+.container{max-width:1200px;margin:0 auto;padding:0 56px;}
+.sec{padding:80px 56px;}
+.sec-sm{padding:56px 56px;}
+.sec-label{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.sec-label-line{width:28px;height:1px;background:var(--gold);}
+.sec-label-text{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);}
+h2.title{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,68px);letter-spacing:2px;line-height:.95;margin-bottom:16px;}
+h3.title{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,3vw,46px);letter-spacing:2px;line-height:1;}
+.desc{font-size:14px;color:var(--text2);line-height:1.75;font-weight:300;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:4px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;border:none;font-family:'Manrope',sans-serif;transition:all .2s;}
+.btn-gold{background:var(--gold);color:var(--dark);}
+.btn-gold:hover{background:var(--gold-l);transform:translateY(-1px);box-shadow:0 8px 30px rgba(201,168,76,.25);}
+.btn-outline{background:transparent;color:var(--gold);border:1px solid var(--border);}
+.btn-outline:hover{background:var(--gold-d);border-color:var(--gold);}
+.btn svg{width:14px;}
+.gold{color:var(--gold);}
+.divider{height:1px;background:var(--border2);margin:40px 0;}
+.tag{display:inline-block;padding:4px 12px;border:1px solid var(--border);border-radius:3px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);}
+.fade{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;}
+.fade.in{opacity:1;transform:translateY(0);}
+
+/* ─── CARDS ─── */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+.card{background:var(--dark3);border:1px solid var(--border2);border-radius:var(--r);padding:28px;transition:all .3s;position:relative;overflow:hidden;}
+.card:hover{border-color:var(--border);background:var(--dark4);}
+.card:hover::before{opacity:1;}
+.card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--gold-d),transparent);opacity:0;transition:opacity .3s;pointer-events:none;}
+.card-icon{font-size:28px;margin-bottom:18px;}
+.card-num{font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:3px;color:var(--text3);margin-bottom:20px;}
+.card-title{font-size:16px;font-weight:600;margin-bottom:8px;}
+.card-desc{font-size:13px;color:var(--text2);line-height:1.65;}
+.card-arr{position:absolute;bottom:20px;right:20px;width:28px;height:28px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;opacity:0;transform:translate(4px,4px);transition:all .3s;}
+.card:hover .card-arr{opacity:1;transform:translate(0,0);}
+.card-arr svg{width:11px;color:var(--gold);}
+.card-link{cursor:pointer;}
+
+/* ─── HERO ─── */
+.hero{min-height:calc(100vh - 68px);display:flex;align-items:center;position:relative;overflow:hidden;padding:0 56px;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 55% 45%,rgba(201,168,76,.05),transparent 60%);}
+.hero-horse{position:absolute;right:0;top:50%;transform:translateY(-50%);width:48%;pointer-events:none;opacity:.1;}
+.hero-horse svg{width:100%;}
+.hero-content{position:relative;z-index:2;max-width:700px;}
+.hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:24px;}
+.hero-eyebrow-line{width:32px;height:1px;background:var(--gold);}
+.hero-eyebrow span{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);}
+.hero-eyebrow .tag{margin-left:4px;}
+h1.hero-h{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,10vw,140px);line-height:.88;letter-spacing:2px;margin-bottom:8px;}
+h1.hero-h .gold{display:block;}
+.hero-sub{font-family:'Bebas Neue',sans-serif;font-size:clamp(22px,3.5vw,50px);letter-spacing:4px;color:var(--text2);margin-bottom:24px;}
+.hero-p{font-size:15px;color:var(--text2);line-height:1.75;max-width:480px;margin-bottom:36px;font-weight:300;}
+.hero-btns{display:flex;gap:14px;align-items:center;}
+.hero-stats{position:absolute;right:56px;bottom:52px;display:flex;gap:44px;}
+.stat-n{font-family:'Bebas Neue',sans-serif;font-size:48px;letter-spacing:2px;color:var(--gold);line-height:1;}
+.stat-l{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text3);margin-top:4px;}
+
+/* ─── SEO INTRO BLOCK ─── */
+.seo-block{background:var(--dark2);border:1px solid var(--border2);border-radius:var(--r);padding:36px 40px;}
+.seo-block p{font-size:14px;color:var(--text2);line-height:1.85;font-weight:300;margin-bottom:14px;}
+.seo-block p:last-child{margin-bottom:0;}
+
+/* ─── REGION CARD ─── */
+.region-card{background:var(--dark3);border:1px solid var(--border2);border-radius:var(--r);padding:22px 24px;cursor:pointer;transition:all .3s;display:flex;align-items:center;gap:16px;}
+.region-card:hover{border-color:var(--border);background:var(--dark4);transform:translateX(4px);}
+.rc-icon{font-size:22px;flex-shrink:0;}
+.rc-info{flex:1;}
+.rc-name{font-size:14px;font-weight:600;margin-bottom:3px;}
+.rc-sub{font-size:11px;color:var(--text2);}
+.rc-arr{color:var(--gold);opacity:0;transition:opacity .2s;}
+.rc-arr svg{width:14px;}
+.region-card:hover .rc-arr{opacity:1;}
+
+/* ─── SITEMAP / STRUCTURE ─── */
+.sitemap-tree{display:flex;flex-direction:column;gap:4px;}
+.sm-root{background:var(--gold);color:var(--dark);padding:12px 20px;border-radius:8px;font-weight:700;font-size:14px;letter-spacing:1px;}
+.sm-branch{margin-left:24px;border-left:2px solid var(--border);padding-left:20px;margin-top:4px;display:flex;flex-direction:column;gap:3px;}
+.sm-node{background:var(--dark3);border:1px solid var(--border2);padding:9px 16px;border-radius:6px;font-size:12px;color:var(--text2);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:10px;}
+.sm-node:hover{color:var(--gold);border-color:var(--border);background:var(--dark4);}
+.sm-node-icon{font-size:13px;}
+.sm-seo{display:inline-block;margin-left:auto;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:2px 8px;border-radius:10px;background:rgba(201,168,76,.12);color:var(--gold);}
+.sm-new{display:inline-block;margin-left:4px;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:2px 8px;border-radius:10px;background:rgba(45,122,79,.25);color:#5fcf8a;}
+
+/* ─── PAGE HEADER ─── */
+.page-header{padding:60px 56px 50px;background:linear-gradient(to bottom,var(--dark2),var(--dark));border-bottom:1px solid var(--border2);}
+.page-header-inner{max-width:700px;}
+
+/* ─── FEATURES LIST ─── */
+.feat-list{display:flex;flex-direction:column;gap:0;}
+.feat-item{display:flex;align-items:flex-start;gap:18px;padding:22px 0;border-bottom:1px solid var(--border2);}
+.feat-item:last-child{border-bottom:none;}
+.feat-icon{font-size:22px;flex-shrink:0;margin-top:2px;}
+.feat-title{font-size:15px;font-weight:600;margin-bottom:5px;}
+.feat-desc{font-size:13px;color:var(--text2);line-height:1.65;}
+
+/* ─── TWO COL ─── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.two-col-40{display:grid;grid-template-columns:1fr 1.4fr;gap:60px;align-items:start;}
+
+/* ─── INFO CARD ─── */
+.info-card{background:var(--dark3);border:1px solid var(--border);border-radius:var(--r);padding:32px;position:relative;overflow:hidden;}
+.info-card::before{content:'';position:absolute;top:0;right:0;width:120px;height:120px;background:radial-gradient(circle,var(--gold-d),transparent);pointer-events:none;}
+.metric-val{font-family:'Bebas Neue',sans-serif;font-size:56px;color:var(--gold);line-height:1;letter-spacing:2px;}
+.metric-unit{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--gold-l);}
+.metric-label{font-size:11px;color:var(--text2);letter-spacing:1px;margin-top:6px;}
+
+/* ─── ROUTE CARD ─── */
+.route-card{background:var(--dark3);border:1px solid var(--border2);border-radius:var(--r);padding:28px;cursor:pointer;transition:all .3s;}
+.route-card:hover{border-color:var(--border);background:var(--dark4);}
+.route-from-to{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+.route-city{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;}
+.route-arr-icon{color:var(--gold);flex:1;text-align:center;font-size:18px;}
+.route-tag{display:inline-block;padding:3px 10px;border:1px solid var(--border);border-radius:3px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text2);margin-bottom:10px;}
+.route-desc{font-size:12px;color:var(--text2);line-height:1.65;}
+
+/* ─── CONTACT FORM ─── */
+.form-group{margin-bottom:16px;}
+.form-label{display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text2);margin-bottom:8px;}
+.form-input,.form-select,.form-textarea{width:100%;background:var(--dark4);border:1px solid var(--border2);border-radius:8px;padding:13px 15px;color:var(--text);font-family:'Manrope',sans-serif;font-size:14px;outline:none;transition:border .2s;}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--gold);}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--text3);}
+.form-select{appearance:none;cursor:pointer;}
+.form-textarea{resize:vertical;min-height:100px;}
+.form-row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+
+/* ─── FOOTER ─── */
+footer{background:var(--dark2);border-top:1px solid var(--border2);padding:56px;}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+.footer-brand-name{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;color:var(--gold);margin-bottom:4px;}
+.footer-brand-sub{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text3);margin-bottom:16px;}
+.footer-desc{font-size:12px;color:var(--text3);line-height:1.7;}
+.footer-col-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--text2);margin-bottom:16px;}
+.footer-links{display:flex;flex-direction:column;gap:9px;}
+.footer-links a,.footer-link{font-size:12px;color:var(--text3);cursor:pointer;transition:color .2s;}
+.footer-links a:hover,.footer-link:hover{color:var(--gold);}
+.footer-bottom{border-top:1px solid var(--border2);padding-top:28px;display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:11px;color:var(--text3);}
+.footer-seo-links{display:flex;gap:20px;flex-wrap:wrap;}
+.footer-seo-links a{font-size:11px;color:var(--text3);cursor:pointer;transition:color .2s;}
+.footer-seo-links a:hover{color:var(--gold);}
+
+/* ─── QUOTE ─── */
+.quote-block{border-left:3px solid var(--gold);background:var(--gold-d);border-radius:0 8px 8px 0;padding:18px 22px;margin:20px 0;}
+.quote-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.quote-text{font-size:14px;line-height:1.75;font-style:italic;font-weight:300;}
+
+/* ─── SEO TABLE ─── */
+.seo-table{width:100%;border-collapse:collapse;font-size:13px;}
+.seo-table th{text-align:left;padding:10px 16px;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--text3);border-bottom:1px solid var(--border2);}
+.seo-table td{padding:12px 16px;border-bottom:1px solid var(--border2);color:var(--text2);}
+.seo-table tr:hover td{background:var(--dark3);}
+.seo-table td:first-child{color:var(--text);font-weight:500;cursor:pointer;}
+.seo-table td:first-child:hover{color:var(--gold);}
+
+/* ─── ANIM ─── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes dashMove{to{stroke-dashoffset:-40;}}
+.anim-1{animation:fadeUp .7s .1s both;}
+.anim-2{animation:fadeUp .7s .25s both;}
+.anim-3{animation:fadeUp .7s .4s both;}
+.anim-4{animation:fadeUp .7s .55s both;}
+
+/* ─── MOBILE ─── */
+@media(max-width:900px){
+  #nav{padding:0 20px;}
+  .nav-menu{display:none;}
+  .sec,.sec-sm,.hero,.page-header{padding-left:20px;padding-right:20px;}
+  .breadcrumb{padding-left:20px;}
+  .grid2,.grid3,.grid4,.two-col,.two-col-40,.form-row2{grid-template-columns:1fr;}
+  .hero-horse{display:none;}
+  .hero-stats{right:20px;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+  footer{padding:40px 20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAVIGATION ══ -->
+<nav id="nav" class="solid">
+  <div class="nav-inner">
+    <div class="nav-brand" onclick="navigate('/')">
+      <span class="nav-brand-main">ON TIME SERVICE</span>
+      <span class="nav-brand-sub">Транспортная логистика</span>
+    </div>
+    <ul class="nav-menu">
+      <li class="nav-item">
+        <button class="nav-link" id="nl-uslugi" onclick="navigate('/uslugi')">
+          Услуги
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="dropdown wide">
+          <div class="drop-col">
+            <div class="drop-label">Виды перевозок</div>
+            <div class="dropdown-item" onclick="navigate('/uslugi/avtoperevozki')"><span class="drop-icon">🚛</span>Автоперевозки</div>
+            <div class="dropdown-item" onclick="navigate('/uslugi/negabarit')"><span class="drop-icon">📐</span>Негабаритные грузы</div>
+            <div class="dropdown-item" onclick="navigate('/uslugi/tral')"><span class="drop-icon">🚧</span>Перевозка тралом</div>
+            <div class="dropdown-item" onclick="navigate('/uslugi/sbornyy-gruz')"><span class="drop-icon">📦</span>Сборные грузы</div>
+            <div class="dropdown-item" onclick="navigate('/uslugi/dostavka-po-gorodu')"><span class="drop-icon">🏙️</span>Доставка по Алматы</div>
+          </div>
+          <div class="drop-col">
+            <div class="drop-label">Направления</div>
+            <div class="dropdown-item" onclick="navigate('/uslugi/po-kazakhstanu')"><span class="drop-icon">🇰🇿</span>По Казахстану</div>
+            <div class="dropdown-item" onclick="navigate('/uslugi/rossiya-sng')"><span class="drop-icon">🌐</span>Россия и СНГ</div>
+            <div class="dropdown-item" onclick="navigate('/uslugi/kitay')"><span class="drop-icon">🇨🇳</span>Из Китая</div>
+            <div class="drop-divider"></div>
+            <div class="dropdown-item" onclick="navigate('/napravleniya')"><span class="drop-icon">🗺️</span>Все направления →</div>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" id="nl-regions" onclick="navigate('/regiony')">
+          Регионы
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="dropdown wide">
+          <div class="drop-col">
+            <div class="drop-label">Север и центр</div>
+            <div class="dropdown-item" onclick="navigate('/region/astana')"><span class="drop-icon">🏛️</span>Астана</div>
+            <div class="dropdown-item" onclick="navigate('/region/karaganda')"><span class="drop-icon">⛏️</span>Карагандa</div>
+            <div class="dropdown-item" onclick="navigate('/region/kostanay')"><span class="drop-icon">🌾</span>Костанай</div>
+            <div class="dropdown-item" onclick="navigate('/region/pavlodar')"><span class="drop-icon">🏭</span>Павлодар</div>
+          </div>
+          <div class="drop-col">
+            <div class="drop-label">Юг и запад</div>
+            <div class="dropdown-item" onclick="navigate('/region/almaty')"><span class="drop-icon">🌆</span>Алматы</div>
+            <div class="dropdown-item" onclick="navigate('/region/shymkent')"><span class="drop-icon">🌿</span>Шымкент</div>
+            <div class="dropdown-item" onclick="navigate('/region/atyrau')"><span class="drop-icon">🛢️</span>Атырау</div>
+            <div class="dropdown-item" onclick="navigate('/region/aktau')"><span class="drop-icon">⚓</span>Актау</div>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item"><button class="nav-link" id="nl-about" onclick="navigate('/o-kompanii')">О компании</button></li>
+      <li class="nav-item"><button class="nav-link" id="nl-blog" onclick="navigate('/o-logistike')">О логистике</button></li>
+      <li class="nav-item"><button class="nav-link" id="nl-map" onclick="navigate('/karta-sayta')">Карта сайта</button></li>
+    </ul>
+    <button class="nav-cta" onclick="navigate('/kontakty')">Заявка на перевозку</button>
+  </div>
+</nav>
+
+<!-- ══ PAGE CONTENT ══ -->
+<div id="page"></div>
+
+<!-- ══ FOOTER ══ -->
+<footer id="footer">
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">ON TIME SERVICE</div>
+      <div class="footer-brand-sub">Транспортная логистика</div>
+      <p class="footer-desc">Надёжный партнёр в сфере грузоперевозок по Казахстану, России, Китаю и СНГ. На рынке с 2005 года.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Услуги</div>
+      <div class="footer-links">
+        <a onclick="navigate('/uslugi/avtoperevozki')">Автоперевозки</a>
+        <a onclick="navigate('/uslugi/negabarit')">Негабаритные грузы</a>
+        <a onclick="navigate('/uslugi/tral')">Перевозка тралом</a>
+        <a onclick="navigate('/uslugi/kitay')">Из Китая</a>
+        <a onclick="navigate('/uslugi/rossiya-sng')">Россия и СНГ</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Регионы КЗ</div>
+      <div class="footer-links">
+        <a onclick="navigate('/region/almaty')">Алматы</a>
+        <a onclick="navigate('/region/astana')">Астана</a>
+        <a onclick="navigate('/region/shymkent')">Шымкент</a>
+        <a onclick="navigate('/region/karaganda')">Карагандa</a>
+        <a onclick="navigate('/region/atyrau')">Атырау</a>
+        <a onclick="navigate('/region/aktau')">Актау</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Компания</div>
+      <div class="footer-links">
+        <a onclick="navigate('/o-kompanii')">О компании</a>
+        <a onclick="navigate('/napravleniya')">Направления</a>
+        <a onclick="navigate('/o-logistike')">О логистике</a>
+        <a onclick="navigate('/karta-sayta')">Карта сайта</a>
+        <a onclick="navigate('/kontakty')">Контакты</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2005–2026 On Time Service · Алматы, Казахстан · Все права защищены</span>
+    <div class="footer-seo-links">
+      <a onclick="navigate('/region/almaty')">Грузоперевозки Алматы</a>
+      <a onclick="navigate('/region/astana')">Грузоперевозки Астана</a>
+      <a onclick="navigate('/region/shymkent')">Грузоперевозки Шымкент</a>
+      <a onclick="navigate('/uslugi/kitay')">Грузы из Китая</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ══════════════════════════════════════════
+// ROUTER
+// ══════════════════════════════════════════
+const PAGES = {};
+let currentPath = '/';
+
+function navigate(path) {
+  currentPath = path;
+  window.scrollTo(0, 0);
+  renderPage(path);
+  updateNav(path);
+}
+
+function updateNav(path) {
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  if (path.startsWith('/uslugi')) document.getElementById('nl-uslugi')?.classList.add('active');
+  else if (path.startsWith('/region') || path === '/regiony') document.getElementById('nl-regions')?.classList.add('active');
+  else if (path === '/o-kompanii') document.getElementById('nl-about')?.classList.add('active');
+  else if (path === '/o-logistike') document.getElementById('nl-blog')?.classList.add('active');
+  else if (path === '/karta-sayta') document.getElementById('nl-map')?.classList.add('active');
+}
+
+function renderPage(path) {
+  const el = document.getElementById('page');
+  const render = PAGES[path] || PAGES['404'];
+  el.innerHTML = render();
+  // fade-in observer
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), i * 80);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade').forEach(f => obs.observe(f));
+  // update title
+  const titles = {
+    '/': 'On Time Service — Грузоперевозки Казахстан | Алматы',
+    '/uslugi': 'Услуги транспортной логистики | On Time Service',
+    '/uslugi/avtoperevozki': 'Автоперевозки по Казахстану | On Time Service',
+    '/uslugi/negabarit': 'Перевозка негабаритных грузов | On Time Service',
+    '/uslugi/tral': 'Перевозка тралом | On Time Service',
+    '/uslugi/kitay': 'Грузоперевозки из Китая в Казахстан | On Time Service',
+    '/uslugi/rossiya-sng': 'Грузоперевозки Казахстан–Россия–СНГ | On Time Service',
+    '/uslugi/dostavka-po-gorodu': 'Доставка по Алматы | On Time Service',
+    '/uslugi/sbornyy-gruz': 'Сборные грузы по Казахстану | On Time Service',
+    '/uslugi/po-kazakhstanu': 'Перевозки по Казахстану | On Time Service',
+    '/regiony': 'Грузоперевозки по регионам Казахстана | On Time Service',
+    '/region/almaty': 'Грузоперевозки в Алматы | On Time Service',
+    '/region/astana': 'Грузоперевозки в Астану | On Time Service',
+    '/region/shymkent': 'Грузоперевозки в Шымкент | On Time Service',
+    '/region/karaganda': 'Грузоперевозки в Карагандy | On Time Service',
+    '/region/atyrau': 'Грузоперевозки в Атырау | On Time Service',
+    '/region/aktau': 'Грузоперевозки в Актау | On Time Service',
+    '/region/kostanay': 'Грузоперевозки в Костанай | On Time Service',
+    '/region/pavlodar': 'Грузоперевозки в Павлодар | On Time Service',
+    '/napravleniya': 'Направления грузоперевозок | On Time Service',
+    '/o-kompanii': 'О компании On Time Service | Алматы',
+    '/o-logistike': 'О транспортной логистике | On Time Service',
+    '/kontakty': 'Контакты | On Time Service',
+    '/karta-sayta': 'Карта сайта | On Time Service',
+  };
+  document.title = titles[path] || 'On Time Service';
+}
+
+// Breadcrumb helper
+function bc(items) {
+  const parts = items.map((item, i) => {
+    if (i === items.length - 1) return `<span class="current">${item.label}</span>`;
+    return `<span onclick="navigate('${item.path}')">${item.label}</span>`;
+  });
+  return `<div class="breadcrumb">${parts.join('<span class="sep"> / </span>')}</div>`;
+}
+
+// Arrow SVG
+const ARR = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+
+// ══════════════════════════════════════════
+// PAGE: HOME
+// ══════════════════════════════════════════
+PAGES['/'] = () => `
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-horse" aria-hidden="true">
+    <svg viewBox="0 0 500 420" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="hg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#C9A84C" stop-opacity=".6"/>
+          <stop offset="100%" stop-color="#C9A84C" stop-opacity=".02"/>
+        </linearGradient>
+      </defs>
+      <path d="M380 95 C400 75 420 55 415 38 C410 21 392 24 382 36 C372 48 368 62 364 72 C352 62 340 47 324 42 C308 37 297 47 292 62 C282 77 285 94 287 110 C267 105 247 100 226 106 C205 112 189 123 179 140 C164 162 162 190 164 215 C158 227 147 243 142 260 C137 277 141 294 149 300 C133 312 117 329 112 351 C107 373 118 393 130 404 C124 415 122 430 130 441 C138 452 153 452 158 440 C164 428 160 413 164 401 C175 408 192 408 202 400 C208 413 205 433 213 443 C221 453 236 452 241 441 C246 430 242 413 246 401 C262 408 283 410 298 401 C304 415 301 434 309 444 C317 454 334 452 338 441 C342 430 338 413 340 401 C353 408 370 406 378 396 C386 386 381 368 373 354 C386 340 395 320 392 298 C389 276 373 259 360 248 C371 231 382 209 385 185 C388 161 381 140 376 127 C386 122 382 100 380 95 Z" fill="url(#hg)" stroke="rgba(201,168,76,.25)" stroke-width="1.5"/>
+      <path d="M364 72 C370 55 378 36 387 25 C396 14 409 11 418 22 C427 33 424 52 418 66 C412 80 399 88 388 84 C379 80 368 76 364 72 Z" fill="url(#hg)" stroke="rgba(201,168,76,.25)" stroke-width="1.5"/>
+      <circle cx="410" cy="36" r="3" fill="rgba(201,168,76,.9)"/>
+      <line x1="40" y1="380" x2="470" y2="380" stroke="rgba(201,168,76,.12)" stroke-width="1"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow anim-1">
+      <div class="hero-eyebrow-line"></div>
+      <span>На рынке с 2005 года</span>
+      <span class="tag" style="margin-left:8px;">Алматы · КЗ</span>
+    </div>
+    <h1 class="hero-h anim-2">ON TIME<span class="gold">SERVICE</span></h1>
+    <div class="hero-sub anim-2">Транспортная логистика</div>
+    <p class="hero-p anim-3">Грузоперевозки по Казахстану, России, Китаю и СНГ. Любой груз от 100 кг до 100 тонн — точно в срок и профессионально.</p>
+    <div class="hero-btns anim-4">
+      <button class="btn btn-gold" onclick="navigate('/kontakty')">${ARR} Рассчитать доставку</button>
+      <button class="btn btn-outline" onclick="navigate('/uslugi')">Наши услуги</button>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div><div class="stat-n">20+</div><div class="stat-l">Лет опыта</div></div>
+    <div><div class="stat-n">100Т</div><div class="stat-l">Макс. груз</div></div>
+    <div><div class="stat-n">12</div><div class="stat-l">Регионов</div></div>
+    <div><div class="stat-n">3</div><div class="stat-l">Страны</div></div>
+  </div>
+</section>
+
+<!-- Services preview -->
+<section class="sec" style="background:var(--dark2);">
+  <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Что мы предлагаем</span></div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px;">
+    <h2 class="title fade">Наши<br>услуги</h2>
+    <button class="btn btn-outline fade" onclick="navigate('/uslugi')">Все услуги ${ARR}</button>
+  </div>
+  <div class="grid4">
+    ${[
+      ['🚛','01','Автоперевозки','Грузовые перевозки по всем направлениям','/uslugi/avtoperevozki'],
+      ['📐','02','Негабаритные грузы','Спецтранспорт для крупных и тяжёлых грузов','/uslugi/negabarit'],
+      ['🇨🇳','03','Из Китая','Импортная логистика и таможенное оформление','/uslugi/kitay'],
+      ['🚧','04','Перевозка тралом','Тяжёлая и строительная техника','/uslugi/tral'],
+      ['🌐','05','Россия и СНГ','Международные перевозки и сопровождение','/uslugi/rossiya-sng'],
+      ['🇰🇿','06','По Казахстану','Все регионы страны — от Алматы до Актау','/uslugi/po-kazakhstanu'],
+      ['📦','07','Сборные грузы','Консолидация грузов, экономия на перевозке','/uslugi/sbornyy-gruz'],
+      ['🏙️','08','Доставка по Алматы','Срочная городская доставка','/uslugi/dostavka-po-gorodu'],
+    ].map(([icon,num,title,desc,path]) => `
+    <div class="card card-link fade" onclick="navigate('${path}')">
+      <div class="card-num">${num}</div>
+      <div class="card-icon">${icon}</div>
+      <div class="card-title">${title}</div>
+      <div class="card-desc">${desc}</div>
+      <div class="card-arr">${ARR}</div>
+    </div>`).join('')}
+  </div>
+</section>
+
+<!-- Regions preview -->
+<section class="sec">
+  <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">SEO по регионам</span></div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px;">
+    <h2 class="title fade">Регионы<br>Казахстана</h2>
+    <button class="btn btn-outline fade" onclick="navigate('/regiony')">Все регионы ${ARR}</button>
+  </div>
+  <div class="grid4">
+    ${[
+      ['🌆','Алматы','Южная столица, деловой центр','/region/almaty'],
+      ['🏛️','Астана','Столица и транспортный хаб','/region/astana'],
+      ['🌿','Шымкент','Юг, 3-й по величине город','/region/shymkent'],
+      ['⛏️','Карагандa','Промышленный центр страны','/region/karaganda'],
+      ['🛢️','Атырау','Нефтяная столица Казахстана','/region/atyrau'],
+      ['⚓','Актау','Порт на Каспийском море','/region/aktau'],
+      ['🌾','Костанай','Зерновой регион севера','/region/kostanay'],
+      ['🏭','Павлодар','Промышленный север страны','/region/pavlodar'],
+    ].map(([icon,name,desc,path]) => `
+    <div class="card card-link fade" onclick="navigate('${path}')">
+      <div class="card-icon">${icon}</div>
+      <div class="card-title">Грузоперевозки<br>${name}</div>
+      <div class="card-desc">${desc}</div>
+      <div class="card-arr">${ARR}</div>
+    </div>`).join('')}
+  </div>
+</section>
+
+<!-- About snippet -->
+<section class="sec" style="background:var(--dark2);">
+  <div class="two-col">
+    <div class="fade">
+      <div class="sec-label"><div class="sec-label-line"></div><span class="sec-label-text">О компании</span></div>
+      <h2 class="title">Надёжное<br>звено</h2>
+      <p class="desc" style="margin-bottom:24px;">ТЛК «On Time Service» — транспортно-логистическая компания, работающая на рынке Казахстана с 2005 года. Специализируемся на автоперевозках, негабаритных и тяжёлых грузах, импорте из Китая.</p>
+      <div class="quote-block">
+        <div class="quote-label">Наша миссия</div>
+        <div class="quote-text">Быть вашим надёжным партнёром в сфере транспортной логистики. Качественный, профессиональный подход в области транспортно-экспедиторских услуг.</div>
+      </div>
+      <button class="btn btn-outline" onclick="navigate('/o-kompanii')" style="margin-top:20px;">Подробнее ${ARR}</button>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;" class="fade">
+      ${[['20+','лет на рынке'],['100Т','максимальный груз'],['12','регионов КЗ'],['3','страны']]
+        .map(([v,l]) => `<div class="info-card"><div class="metric-val">${v}</div><div class="metric-label">${l}</div></div>`).join('')}
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sec" style="text-align:center;">
+  <div class="fade">
+    <div class="sec-label" style="justify-content:center;"><div class="sec-label-line"></div><span class="sec-label-text">Начните прямо сейчас</span><div class="sec-label-line"></div></div>
+    <h2 class="title" style="margin-bottom:16px;">Нужна перевозка?</h2>
+    <p class="desc" style="max-width:500px;margin:0 auto 28px;">Оставьте заявку — менеджер свяжется в течение 30 минут и рассчитает стоимость доставки</p>
+    <button class="btn btn-gold" onclick="navigate('/kontakty')" style="font-size:13px;padding:16px 40px;">${ARR} Оставить заявку</button>
+  </div>
+</section>
+`;
+
+// ══════════════════════════════════════════
+// PAGE: SERVICES LIST
+// ══════════════════════════════════════════
+PAGES['/uslugi'] = () => `
+${bc([{label:'Главная',path:'/'},{label:'Услуги'}])}
+<div class="page-header">
+  <div class="sec-label anim-1"><div class="sec-label-line"></div><span class="sec-label-text">Транспортная логистика</span></div>
+  <h2 class="title anim-2">Наши услуги</h2>
+  <p class="desc anim-3" style="max-width:600px;">Полный спектр транспортно-логистических услуг по Казахстану, России, Китаю и СНГ. Грузы от 100 кг до 100 тонн — любой сложности.</p>
+</div>
+<section class="sec">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+    ${[
+      ['🚛','Автоперевозки','Грузовые автомобильные перевозки по всем направлениям. Собственный и привлечённый транспорт, все типы кузовов.','/uslugi/avtoperevozki'],
+      ['📐','Негабаритные грузы','Перевозка нестандартных, крупногабаритных и тяжёлых грузов. Специализированный транспорт и разрешительная документация.','/uslugi/negabarit'],
+      ['🚧','Перевозка тралом','Тяжёлая и строительная техника, нестандартные металлоконструкции. Трал, спецтехника, сопровождение.','/uslugi/tral'],
+      ['📦','Сборные грузы','Консолидация грузов от нескольких отправителей в одну машину. Экономия на перевозке до 60%.','/uslugi/sbornyy-gruz'],
+      ['🏙️','Доставка по Алматы','Срочная городская доставка по Алматы. Быстро, точно, с подтверждением.','/uslugi/dostavka-po-gorodu'],
+      ['🇰🇿','По Казахстану','Межгородские перевозки по всем регионам Республики Казахстан. 12 регионов.','/uslugi/po-kazakhstanu'],
+      ['🌐','Россия и СНГ','Международные перевозки в Россию и страны СНГ. Таможенное оформление и сопровождение.','/uslugi/rossiya-sng'],
+      ['🇨🇳','Из Китая','Импортная логистика из Китая в Казахстан. Получение, таможня, доставка до дверей.','/uslugi/kitay'],
+      ['⚖️','От 100 кг до 100 т','Малотоннажные и крупные грузы — любой объём. Оптимальная упаковка и крепление.','#'],
+    ].map(([icon,title,desc,path]) => `
+    <div class="card card-link fade" style="cursor:pointer;" onclick="${path !== '#' ? `navigate('${path}')` : ''}">
+      <div class="card-icon">${icon}</div>
+      <div class="card-title" style="margin-bottom:10px;">${title}</div>
+      <div class="card-desc">${desc}</div>
+      ${path !== '#' ? `<div style="margin-top:16px;"><button class="btn btn-outline" style="padding:8px 16px;font-size:10px;">Подробнее ${ARR}</button></div>` : ''}
+    </div>`).join('')}
+  </div>
+</section>
+`;
+
+// ══════════════════════════════════════════
+// SERVICE DETAIL TEMPLATE
+// ══════════════════════════════════════════
+function serviceDetailPage(data) {
+  return `
+${bc([{label:'Главная',path:'/'},{label:'Услуги',path:'/uslugi'},{label:data.title}])}
+<div class="page-header">
+  <div class="sec-label anim-1"><div class="sec-label-line"></div><span class="sec-label-text">${data.tag}</span></div>
+  <div style="font-size:48px;margin-bottom:12px;" class="anim-1">${data.icon}</div>
+  <h2 class="title anim-2">${data.title}</h2>
+  <p class="desc anim-3" style="max-width:650px;">${data.subtitle}</p>
+  <div style="margin-top:20px;" class="anim-4">
+    <button class="btn btn-gold" onclick="navigate('/kontakty')">${ARR} Получить расчёт</button>
+  </div>
+</div>
+<section class="sec">
+  <div class="two-col-40">
+    <div>
+      <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Подробнее</span></div>
+      <h3 class="title fade" style="margin-bottom:20px;">Что входит<br>в услугу</h3>
+      <div class="feat-list fade">
+        ${data.features.map(f => `<div class="feat-item"><div class="feat-icon">${f.icon}</div><div><div class="feat-title">${f.title}</div><div class="feat-desc">${f.desc}</div></div></div>`).join('')}
+      </div>
+    </div>
+    <div>
+      <div class="seo-block fade">
+        <h3 style="font-size:18px;font-weight:600;margin-bottom:16px;">${data.seoTitle}</h3>
+        ${data.seoText.map(p => `<p>${p}</p>`).join('')}
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;">
+        ${data.stats.map(([v,l]) => `<div class="info-card fade"><div class="metric-val">${v}</div><div class="metric-label">${l}</div></div>`).join('')}
+      </div>
+    </div>
+  </div>
+</section>
+<section class="sec-sm" style="background:var(--dark2);">
+  <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Смотрите также</span></div>
+  <div class="grid3" style="margin-top:20px;">
+    ${data.related.map(([icon,title,path]) => `<div class="card card-link fade" onclick="navigate('${path}')"><div class="card-icon">${icon}</div><div class="card-title">${title}</div><div class="card-arr">${ARR}</div></div>`).join('')}
+  </div>
+</section>
+`;
+}
+
+// AUTO
+PAGES['/uslugi/avtoperevozki'] = () => serviceDetailPage({
+  tag:'Автомобильные перевозки', icon:'🚛', title:'Автоперевозки', 
+  subtitle:'Грузовые автомобильные перевозки по Казахстану, России и СНГ. Все типы транспорта, от малотоннажных фургонов до тяжёлых фур.',
+  features:[
+    {icon:'🚛',title:'Полная загрузка (FTL)',desc:'Выделенная машина под ваш груз. Прямая доставка без перегрузок.'},
+    {icon:'📦',title:'Частичная загрузка (LTL)',desc:'Консолидация с другими грузами. Оплата только за занятый объём.'},
+    {icon:'❄️',title:'Рефрижератор',desc:'Перевозка температурных грузов: продукты, медикаменты, химия.'},
+    {icon:'🔒',title:'Тентованный транспорт',desc:'Стандартные коммерческие грузы. Защита от осадков.'},
+    {icon:'📋',title:'Документация',desc:'Оформление CMR, накладных, таможенных документов.'},
+    {icon:'📍',title:'GPS-трекинг',desc:'Отслеживание груза онлайн в реальном времени.'},
+  ],
+  seoTitle:'Автоперевозки грузов по Казахстану',
+  seoText:['Грузоперевозки автомобильным транспортом — самый популярный вид доставки в Казахстане. Это обусловлено гибкостью маршрутов, доступностью и скоростью доставки «от двери до двери».','ТЛК «On Time Service» выполняет автоперевозки по всем регионам Казахстана, а также международные рейсы в Россию, Кыргызстан, Узбекистан и другие страны СНГ.','Грамотная транспортировка любого груза — непосредственный результат труда профессионального логиста: выбор оптимального маршрута, вида транспорта и учёт всех факторов, влияющих на успешную организацию транспортного процесса.'],
+  stats:[['100Т','макс. тоннаж'],['20+','лет опыта'],['12','регионов КЗ'],['24/7','на связи']],
+  related:[['📐','Негабаритные грузы','/uslugi/negabarit'],['📦','Сборные грузы','/uslugi/sbornyy-gruz'],['🇰🇿','По Казахстану','/uslugi/po-kazakhstanu']]
+});
+
+// NEGABARIT
+PAGES['/uslugi/negabarit'] = () => serviceDetailPage({
+  tag:'Спецперевозки', icon:'📐', title:'Негабаритные грузы',
+  subtitle:'Перевозка нестандартных, крупногабаритных и сверхтяжёлых грузов. Спецтранспорт, разрешительная документация, сопровождение.',
+  features:[
+    {icon:'📏',title:'Любые габариты',desc:'Грузы, выходящие за стандартные размеры: длина >20м, ширина >2.55м, высота >4м.'},
+    {icon:'⚖️',title:'Сверхтяжёлые грузы',desc:'Перевозка грузов весом от 20 до 100+ тонн на спецтранспорте.'},
+    {icon:'📋',title:'Спецразрешения',desc:'Получение разрешений на перевозку в КДА, ДорПолиции. Берём на себя.'},
+    {icon:'🚔',title:'Сопровождение',desc:'Автомобили прикрытия, мигалки при необходимости. Согласование маршрута.'},
+    {icon:'🔧',title:'Крепление груза',desc:'Профессиональное крепление, стяжные ремни, упоры, антискользящие маты.'},
+    {icon:'🗺️',title:'Разведка маршрута',desc:'Предварительный осмотр маршрута, проверка мостов, путепроводов, высот.'},
+  ],
+  seoTitle:'Перевозка негабаритных грузов по Казахстану',
+  seoText:['Негабаритные грузы — это объекты, размеры или вес которых превышают установленные нормы для стандартных транспортных средств. Перевозка таких грузов требует специального оборудования, разрешительной документации и опыта.','К негабаритным грузам относятся: строительная техника, промышленное оборудование, металлоконструкции, трансформаторы, буровые установки, модульные конструкции.','On Time Service имеет опыт перевозки негабаритных грузов по всему Казахстану более 20 лет. Мы берём на себя все вопросы — от получения разрешений до безопасной доставки на объект.'],
+  stats:[['100Т','макс. вес'],['20м+','макс. длина'],['24/7','поддержка'],['КЗ/РФ','маршруты']],
+  related:[['🚧','Перевозка тралом','/uslugi/tral'],['🚛','Автоперевозки','/uslugi/avtoperevozki'],['🌐','Россия и СНГ','/uslugi/rossiya-sng']]
+});
+
+// TRAL
+PAGES['/uslugi/tral'] = () => serviceDetailPage({
+  tag:'Тяжеловозный транспорт', icon:'🚧', title:'Перевозка тралом',
+  subtitle:'Специализированная перевозка тяжёлой техники и крупногабаритных конструкций на низкорамных трейлерах-тралах.',
+  features:[
+    {icon:'🏗️',title:'Строительная техника',desc:'Экскаваторы, бульдозеры, краны, катки, бетоносмесители.'},
+    {icon:'🛢️',title:'Промышленное оборудование',desc:'Резервуары, насосные станции, генераторы, трансформаторы.'},
+    {icon:'🔩',title:'Металлоконструкции',desc:'Фермы, балки, пролётные конструкции, опоры ЛЭП.'},
+    {icon:'📐',title:'Модульные здания',desc:'Вагончики, блок-контейнеры, бытовки, модульные конструкции.'},
+    {icon:'🚜',title:'Сельхозтехника',desc:'Комбайны, тракторы, прицепы, посевные комплексы.'},
+    {icon:'📋',title:'Разрешения КДА',desc:'Получение маршрутных разрешений. Согласование с ДорПолицией.'},
+  ],
+  seoTitle:'Перевозка тралом по Казахстану',
+  seoText:['Трал — это специализированный низкорамный прицеп для перевозки тяжёлой и негабаритной техники. Благодаря низкой погрузочной высоте трал позволяет перевозить грузы с большой высотой без нарушения ограничений по высоте маршрута.','Перевозка тралом востребована в строительстве, горнодобывающей промышленности, нефтяном секторе Казахстана. Алматы, Атырау, Актау, Карагандa — основные направления.','Казахстан занимает 9-е место в мире по площади. Ресурсодобывающая отрасль, строительство и промышленность создают постоянный спрос на тяжеловозные перевозки.'],
+  stats:[['100Т','грузоподъёмность'],['КЗ+РФ','маршруты'],['24/7','на связи'],['20+','лет опыта']],
+  related:[['📐','Негабаритные грузы','/uslugi/negabarit'],['🚛','Автоперевозки','/uslugi/avtoperevozki'],['🛢️','Грузы Атырау','/region/atyrau']]
+});
+
+// CHINA
+PAGES['/uslugi/kitay'] = () => serviceDetailPage({
+  tag:'Импортная логистика', icon:'🇨🇳', title:'Грузы из Китая',
+  subtitle:'Полный цикл доставки товаров из Китая в Казахстан: от склада поставщика до вашего склада. Таможенное оформление включено.',
+  features:[
+    {icon:'🏭',title:'Забор у поставщика',desc:'Консолидация грузов от разных поставщиков на складе в Китае.'},
+    {icon:'🚛',title:'Транспортировка',desc:'Автомобильный, железнодорожный или мультимодальный маршрут.'},
+    {icon:'📋',title:'Таможенное оформление',desc:'Декларирование, сертификация, расчёт пошлин. Под ключ.'},
+    {icon:'📦',title:'Упаковка и маркировка',desc:'Профессиональная переупаковка, паллетирование, маркировка.'},
+    {icon:'🏬',title:'Складская обработка',desc:'Ответственное хранение в Алматы, кросс-докинг, развозка по РК.'},
+    {icon:'📊',title:'Трекинг груза',desc:'Онлайн-отслеживание от склада поставщика до получателя.'},
+  ],
+  seoTitle:'Доставка грузов из Китая в Казахстан',
+  seoText:['Казахстан граничит с Китаем и является ключевым транзитным коридором на маршруте Китай–Европа. Это делает доставку товаров из КНР одним из главных направлений транспортной логистики страны.','On Time Service организует полный цикл импортной логистики: забор у поставщика в Китае, транспортировка до границы, таможенное оформление на переходе Хоргос/Достык, доставка по Казахстану.','Средний срок доставки автомобильным транспортом — 8–14 дней. Железнодорожный маршрут: 18–25 дней. Выбор зависит от объёма, сроков и бюджета клиента.'],
+  stats:[['14','дней авто'],['8–25','дней ж/д'],['100%','таможня'],['КЗ→РК','доставка']],
+  related:[['🌐','Россия и СНГ','/uslugi/rossiya-sng'],['📦','Сборные грузы','/uslugi/sbornyy-gruz'],['🌆','Грузы Алматы','/region/almaty']]
+});
+
+// RUSSIA SNG
+PAGES['/uslugi/rossiya-sng'] = () => serviceDetailPage({
+  tag:'Международные перевозки', icon:'🌐', title:'Россия и СНГ',
+  subtitle:'Грузоперевозки из Казахстана в Россию и страны СНГ. Таможенное оформление, транзитные перевозки, все типы грузов.',
+  features:[
+    {icon:'🇷🇺',title:'Казахстан → Россия',desc:'Автомобильные рейсы по трассе А-340. Ежедневные отправки.'},
+    {icon:'🏳️',title:'Другие страны СНГ',desc:'Кыргызстан, Узбекистан, Беларусь, Азербайджан и другие.'},
+    {icon:'📋',title:'Таможня ЕАЭС',desc:'В рамках ЕАЭС упрощённое таможенное оформление.'},
+    {icon:'📦',title:'Все типы грузов',desc:'Промышленные, потребительские, опасные (ADR), скоропорт.'},
+    {icon:'🔄',title:'Транзит через КЗ',desc:'Организация транзита между Китаем, Россией и Европой.'},
+    {icon:'📊',title:'Трекинг и уведомления',desc:'SMS/Telegram-уведомления о статусе доставки.'},
+  ],
+  seoTitle:'Международные грузоперевозки Казахстан–Россия–СНГ',
+  seoText:['Казахстан — ключевой транзитный узел на пути из Китая в Россию и Европу. Географическое положение создаёт уникальные возможности для транспортной логистики.','Компании могут сами развивать собственные логистические подразделения, а могут привлекать транспортно-логистические организации для решения этих задач. On Time Service — именно такой внешний партнёр.','Перевозки в рамках ЕАЭС (Казахстан, Россия, Беларусь, Армения, Кыргызстан) осуществляются по упрощённой процедуре без таможенного оформления.'],
+  stats:[['ЕАЭС','5 стран'],['СНГ','12 направл.'],['24/7','диспетчер'],['20+','лет опыта']],
+  related:[['🇨🇳','Из Китая','/uslugi/kitay'],['🚛','Автоперевозки','/uslugi/avtoperevozki'],['📐','Негабаритные','/uslugi/negabarit']]
+});
+
+// KZ
+PAGES['/uslugi/po-kazakhstanu'] = () => serviceDetailPage({
+  tag:'Внутренние перевозки', icon:'🇰🇿', title:'По Казахстану',
+  subtitle:'Межгородские грузоперевозки по всем регионам Казахстана. Алматы, Астана, Шымкент, Атырау и ещё 12 регионов.',
+  features:[
+    {icon:'🌆',title:'Алматы — все регионы',desc:'Регулярные рейсы из Алматы во все областные центры.'},
+    {icon:'🏛️',title:'Астана — юг/запад',desc:'Связь столицы с южными и западными регионами страны.'},
+    {icon:'🛢️',title:'Западный Казахстан',desc:'Атырау, Актау, Актобе — нефтяные регионы и Каспий.'},
+    {icon:'⛏️',title:'Центральный КЗ',desc:'Карагандa, Жезказган, Балхаш — горнодобывающий регион.'},
+    {icon:'🌾',title:'Северный КЗ',desc:'Костанай, Петропавловск, Павлодар — зерно и промышленность.'},
+    {icon:'🌿',title:'Южный КЗ',desc:'Шымкент, Тараз, Кызылорда — аграрный и торговый юг.'},
+  ],
+  seoTitle:'Грузоперевозки по Казахстану — все регионы',
+  seoText:['Территория Республики Казахстан занимает девятое место в мире (2725 тыс. км²). При этом плотность населения — всего 6 чел/км². Это делает транспортную логистику критически важной для связи регионов.','Транспортно-коммуникационный комплекс (ТКК) обеспечивает не только экономическую, но и политическую целостность страны. Развитие ТКК — залог непрерывного экономического прогресса.','On Time Service выполняет перевозки по всем 17 регионам Казахстана. Регулярные рейсы, фиксированные тарифы, возможность трекинга.'],
+  stats:[['17','регионов КЗ'],['2725','тыс. км² РК'],['48ч','макс. срок'],['20+','лет опыта']],
+  related:[['🌆','Алматы','/region/almaty'],['🏛️','Астана','/region/astana'],['🛢️','Атырау','/region/atyrau']]
+});
+
+// CITY
+PAGES['/uslugi/dostavka-po-gorodu'] = () => serviceDetailPage({
+  tag:'Городская логистика', icon:'🏙️', title:'Доставка по Алматы',
+  subtitle:'Срочная городская доставка грузов по Алматы. Газели, малотоннажные грузовики, экспресс-доставка.',
+  features:[
+    {icon:'⚡',title:'Экспресс-доставка',desc:'Доставка в течение 2–4 часов по Алматы.'},
+    {icon:'🕐',title:'Доставка в срок',desc:'Фиксированное время доставки с подтверждением.'},
+    {icon:'📱',title:'Уведомления',desc:'SMS и Telegram-уведомление о статусе доставки.'},
+    {icon:'🏭',title:'Склад→Магазин',desc:'Регулярная доставка из РЦ в торговые точки.'},
+    {icon:'🔄',title:'Возвратная логистика',desc:'Организация возвратов и обратной логистики.'},
+    {icon:'📋',title:'Документы',desc:'Накладные, чеки, акты приёма-передачи.'},
+  ],
+  seoTitle:'Грузоперевозки по Алматы',
+  seoText:['Алматы — крупнейший деловой центр Казахстана с населением более 2 млн человек. Плотная городская инфраструктура, активный ритейл и e-commerce создают высокий спрос на городскую логистику.','Грузоперевозки в Алматы используются практически во всех сферах деловой активности: срочная доставка грузов в торговые точки, получение импортной продукции, офисные переезды.'],
+  stats:[['2ч','минимум'],['Алматы','весь город'],['7/7','работаем'],['100кг+','любой вес']],
+  related:[['🇰🇿','По Казахстану','/uslugi/po-kazakhstanu'],['📦','Сборные грузы','/uslugi/sbornyy-gruz'],['🌆','О регионе','/region/almaty']]
+});
+
+// SBORNY
+PAGES['/uslugi/sbornyy-gruz'] = () => serviceDetailPage({
+  tag:'Консолидация грузов', icon:'📦', title:'Сборные грузы',
+  subtitle:'Консолидация грузов нескольких отправителей в одну машину. Экономия до 60% по сравнению с отдельным рейсом.',
+  features:[
+    {icon:'💰',title:'Экономия',desc:'Оплата только за занятый объём и вес. До 60% дешевле отдельного рейса.'},
+    {icon:'📅',title:'Регулярные отправки',desc:'Фиксированные дни сборки по ключевым маршрутам КЗ.'},
+    {icon:'🏬',title:'Склад консолидации',desc:'Принимаем груз на склад в Алматы, комплектуем отправку.'},
+    {icon:'📋',title:'Маркировка',desc:'Профессиональная маркировка каждого места груза.'},
+    {icon:'📍',title:'Трекинг',desc:'Онлайн-отслеживание каждого отправления.'},
+    {icon:'📱',title:'Уведомления',desc:'Автоматические уведомления о прибытии груза.'},
+  ],
+  seoTitle:'Сборные грузы по Казахстану',
+  seoText:['Сборные грузоперевозки (LTL — Less than Truckload) — оптимальное решение для малого и среднего бизнеса, когда объём груза не заполняет весь кузов автомобиля.','On Time Service организует регулярные сборные рейсы по ключевым направлениям: Алматы–Астана, Алматы–Шымкент, Алматы–Карагандa, Алматы–Атырау.'],
+  stats:[['–60%','экономия'],['2/неделю','отправки'],['КЗ','все регионы'],['1кг+','от 1 кг']],
+  related:[['🚛','Автоперевозки','/uslugi/avtoperevozki'],['🏙️','По Алматы','/uslugi/dostavka-po-gorodu'],['🇰🇿','По КЗ','/uslugi/po-kazakhstanu']]
+});
+
+// ══════════════════════════════════════════
+// REGIONS LIST
+// ══════════════════════════════════════════
+PAGES['/regiony'] = () => `
+${bc([{label:'Главная',path:'/'},{label:'Регионы Казахстана'}])}
+<div class="page-header">
+  <div class="sec-label anim-1"><div class="sec-label-line"></div><span class="sec-label-text">SEO по регионам</span></div>
+  <h2 class="title anim-2">Грузоперевозки по<br>регионам Казахстана</h2>
+  <p class="desc anim-3" style="max-width:650px;">On Time Service выполняет грузоперевозки во все регионы Казахстана. Выберите ваш город, чтобы узнать подробности и актуальные тарифы.</p>
+</div>
+<section class="sec">
+  <div class="seo-block fade" style="margin-bottom:40px;">
+    <p>Территория Республики Казахстан занимает 9-е место в мире — 2725 тысяч км². Огромные расстояния между городами делают грузовую логистику одной из ключевых потребностей бизнеса в каждом регионе.</p>
+    <p>Для каждого региона мы предлагаем специализированные решения с учётом местной специфики: нефтяные маршруты для западных регионов, промышленные перевозки для Карагандинской области, аграрная логистика для севера страны.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+    ${[
+      ['🌆','Алматы','Южная столица. Деловой и финансовый центр КЗ.','2 000 000+','жителей','/region/almaty'],
+      ['🏛️','Астана','Столица. Транспортный и административный хаб.','1 300 000+','жителей','/region/astana'],
+      ['🌿','Шымкент','3-й по величине город. Торговый юг.','1 200 000+','жителей','/region/shymkent'],
+      ['⛏️','Карагандa','Промышленный центр. Металлургия, уголь.','480 000+','жителей','/region/karaganda'],
+      ['🛢️','Атырау','Нефтяная столица. Каспийский регион.','340 000+','жителей','/region/atyrau'],
+      ['⚓','Актау','Каспийский порт. Импорт и экспорт.','200 000+','жителей','/region/aktau'],
+      ['🌾','Костанай','Зерновой регион. Северный КЗ.','240 000+','жителей','/region/kostanay'],
+      ['🏭','Павлодар','Промышленный север. Энергетика.','320 000+','жителей','/region/pavlodar'],
+      ['🏔️','Усть-Каменогорск','Восточный КЗ. Цветная металлургия.','300 000+','жителей','/region/ust-kamenogorsk'],
+      ['🌺','Тараз','Южный регион. Фосфорная промышленность.','380 000+','жителей','/region/taraz'],
+      ['🛺','Актобе','Западный КЗ. Нефть и газ.','500 000+','жителей','/region/aktobe'],
+      ['📚','Семей','Восточный КЗ. Торговый центр.','340 000+','жителей','/region/semey'],
+    ].map(([icon,name,desc,pop,unit,path]) => `
+    <div class="card card-link fade" onclick="navigate('${path}')">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+        <span style="font-size:26px;">${icon}</span>
+        <div>
+          <div class="card-title" style="margin:0;">Грузоперевозки<br>${name}</div>
+        </div>
+      </div>
+      <div class="card-desc" style="margin-bottom:12px;">${desc}</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--gold);">${pop} <span style="font-size:13px;color:var(--text3);">${unit}</span></div>
+      <div class="card-arr">${ARR}</div>
+    </div>`).join('')}
+  </div>
+</section>
+`;
+
+// ══════════════════════════════════════════
+// REGION DETAIL TEMPLATE
+// ══════════════════════════════════════════
+function regionPage(data) {
+  return `
+${bc([{label:'Главная',path:'/'},{label:'Регионы',path:'/regiony'},{label:`Грузоперевозки ${data.name}`}])}
+<div class="page-header">
+  <div class="sec-label anim-1"><div class="sec-label-line"></div><span class="sec-label-text">Регион · Казахстан</span></div>
+  <div style="font-size:48px;margin-bottom:12px;" class="anim-1">${data.icon}</div>
+  <h2 class="title anim-2">Грузоперевозки<br>${data.name}</h2>
+  <p class="desc anim-3" style="max-width:650px;">${data.subtitle}</p>
+  <div style="margin-top:20px;display:flex;gap:12px;" class="anim-4">
+    <button class="btn btn-gold" onclick="navigate('/kontakty')">${ARR} Заявка на перевозку в ${data.name}</button>
+    <button class="btn btn-outline" onclick="navigate('/uslugi')">Все услуги</button>
+  </div>
+</div>
+<section class="sec">
+  <div class="two-col-40">
+    <div>
+      <div class="seo-block fade">
+        <h3 style="font-size:17px;font-weight:600;margin-bottom:14px;">Грузоперевозки в/из ${data.name}</h3>
+        ${data.seoText.map(p => `<p>${p}</p>`).join('')}
+      </div>
+      <div style="margin-top:24px;">
+        <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Популярные маршруты</span></div>
+        <div style="margin-top:14px;display:flex;flex-direction:column;gap:8px;">
+          ${data.routes.map(r => `<div class="region-card fade" onclick="navigate('/kontakty')"><div class="rc-icon">🚛</div><div class="rc-info"><div class="rc-name">${r.from} → ${r.to}</div><div class="rc-sub">${r.desc}</div></div><div class="rc-arr">${ARR}</div></div>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+        ${data.stats.map(([v,l]) => `<div class="info-card fade"><div class="metric-val">${v}</div><div class="metric-label">${l}</div></div>`).join('')}
+      </div>
+      <div class="card fade" style="margin-bottom:14px;">
+        <div class="card-title" style="margin-bottom:14px;">Актуальные услуги для региона</div>
+        ${data.services.map(s => `<div class="feat-item" style="padding:12px 0;"><div class="feat-icon">${s.icon}</div><div><div class="feat-title" style="font-size:13px;">${s.title}</div><div class="feat-desc">${s.desc}</div></div></div>`).join('')}
+      </div>
+      <button class="btn btn-gold" onclick="navigate('/kontakty')" style="width:100%;">${ARR} Рассчитать доставку в ${data.name}</button>
+    </div>
+  </div>
+</section>
+<section class="sec-sm" style="background:var(--dark2);">
+  <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Другие регионы</span></div>
+  <div class="grid4" style="margin-top:16px;">
+    ${data.related.map(([icon,name,path]) => `<div class="card card-link fade" onclick="navigate('${path}')"><div class="card-icon">${icon}</div><div class="card-title">Грузоперевозки ${name}</div><div class="card-arr">${ARR}</div></div>`).join('')}
+  </div>
+</section>
+`;
+}
+
+PAGES['/region/almaty'] = () => regionPage({
+  icon:'🌆', name:'Алматы',
+  subtitle:'Грузоперевозки по Алматы и из Алматы во все города Казахстана. Самый крупный транспортный узел страны.',
+  seoText:[
+    'Алматы — крупнейший город Казахстана и главный деловой центр страны. Более 2 миллионов жителей, развитая торговля, крупнейший аэропорт и сеть складских комплексов делают Алматы ключевым логистическим хабом.',
+    'On Time Service работает в Алматы с 2005 года. Наш офис и склад расположены в городе, что позволяет оперативно реагировать на заявки и обеспечивать срочную доставку.',
+    'Грузоперевозки из Алматы по Казахстану — наше ключевое направление. Регулярные рейсы в Астану, Шымкент, Карагандy, Атырау, Актау и другие города страны.',
+  ],
+  routes:[
+    {from:'Алматы',to:'Астана',desc:'1200 км · 1–2 дня · авто/ж/д'},
+    {from:'Алматы',to:'Шымкент',desc:'680 км · 8–10 часов'},
+    {from:'Алматы',to:'Карагандa',desc:'1200 км · 1–2 дня'},
+    {from:'Алматы',to:'Атырау',desc:'2600 км · 2–3 дня'},
+  ],
+  stats:[['2М+','население'],['1200','км до Астаны'],['20+','лет в Алматы'],['24/7','диспетчер']],
+  services:[
+    {icon:'🚛',title:'Автоперевозки из Алматы',desc:'Прямые и сборные рейсы во все регионы'},
+    {icon:'🏙️',title:'Городская доставка',desc:'Срочная доставка по районам Алматы'},
+    {icon:'🇨🇳',title:'Грузы из Китая',desc:'Хоргос/Достык → Алматы → склад'},
+  ],
+  related:[['🏛️','Астана','/region/astana'],['🌿','Шымкент','/region/shymkent'],['⛏️','Карагандa','/region/karaganda'],['🛢️','Атырау','/region/atyrau']]
+});
+
+PAGES['/region/astana'] = () => regionPage({
+  icon:'🏛️', name:'Астана',
+  subtitle:'Грузоперевозки Алматы–Астана и по столичному региону. Ежедневные рейсы, складская обработка, экспресс-доставка.',
+  seoText:[
+    'Астана (бывший Нур-Султан) — столица Республики Казахстан и один из самых быстро растущих городов Центральной Азии. Активное строительство, государственные закупки и развивающийся ритейл создают высокий спрос на грузоперевозки.',
+    'Маршрут Алматы–Астана — один из самых загруженных в стране. Расстояние около 1200 км преодолевается за 1–2 дня. On Time Service выполняет регулярные рейсы 3 раза в неделю.',
+    'Для бизнеса в Астане мы предлагаем: доставку офисного оборудования, строительных материалов, промышленных товаров, а также сборные грузы с еженедельными отправками.',
+  ],
+  routes:[
+    {from:'Астана',to:'Алматы',desc:'1200 км · 1–2 дня · ежедневно'},
+    {from:'Астана',to:'Карагандa',desc:'220 км · 3–4 часа'},
+    {from:'Астана',to:'Костанай',desc:'580 км · 6–8 часов'},
+    {from:'Астана',to:'Павлодар',desc:'450 км · 5–6 часов'},
+  ],
+  stats:[['1.3М','население'],['1200','км до Алматы'],['3/неделю','рейсы'],['2дн','срок']],
+  services:[
+    {icon:'🚛',title:'Регулярные рейсы Алматы–Астана',desc:'3 отправки в неделю, сборные и полные'},
+    {icon:'🏗️',title:'Строительные грузы',desc:'Стройматериалы для застройщиков столицы'},
+    {icon:'📦',title:'Сборные грузы',desc:'Еженедельные консолидированные отправки'},
+  ],
+  related:[['🌆','Алматы','/region/almaty'],['⛏️','Карагандa','/region/karaganda'],['🌾','Костанай','/region/kostanay'],['🏭','Павлодар','/region/pavlodar']]
+});
+
+PAGES['/region/shymkent'] = () => regionPage({
+  icon:'🌿', name:'Шымкент',
+  subtitle:'Грузоперевозки в Шымкент из Алматы и по южному региону Казахстана. Торговый и промышленный юг страны.',
+  seoText:[
+    'Шымкент — третий по величине город Казахстана с населением более 1,2 млн человек. Расположен на юге страны, граничит с Узбекистаном. Ключевой торговый и транспортный узел для южного КЗ.',
+    'Маршрут Алматы–Шымкент — один из ключевых для On Time Service. Расстояние 680 км преодолевается за 8–10 часов. Мы выполняем ежедневные рейсы по этому направлению.',
+    'Для предприятий Шымкента мы организуем доставку промышленных товаров, строительных материалов, потребительских грузов, а также транзит из Узбекистана через Шымкент в другие регионы КЗ.',
+  ],
+  routes:[
+    {from:'Шымкент',to:'Алматы',desc:'680 км · 8–10 часов · ежедневно'},
+    {from:'Шымкент',to:'Астана',desc:'1700 км · 2 дня'},
+    {from:'Шымкент',to:'Ташкент',desc:'120 км · 2–3 часа · международный'},
+    {from:'Шымкент',to:'Тараз',desc:'280 км · 3–4 часа'},
+  ],
+  stats:[['1.2М','население'],['680','км до Алматы'],['1день','срок'],['УЗ→КЗ','транзит']],
+  services:[
+    {icon:'🚛',title:'Алматы–Шымкент ежедневно',desc:'Прямые рейсы, сборные грузы'},
+    {icon:'🌐',title:'Транзит из Узбекистана',desc:'Ташкент–Шымкент–Алматы'},
+    {icon:'📦',title:'Торговые грузы',desc:'Потребительские товары для ритейла'},
+  ],
+  related:[['🌆','Алматы','/region/almaty'],['🏛️','Астана','/region/astana'],['⛏️','Карагандa','/region/karaganda'],['🌺','Тараз','/region/taraz']]
+});
+
+PAGES['/region/karaganda'] = () => regionPage({
+  icon:'⛏️', name:'Карагандa',
+  subtitle:'Грузоперевозки в Карагандинскую область. Промышленные и горнодобывающие грузы, металлургия.',
+  seoText:[
+    'Карагандa — промышленное сердце Казахстана. Угольная промышленность, металлургия, машиностроение создают высокий и специфический спрос на грузоперевозки: промышленное оборудование, запчасти, металлопродукция.',
+    'Карагандинская область — крупнейшая по площади в Казахстане. Помимо Карагандинского, она включает Жезказган, Балхаш, Темиртау — все они требуют регулярного транспортного обслуживания.',
+    'On Time Service специализируется на промышленной логистике для предприятий Карагандинской области: горношахтное оборудование, запасные части, металлоконструкции, реагенты.',
+  ],
+  routes:[
+    {from:'Карагандa',to:'Астана',desc:'220 км · 3–4 часа'},
+    {from:'Карагандa',to:'Алматы',desc:'1200 км · 1–2 дня'},
+    {from:'Карагандa',to:'Жезказган',desc:'480 км · 5–6 часов'},
+    {from:'Карагандa',to:'Темиртау',desc:'35 км · 40 минут'},
+  ],
+  stats:[['480К','население'],['220','км до Астаны'],['1день','срок'],['Пром','специализация']],
+  services:[
+    {icon:'🏗️',title:'Горнопромышленные грузы',desc:'Оборудование, запчасти для ГМК'},
+    {icon:'🚛',title:'Регулярные рейсы',desc:'Астана–Карагандa ежедневно'},
+    {icon:'📐',title:'Негабаритные грузы',desc:'Промышленное оборудование'},
+  ],
+  related:[['🏛️','Астана','/region/astana'],['🌆','Алматы','/region/almaty'],['🏭','Павлодар','/region/pavlodar'],['🛢️','Атырау','/region/atyrau']]
+});
+
+PAGES['/region/atyrau'] = () => regionPage({
+  icon:'🛢️', name:'Атырау',
+  subtitle:'Грузоперевозки в Атырау — нефтяную столицу Казахстана. Оборудование для нефтегазовой отрасли и общие грузы.',
+  seoText:[
+    'Атырау — нефтяная столица Казахстана, центр Атырауской области. Здесь сосредоточены крупнейшие нефтегазовые компании страны: КазМунайГаз, Тенгизшевройл, NCOC.',
+    'Спрос на грузоперевозки в Атырау определяется прежде всего нефтесервисным сектором: трубы, оборудование для бурения, химические реагенты, спецтехника. Требования к срокам и качеству — жёсткие.',
+    'Маршрут Алматы–Атырау — около 2600 км, срок доставки 2–3 дня. Также мы организуем перевозки с западных нефтяных месторождений через Атырау на другие регионы.',
+  ],
+  routes:[
+    {from:'Атырау',to:'Алматы',desc:'2600 км · 2–3 дня'},
+    {from:'Атырау',to:'Актау',desc:'480 км · 5–6 часов'},
+    {from:'Атырау',to:'Актобе',desc:'580 км · 6–7 часов'},
+    {from:'Атырау',to:'Астана',desc:'2100 км · 2 дня'},
+  ],
+  stats:[['340К','население'],['2600','км до Алматы'],['Нефть','специализация'],['3дн','срок']],
+  services:[
+    {icon:'🛢️',title:'Нефтесервисные грузы',desc:'Трубы, оборудование, реагенты'},
+    {icon:'🚧',title:'Спецтехника тралом',desc:'Буровые и горнодобывающие машины'},
+    {icon:'🚛',title:'Общие грузы',desc:'Потребительские и промышленные товары'},
+  ],
+  related:[['⚓','Актау','/region/aktau'],['🏛️','Астана','/region/astana'],['🌆','Алматы','/region/almaty'],['🛺','Актобе','/region/aktobe']]
+});
+
+PAGES['/region/aktau'] = () => regionPage({
+  icon:'⚓', name:'Актау',
+  subtitle:'Грузоперевозки в Актау — единственный морской порт Казахстана на Каспийском море. Импорт, экспорт, транзит.',
+  seoText:[
+    'Актау — единственный морской порт Казахстана и крупный логистический центр на западе страны. Каспийский маршрут связывает Казахстан с Азербайджаном, Туркменистаном и Ираном.',
+    'Через порт Актау проходят значительные объёмы нефти, зерна и генеральных грузов. Развитие Транскаспийского коридора увеличивает транспортный потенциал региона.',
+  ],
+  routes:[
+    {from:'Актау',to:'Атырау',desc:'480 км · 5–6 часов'},
+    {from:'Актау',to:'Алматы',desc:'3000 км · 3 дня'},
+    {from:'Актау',to:'Актобе',desc:'870 км · 9–10 часов'},
+    {from:'Порт Актау',to:'Баку (Азербайджан)',desc:'Морской: 18–24 часа'},
+  ],
+  stats:[['200К','население'],['3000','км до Алматы'],['⚓','морской порт'],['Каспий','регион']],
+  services:[
+    {icon:'⚓',title:'Портовая логистика',desc:'Доставка к порту и от порта'},
+    {icon:'🛢️',title:'Нефтегазовые грузы',desc:'Оборудование для добычи'},
+    {icon:'🚛',title:'Транскаспийский маршрут',desc:'КЗ → Азербайджан → Турция'},
+  ],
+  related:[['🛢️','Атырау','/region/atyrau'],['🛺','Актобе','/region/aktobe'],['🏛️','Астана','/region/astana'],['🌆','Алматы','/region/almaty']]
+});
+
+PAGES['/region/kostanay'] = () => regionPage({
+  icon:'🌾', name:'Костанай',
+  subtitle:'Грузоперевозки в Костанай и по северу Казахстана. Зерновая логистика, промышленное оборудование.',
+  seoText:[
+    'Костанай — центр Костанайской области, расположен на севере Казахстана у границы с Россией. Один из главных зерновых регионов страны: пшеница, ячмень, подсолнечник.',
+    'Близость к России (Челябинск — 250 км) делает Костанай важным транзитным узлом для торговли между Казахстаном и Уралом. Через Костанай активно перемещаются сельхозтехника и запчасти.',
+  ],
+  routes:[
+    {from:'Костанай',to:'Астана',desc:'580 км · 6–8 часов'},
+    {from:'Костанай',to:'Алматы',desc:'2200 км · 2 дня'},
+    {from:'Костанай',to:'Челябинск (РФ)',desc:'250 км · 3–4 часа'},
+    {from:'Костанай',to:'Петропавловск',desc:'360 км · 4 часа'},
+  ],
+  stats:[['240К','население'],['580','км до Астаны'],['Зерно','специализация'],['РФ','граница 250км']],
+  services:[
+    {icon:'🚜',title:'Сельхозтехника и зерно',desc:'Комбайны, трактора, зерновозы'},
+    {icon:'🌐',title:'Россия через Костанай',desc:'КЗ–РФ транзит'},
+    {icon:'🚛',title:'Промышленные грузы',desc:'Оборудование для предприятий'},
+  ],
+  related:[['🏛️','Астана','/region/astana'],['🏭','Павлодар','/region/pavlodar'],['🌆','Алматы','/region/almaty'],['⛏️','Карагандa','/region/karaganda']]
+});
+
+PAGES['/region/pavlodar'] = () => regionPage({
+  icon:'🏭', name:'Павлодар',
+  subtitle:'Грузоперевозки в Павлодар — промышленный и энергетический центр севера Казахстана.',
+  seoText:[
+    'Павлодар — крупный промышленный центр северного Казахстана. Нефтехимия, энергетика, алюминиевое производство (Казахстанский электролизный завод) — основные отрасли.',
+    'Расположен на Иртыше у границы с Россией (Омская область). Развитая речная логистика и железнодорожный узел делают Павлодар важным грузовым хабом севера страны.',
+  ],
+  routes:[
+    {from:'Павлодар',to:'Астана',desc:'450 км · 5–6 часов'},
+    {from:'Павлодар',to:'Алматы',desc:'1600 км · 1–2 дня'},
+    {from:'Павлодар',to:'Омск (РФ)',desc:'350 км · 4 часа'},
+    {from:'Павлодар',to:'Семей',desc:'310 км · 3–4 часа'},
+  ],
+  stats:[['320К','население'],['450','км до Астаны'],['Пром','специализация'],['РФ','граница']],
+  services:[
+    {icon:'🏭',title:'Промышленные грузы',desc:'Нефтехимия, алюминий, энергетика'},
+    {icon:'🚧',title:'Тяжёлое оборудование',desc:'Тралы для промышленных машин'},
+    {icon:'🌐',title:'Россия–Казахстан',desc:'Омск–Павлодар–Астана'},
+  ],
+  related:[['🏛️','Астана','/region/astana'],['⛏️','Карагандa','/region/karaganda'],['🌾','Костанай','/region/kostanay'],['🌆','Алматы','/region/almaty']]
+});
+
+// Stub pages for remaining regions
+['ust-kamenogorsk','taraz','aktobe','semey'].forEach(slug => {
+  const names = {
+    'ust-kamenogorsk':['🏔️','Усть-Каменогорск','Восточный Казахстан'],
+    'taraz':['🌺','Тараз','Южный Казахстан'],
+    'aktobe':['🛺','Актобе','Западный Казахстан'],
+    'semey':['📚','Семей','Восточный Казахстан']
+  };
+  const [icon,name,region] = names[slug];
+  PAGES[`/region/${slug}`] = () => regionPage({
+    icon, name,
+    subtitle:`Грузоперевозки в ${name} и по ${region}у. On Time Service — ваш логистический партнёр.`,
+    seoText:[`${name} — важный город Казахстана. On Time Service выполняет регулярные грузоперевозки в этом направлении.`,`Мы предлагаем полный спектр услуг: автоперевозки, сборные грузы, негабаритные и тяжёлые грузы для предприятий и физических лиц.`],
+    routes:[{from:name,to:'Алматы',desc:'Расчёт при заявке'},{from:name,to:'Астана',desc:'Расчёт при заявке'},{from:name,to:'Другие регионы',desc:'По запросу'}],
+    stats:[['КЗ','все регионы'],['20+','лет опыта'],['24/7','поддержка'],['100Т','макс. груз']],
+    services:[{icon:'🚛',title:'Автоперевозки',desc:'Прямые и сборные рейсы'},{icon:'📦',title:'Сборные грузы',desc:'Еженедельные отправки'},{icon:'📐',title:'Негабаритные грузы',desc:'Спецтранспорт'}],
+    related:[['🌆','Алматы','/region/almaty'],['🏛️','Астана','/region/astana'],['⛏️','Карагандa','/region/karaganda'],['🌿','Шымкент','/region/shymkent']]
+  });
+});
+
+// ══════════════════════════════════════════
+// DIRECTIONS PAGE
+// ══════════════════════════════════════════
+PAGES['/napravleniya'] = () => `
+${bc([{label:'Главная',path:'/'},{label:'Направления'}])}
+<div class="page-header">
+  <div class="sec-label anim-1"><div class="sec-label-line"></div><span class="sec-label-text">Маршруты</span></div>
+  <h2 class="title anim-2">Направления<br>работы</h2>
+  <p class="desc anim-3">Работаем по ключевым транспортным коридорам Центральной Азии. Казахстан, Россия, Китай, СНГ.</p>
+</div>
+<section class="sec">
+  <div class="grid3" style="margin-bottom:48px;">
+    ${[
+      ['🇰🇿','Внутри Казахстана','Все 17 регионов страны. Регулярные рейсы, сборные грузы, FTL.','/uslugi/po-kazakhstanu','Узнать подробнее'],
+      ['🌐','Казахстан → Россия / СНГ','Международные перевозки в страны ЕАЭС. Упрощённое таможенное оформление.','/uslugi/rossiya-sng','Узнать подробнее'],
+      ['🇨🇳','Китай → Казахстан','Импортная логистика из КНР. Хоргос, Достык. Таможня под ключ.','/uslugi/kitay','Узнать подробнее'],
+    ].map(([icon,title,desc,path,cta]) => `
+    <div class="card fade" style="text-align:center;padding:40px 28px;">
+      <div style="font-size:48px;margin-bottom:16px;">${icon}</div>
+      <div class="card-title" style="font-size:18px;margin-bottom:12px;">${title}</div>
+      <div class="card-desc" style="margin-bottom:20px;">${desc}</div>
+      <button class="btn btn-outline" onclick="navigate('${path}')">${cta} ${ARR}</button>
+    </div>`).join('')}
+  </div>
+
+  <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Популярные маршруты</span></div>
+  <table class="seo-table" style="margin-top:20px;">
+    <thead>
+      <tr>
+        <th>Маршрут</th>
+        <th>Расстояние</th>
+        <th>Срок (авто)</th>
+        <th>Тип</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${[
+        ['Алматы → Астана','1 200 км','1–2 дня','Внутренний'],
+        ['Алматы → Шымкент','680 км','8–10 ч','Внутренний'],
+        ['Алматы → Карагандa','1 200 км','1–2 дня','Внутренний'],
+        ['Алматы → Атырау','2 600 км','2–3 дня','Внутренний'],
+        ['Алматы → Актау','3 000 км','3 дня','Внутренний'],
+        ['Алматы → Москва','4 200 км','4–5 дней','Международный'],
+        ['Алматы → Новосибирск','2 200 км','2–3 дня','Международный'],
+        ['Урумчи (КНР) → Алматы','680 км','1–2 дня','Импорт'],
+        ['Шанхай → Алматы','~6 000 км','14–18 дней','Импорт'],
+        ['Алматы → Бишкек','300 км','4–5 ч','СНГ'],
+        ['Алматы → Ташкент','1 100 км','12–14 ч','СНГ'],
+      ].map(([r,d,t,type]) => `<tr class="fade"><td onclick="navigate('/kontakty')">${r}</td><td>${d}</td><td>${t}</td><td><span class="tag" style="font-size:9px;">${type}</span></td></tr>`).join('')}
+    </tbody>
+  </table>
+</section>
+`;
+
+// ══════════════════════════════════════════
+// ABOUT PAGE
+// ══════════════════════════════════════════
+PAGES['/o-kompanii'] = () => `
+${bc([{label:'Главная',path:'/'},{label:'О компании'}])}
+<div class="page-header">
+  <div class="sec-label anim-1"><div class="sec-label-line"></div><span class="sec-label-text">О компании</span></div>
+  <h2 class="title anim-2">On Time Service —<br>надёжное звено</h2>
+  <p class="desc anim-3" style="max-width:600px;">Транспортно-логистическая компания, работающая на рынке Казахстана с 2005 года. Специализируемся на автоперевозках, негабаритных и тяжёлых грузах, импорте из Китая.</p>
+</div>
+<section class="sec">
+  <div class="two-col">
+    <div>
+      <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Наша история</span></div>
+      <h3 class="title fade" style="margin-bottom:20px;">С 2005 года<br>на рынке</h3>
+      <div class="seo-block fade">
+        <p>ТЛК «On Time Service» основана в 2005 году в Алматы. За более чем 20 лет работы мы стали надёжным логистическим партнёром для сотен предприятий Казахстана.</p>
+        <p>Наш главный приоритет — качественный, профессиональный подход в области транспортно-экспедиторских услуг. Мы не просто перевозим грузы — мы берём на себя ответственность за весь процесс от забора до доставки.</p>
+        <p>Компании могут сами развивать собственные логистические подразделения, а могут привлекать транспортно-логистические организации. On Time Service — именно такой внешний профессиональный партнёр.</p>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" class="fade">
+      ${[['20+','Лет на рынке'],['100Т','Макс. тоннаж'],['12','Регионов КЗ'],['3','Страны'],['2005','Год основания'],['24/7','Поддержка']]
+        .map(([v,l]) => `<div class="info-card"><div class="metric-val">${v}</div><div class="metric-label">${l}</div></div>`).join('')}
+    </div>
+  </div>
+</section>
+<section class="sec-sm" style="background:var(--dark2);">
+  <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Наши принципы</span></div>
+  <div class="grid4" style="margin-top:20px;">
+    ${[['🎯','Точность','Доставка строго по согласованным срокам и маршруту'],
+       ['🛡️','Надёжность','Ваш груз в безопасности на каждом этапе пути'],
+       ['🔗','Партнёрство','Долгосрочные отношения, а не разовые сделки'],
+       ['⚡','Скорость','Оперативное решение задач любой сложности']]
+      .map(([i,t,d]) => `<div class="card fade"><div class="card-icon">${i}</div><div class="card-title">${t}</div><div class="card-desc">${d}</div></div>`).join('')}
+  </div>
+</section>
+<section class="sec">
+  <div class="quote-block fade" style="max-width:700px;">
+    <div class="quote-label">Наша миссия</div>
+    <div class="quote-text" style="font-size:18px;">"Быть вашим надёжным звеном (партнёром) в сфере транспортной логистики."</div>
+  </div>
+  <div class="quote-block fade" style="max-width:700px;">
+    <div class="quote-label">Главный приоритет</div>
+    <div class="quote-text" style="font-size:16px;">"Качественный, профессиональный подход в области транспортно-экспедиторских услуг."</div>
+  </div>
+</section>
+`;
+
+// ══════════════════════════════════════════
+// O LOGISTIKE (SEO ARTICLE)
+// ══════════════════════════════════════════
+PAGES['/o-logistike'] = () => `
+${bc([{label:'Главная',path:'/'},{label:'О логистике'}])}
+<div class="page-header">
+  <div class="sec-label anim-1"><div class="sec-label-line"></div><span class="sec-label-text">Полезная информация</span></div>
+  <h2 class="title anim-2">О транспортной<br>логистике</h2>
+  <p class="desc anim-3">Что такое логистика, как она работает и почему грамотная организация перевозок — ключевой фактор успеха любого бизнеса</p>
+</div>
+<section class="sec">
+  <div class="two-col-40">
+    <div>
+      <div class="seo-block fade">
+        <h3 style="font-size:17px;font-weight:600;margin-bottom:14px;">Что такое логистика?</h3>
+        <p>Логистика — это экономический термин, который подразумевает организацию и управление материальными, финансовыми и информационными потоками. Логистика направлена на минимизацию издержек и максимальную выгоду, и связана обычно с долгосрочным планированием.</p>
+        <p>По сути, ведение любого бизнеса — это и есть логистика. Каждый предприниматель ежедневно решает логистические задачи: как доставить товар, где его хранить, как организовать поставки.</p>
+        <p>Грузоперевозки используются практически во всех сферах деятельности: будь то срочная доставка грузов в торговые точки, получение импортной продукции или простой офисный переезд.</p>
+      </div>
+      <div class="seo-block fade">
+        <h3 style="font-size:17px;font-weight:600;margin-bottom:14px;">Виды транспортной логистики</h3>
+        <p>В транспортной логистике решаются такие задачи, как: выбор вида транспортного средства, определение маршрута, оптимальная упаковка в контейнеры, складирование, маркировка, формирование сборных заказов.</p>
+        ${[['🚚','Транспортная логистика','Перемещение грузов автомобильным, железнодорожным или воздушным транспортом'],
+           ['📦','Закупочная логистика','Организация поставок сырья и комплектующих от поставщиков'],
+           ['🏬','Распределительная логистика','Доставка готовой продукции от производителя до потребителя'],
+           ['✈️','Таможенная логистика','Оформление международных перевозок и прохождение границ'],
+           ['💼','Бизнес-логистика','Управление всей цепочкой поставок в рамках предприятия']]
+          .map(([i,t,d]) => `<div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border2);"><span style="font-size:20px;flex-shrink:0;">${i}</span><div><div style="font-size:13px;font-weight:600;margin-bottom:3px;">${t}</div><div style="font-size:12px;color:var(--text2);">${d}</div></div></div>`).join('')}
+      </div>
+      <div class="seo-block fade">
+        <h3 style="font-size:17px;font-weight:600;margin-bottom:14px;">Логистика в Казахстане</h3>
+        <p>Территория Республики Казахстан занимает девятое место в мире (2725 тыс. км²). Плотность населения — всего 6 чел/км². В такой ситуации транспортно-коммуникационный комплекс (ТКК) обеспечивает не только экономическую, но и политическую целостность страны.</p>
+        <p>Казахстан — богатая ресурсами страна. По таким отраслям как добыча и переработка руд цветных металлов, добыча нефти, производство чугуна, стали, электроэнергии — республика занимает ведущие позиции в мире. Это вызывает неподдельный интерес у развитых стран и создаёт огромный транспортный грузопоток.</p>
+        <p>Для повышения любой экономической составляющей, транспортная система должна развиваться опережающими темпами. Развитие ТКК станет залогом непрерывного экономического прогресса и окажет стимулирующее влияние на восстановление национальных отраслей производства и торговли.</p>
+      </div>
+    </div>
+    <div>
+      <div class="card fade" style="margin-bottom:16px;">
+        <div style="font-size:24px;margin-bottom:12px;">🏛️</div>
+        <div class="card-title" style="margin-bottom:10px;">История логистики</div>
+        <div class="card-desc">Понятие «логистика» зародилось в результате войн. Впервые (согл. Википедии) употреблялась в трактатах по военному искусству византийского императора Льва VI (865–912).<br><br>Во время Второй мировой войны появилась военная логистика. После окончания войны произошёл толчок к применению военного логистического опыта в мирной экономике.</div>
+      </div>
+      <div class="card fade" style="margin-bottom:16px;">
+        <div class="card-title" style="margin-bottom:14px;">Ключевые показатели КЗ</div>
+        ${[['9-е','место в мире по площади'],['2 725','тыс. км² — площадь РК'],['6 чел.','на км² плотность населения'],['17','регионов в Казахстане']]
+          .map(([v,l]) => `<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border2);"><span style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--gold);">${v}</span><span style="font-size:12px;color:var(--text2);text-align:right;max-width:55%;">${l}</span></div>`).join('')}
+      </div>
+      <div class="card fade">
+        <div class="card-title" style="margin-bottom:10px;">Нужна консультация?</div>
+        <div class="card-desc" style="margin-bottom:16px;">On Time Service — профессиональный логистический партнёр для вашего бизнеса в Казахстане</div>
+        <button class="btn btn-gold" onclick="navigate('/kontakty')" style="width:100%;">${ARR} Связаться с нами</button>
+      </div>
+    </div>
+  </div>
+</section>
+`;
+
+// ══════════════════════════════════════════
+// CONTACTS
+// ══════════════════════════════════════════
+PAGES['/kontakty'] = () => `
+${bc([{label:'Главная',path:'/'},{label:'Контакты'}])}
+<div class="page-header">
+  <div class="sec-label anim-1"><div class="sec-label-line"></div><span class="sec-label-text">Связаться с нами</span></div>
+  <h2 class="title anim-2">Заявка на<br>перевозку</h2>
+  <p class="desc anim-3">Оставьте заявку — менеджер свяжется в течение 30 минут и рассчитает стоимость</p>
+</div>
+<section class="sec">
+  <div class="two-col-40">
+    <div class="card fade" style="padding:36px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;margin-bottom:24px;">Форма заявки</div>
+      <div class="form-row2">
+        <div class="form-group"><label class="form-label">Ваше имя</label><input type="text" class="form-input" placeholder="Иван Петров"></div>
+        <div class="form-group"><label class="form-label">Телефон</label><input type="tel" class="form-input" placeholder="+7 (___) ___-__-__"></div>
+      </div>
+      <div class="form-row2">
+        <div class="form-group"><label class="form-label">Откуда</label><input type="text" class="form-input" placeholder="Алматы"></div>
+        <div class="form-group"><label class="form-label">Куда</label><input type="text" class="form-input" placeholder="Астана"></div>
+      </div>
+      <div class="form-row2">
+        <div class="form-group">
+          <label class="form-label">Вид груза</label>
+          <select class="form-select">
+            <option>Стандартный груз</option>
+            <option>Негабаритный груз</option>
+            <option>Опасный груз (ADR)</option>
+            <option>Спецтехника (трал)</option>
+            <option>Сборный груз</option>
+            <option>Температурный груз</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">Вес (кг)</label><input type="number" class="form-input" placeholder="1000"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Комментарий</label><textarea class="form-textarea" placeholder="Дополнительные требования..."></textarea></div>
+      <button class="btn btn-gold" style="width:100%;justify-content:center;padding:15px;font-size:12px;" onclick="submitForm(this)">${ARR} Отправить заявку</button>
+      <div style="margin-top:14px;padding:12px 16px;border:1px solid var(--border);border-radius:8px;font-size:12px;color:var(--text2);line-height:1.6;">
+        📩 После отправки вы получите <span style="color:var(--gold);">уведомление (notification)</span> на телефон. Менеджер свяжется в течение 30 минут в рабочее время.
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px;" class="fade">
+      ${[['📞','Телефон','+7 (___) ___-__-__','Пн–Пт: 09:00–18:00'],
+         ['✉️','Email','info@ontimeservice.kz','Отвечаем в течение часа'],
+         ['📍','Адрес','г. Алматы, Казахстан','На рынке с 2005 года'],
+         ['💬','Telegram','@ontimeservice','Быстрый способ связи']]
+        .map(([i,l,v,s]) => `<div class="card"><div style="display:flex;gap:14px;align-items:center;"><span style="font-size:22px;">${i}</span><div><div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">${l}</div><div style="font-size:16px;font-weight:500;margin-bottom:2px;">${v}</div><div style="font-size:12px;color:var(--text2);">${s}</div></div></div></div>`).join('')}
+      <div class="card">
+        <div style="font-size:12px;color:var(--text2);margin-bottom:12px;letter-spacing:1px;text-transform:uppercase;">Направления</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          ${['Казахстан','Россия','Китай','СНГ','Все регионы'].map(d => `<span class="tag">${d}</span>`).join('')}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+`;
+
+// ══════════════════════════════════════════
+// SITEMAP
+// ══════════════════════════════════════════
+PAGES['/karta-sayta'] = () => `
+${bc([{label:'Главная',path:'/'},{label:'Карта сайта'}])}
+<div class="page-header">
+  <div class="sec-label anim-1"><div class="sec-label-line"></div><span class="sec-label-text">Навигация</span></div>
+  <h2 class="title anim-2">Карта сайта</h2>
+  <p class="desc anim-3">Полная структура сайта On Time Service. Все страницы, услуги и SEO-разделы по регионам Казахстана.</p>
+</div>
+<section class="sec">
+  <div class="two-col">
+    <div>
+      <div class="sitemap-tree fade">
+        <div class="sm-root" onclick="navigate('/')">🏠 Главная страница</div>
+        <div class="sm-branch">
+          <div class="sm-node" onclick="navigate('/uslugi')"><span class="sm-node-icon">🚛</span>Услуги<span class="sm-seo">SEO</span></div>
+          <div class="sm-branch">
+            ${[
+              ['/uslugi/avtoperevozki','🚛','Автоперевозки'],
+              ['/uslugi/negabarit','📐','Негабаритные грузы'],
+              ['/uslugi/tral','🚧','Перевозка тралом'],
+              ['/uslugi/sbornyy-gruz','📦','Сборные грузы'],
+              ['/uslugi/dostavka-po-gorodu','🏙️','Доставка по Алматы'],
+              ['/uslugi/po-kazakhstanu','🇰🇿','По Казахстану'],
+              ['/uslugi/rossiya-sng','🌐','Россия и СНГ'],
+              ['/uslugi/kitay','🇨🇳','Из Китая'],
+            ].map(([p,i,t]) => `<div class="sm-node" onclick="navigate('${p}')"><span class="sm-node-icon">${i}</span>${t}<span class="sm-seo">SEO</span></div>`).join('')}
+          </div>
+          <div class="sm-node" onclick="navigate('/napravleniya')"><span class="sm-node-icon">🗺️</span>Направления</div>
+          <div class="sm-node" onclick="navigate('/o-kompanii')"><span class="sm-node-icon">🏢</span>О компании</div>
+          <div class="sm-node" onclick="navigate('/o-logistike')"><span class="sm-node-icon">📖</span>О логистике<span class="sm-seo">SEO</span></div>
+          <div class="sm-node" onclick="navigate('/kontakty')"><span class="sm-node-icon">📞</span>Контакты</div>
+          <div class="sm-node" onclick="navigate('/karta-sayta')"><span class="sm-node-icon">🗂️</span>Карта сайта</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="sitemap-tree fade">
+        <div class="sm-root" onclick="navigate('/regiony')">📍 Регионы Казахстана — SEO</div>
+        <div class="sm-branch">
+          ${[
+            ['/region/almaty','🌆','Грузоперевозки Алматы'],
+            ['/region/astana','🏛️','Грузоперевозки Астана'],
+            ['/region/shymkent','🌿','Грузоперевозки Шымкент'],
+            ['/region/karaganda','⛏️','Грузоперевозки Карагандa'],
+            ['/region/atyrau','🛢️','Грузоперевозки Атырау'],
+            ['/region/aktau','⚓','Грузоперевозки Актау'],
+            ['/region/kostanay','🌾','Грузоперевозки Костанай'],
+            ['/region/pavlodar','🏭','Грузоперевозки Павлодар'],
+            ['/region/ust-kamenogorsk','🏔️','Грузоперевозки Усть-Каменогорск'],
+            ['/region/taraz','🌺','Грузоперевозки Тараз'],
+            ['/region/aktobe','🛺','Грузоперевозки Актобе'],
+            ['/region/semey','📚','Грузоперевозки Семей'],
+          ].map(([p,i,t]) => `<div class="sm-node" onclick="navigate('${p}')"><span class="sm-node-icon">${i}</span>${t}<span class="sm-seo">SEO</span></div>`).join('')}
+        </div>
+      </div>
+      <div style="margin-top:20px;" class="fade">
+        <div class="card">
+          <div class="card-title" style="margin-bottom:12px;">Итого страниц</div>
+          ${[['8','Страниц услуг (SEO)'],['12','Региональных страниц (SEO)'],['5','Основных страниц'],['25+','Страниц на сайте']]
+            .map(([v,l]) => `<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border2);align-items:center;"><span style="font-size:12px;color:var(--text2);">${l}</span><span style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--gold);">${v}</span></div>`).join('')}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+`;
+
+// 404
+PAGES['404'] = () => `
+<section class="sec" style="text-align:center;min-height:60vh;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+  <div style="font-family:'Bebas Neue',sans-serif;font-size:120px;color:var(--gold);opacity:.15;line-height:1;">404</div>
+  <h2 class="title" style="margin-bottom:12px;">Страница не найдена</h2>
+  <p class="desc" style="margin-bottom:24px;">Эта страница ещё в разработке или перемещена</p>
+  <button class="btn btn-gold" onclick="navigate('/')">${ARR} На главную</button>
+</section>
+`;
+
+// ══════════════════════════════════════════
+// HELPERS
+// ══════════════════════════════════════════
+function submitForm(btn) {
+  btn.textContent = '✓ Заявка принята — позвоним в течение 30 мин';
+  btn.style.background = '#2a6e45';
+  btn.style.color = '#fff';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.innerHTML = ARR + ' Отправить ещё одну заявку';
+    btn.style.background = '';
+    btn.style.color = '';
+    btn.disabled = false;
+  }, 5000);
+}
+
+// ══════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════
+navigate('/');
+
+// Hash routing support
+window.addEventListener('hashchange', () => {
+  const path = location.hash.slice(1) || '/';
+  if (path !== currentPath) navigate(path);
+});
+// Update hash on navigate
+const origNavigate = navigate;
+window.navigate = (path) => {
+  location.hash = path;
+  origNavigate(path);
+};
+navigate('/');
+</script>
+
+<!-- ══ FLOATING WIDGET ══ -->
+<style>
+.fab{position:fixed;bottom:28px;right:28px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:12px;}
+.fab-btn{width:58px;height:58px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(201,168,76,.45);transition:all .25s;flex-shrink:0;}
+.fab-btn:hover{background:var(--gold-l);transform:scale(1.08);}
+.fab-btn svg{width:24px;height:24px;color:var(--dark);transition:transform .3s;}
+.fab-btn.open svg.icon-pen{display:none;}
+.fab-btn.open svg.icon-x{display:block!important;}
+
+.fab-popup{
+  width:320px;background:var(--dark2);border:1px solid var(--border);
+  border-radius:16px;box-shadow:0 12px 48px rgba(0,0,0,.6);
+  overflow:hidden;
+  transform:scale(.85) translateY(16px);opacity:0;pointer-events:none;
+  transition:transform .25s cubic-bezier(.34,1.56,.64,1),opacity .2s;
+  transform-origin:bottom right;
+}
+.fab-popup.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all;}
+
+.fp-head{background:var(--gold);padding:16px 18px;display:flex;align-items:center;gap:10px;}
+.fp-head-icon{font-size:22px;}
+.fp-head-text{flex:1;}
+.fp-head-title{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;color:var(--dark);line-height:1;}
+.fp-head-sub{font-size:10px;color:rgba(10,10,11,.65);letter-spacing:1px;margin-top:2px;}
+.fp-pulse{width:8px;height:8px;border-radius:50%;background:#2d7a4f;box-shadow:0 0 0 0 rgba(45,122,79,.4);animation:pulse 1.8s infinite;}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(45,122,79,.4);}70%{box-shadow:0 0 0 8px rgba(45,122,79,0);}100%{box-shadow:0 0 0 0 rgba(45,122,79,0);}}
+
+.fp-body{padding:16px 18px;}
+.fp-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:6px;display:block;}
+.fp-input{width:100%;background:var(--dark4);border:1px solid var(--border2);border-radius:8px;padding:10px 12px;color:var(--text);font-family:'Manrope',sans-serif;font-size:13px;outline:none;transition:border .2s;margin-bottom:10px;}
+.fp-input:focus{border-color:var(--gold);}
+.fp-input::placeholder{color:var(--text3);}
+.fp-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.fp-btn{width:100%;background:var(--gold);color:var(--dark);border:none;border-radius:8px;padding:12px;font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px;}
+.fp-btn:hover{background:var(--gold-l);}
+.fp-btn svg{width:13px;}
+.fp-note{font-size:10px;color:var(--text3);text-align:center;margin-top:8px;line-height:1.5;}
+.fp-success{display:none;text-align:center;padding:20px 10px;}
+.fp-success-icon{font-size:40px;margin-bottom:10px;}
+.fp-success-title{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--gold);letter-spacing:2px;margin-bottom:6px;}
+.fp-success-sub{font-size:12px;color:var(--text2);line-height:1.6;}
+</style>
+
+<div class="fab">
+  <div class="fab-popup" id="fabPopup">
+    <div class="fp-head">
+      <div class="fp-head-icon">🚛</div>
+      <div class="fp-head-text">
+        <div class="fp-head-title">Заявка на перевозку</div>
+        <div class="fp-head-sub">On Time Service · Алматы</div>
+      </div>
+      <div class="fp-pulse"></div>
+    </div>
+    <div class="fp-body" id="fabForm">
+      <span class="fp-label">Ваше имя</span>
+      <input class="fp-input" placeholder="Иван Иванов" id="fp_name">
+      <span class="fp-label">Телефон</span>
+      <input class="fp-input" placeholder="+7 (___) ___-__-__" id="fp_phone" type="tel">
+      <div class="fp-row">
+        <div>
+          <span class="fp-label">Откуда</span>
+          <input class="fp-input" placeholder="Алматы" id="fp_from">
+        </div>
+        <div>
+          <span class="fp-label">Куда</span>
+          <input class="fp-input" placeholder="Астана" id="fp_to">
+        </div>
+      </div>
+      <button class="fp-btn" onclick="fabSubmit()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Отправить заявку
+      </button>
+      <div class="fp-note">Перезвоним в течение 30 минут</div>
+    </div>
+    <div class="fp-success" id="fabSuccess">
+      <div class="fp-success-icon">✅</div>
+      <div class="fp-success-title">Заявка принята!</div>
+      <div class="fp-success-sub">Наш менеджер свяжется<br>с вами в течение 30 минут</div>
+    </div>
+  </div>
+
+  <button class="fab-btn" id="fabBtn" onclick="toggleFab()" title="Оставить заявку">
+    <svg class="icon-pen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+      <path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+    </svg>
+    <svg class="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none">
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </svg>
+  </button>
+</div>
+
+<script>
+function toggleFab() {
+  const popup = document.getElementById('fabPopup');
+  const btn = document.getElementById('fabBtn');
+  popup.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+
+function fabSubmit() {
+  const name  = document.getElementById('fp_name').value.trim();
+  const phone = document.getElementById('fp_phone').value.trim();
+  if (!name || !phone) {
+    document.getElementById('fp_phone').style.borderColor = '#c94c4c';
+    document.getElementById('fp_name').style.borderColor  = !name ? '#c94c4c' : '';
+    return;
+  }
+  document.getElementById('fabForm').style.display    = 'none';
+  document.getElementById('fabSuccess').style.display = 'block';
+  setTimeout(() => {
+    document.getElementById('fabPopup').classList.remove('open');
+    document.getElementById('fabBtn').classList.remove('open');
+    setTimeout(() => {
+      document.getElementById('fabForm').style.display    = '';
+      document.getElementById('fabSuccess').style.display = 'none';
+      ['fp_name','fp_phone','fp_from','fp_to'].forEach(id => document.getElementById(id).value = '');
+    }, 400);
+  }, 3000);
+}
+</script>
+</body>
+</html>
