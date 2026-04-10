@@ -472,83 +472,83 @@ footer{background:var(--dark2);border-top:1px solid var(--border2);padding:56px;
 <!-- ══ NAVIGATION ══ -->
 <nav id="nav" class="solid">
   <div class="nav-inner">
-    <div class="nav-brand" onclick="navigate('/')">
+    <a class="nav-brand" href="/" onclick="event.preventDefault();navigate('/')">
       <span class="nav-brand-main">ON TIME SERVICE</span>
       <span class="nav-brand-sub">Транспортная логистика</span>
-    </div>
+    </a>
     <ul class="nav-menu">
       <li class="nav-item">
-        <button class="nav-link" id="nl-uslugi" onclick="navigate('/uslugi')">
+        <a class="nav-link" id="nl-uslugi" href="/uslugi" onclick="event.preventDefault();navigate('/uslugi')">
           Услуги
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
+        </a>
         <div class="dropdown wide">
           <div class="drop-col">
             <div class="drop-label">Виды перевозок</div>
-            <div class="dropdown-item" onclick="navigate('/uslugi/avtoperevozki')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="5" width="14" height="11" rx="1"/><path d="M15 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/><path d="M8 16H1M15 16h-3.5"/></svg></span>Автоперевозки</div>
-            <div class="dropdown-item" onclick="navigate('/uslugi/negabarit')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span>Негабаритные грузы</div>
-            <div class="dropdown-item" onclick="navigate('/uslugi/tral')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="10" width="22" height="4" rx="1"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><path d="M4 14v4M20 14v4M7 10V7l3-4h4l3 4v3"/></svg></span>Перевозка тралом</div>
-            <div class="dropdown-item" onclick="navigate('/uslugi/sbornyy-gruz')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5" rx="1"/><line x1="10" y1="12" x2="14" y2="12"/></svg></span>Сборные грузы</div>
-            <div class="dropdown-item" onclick="navigate('/uslugi/dostavka-po-gorodu')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V7l7-4v18M17 21V11l4-2v12"/><path d="M3 21h18"/><path d="M10 9v2M10 14v2M10 18v2M17 14v2M17 18v2"/></svg></span>Доставка по Алматы</div>
+            <a class="dropdown-item" href="/uslugi/avtoperevozki" onclick="event.preventDefault();navigate('/uslugi/avtoperevozki')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="5" width="14" height="11" rx="1"/><path d="M15 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/><path d="M8 16H1M15 16h-3.5"/></svg></span>Автоперевозки</a>
+            <a class="dropdown-item" href="/uslugi/negabarit" onclick="event.preventDefault();navigate('/uslugi/negabarit')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span>Негабаритные грузы</a>
+            <a class="dropdown-item" href="/uslugi/tral" onclick="event.preventDefault();navigate('/uslugi/tral')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="10" width="22" height="4" rx="1"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><path d="M4 14v4M20 14v4M7 10V7l3-4h4l3 4v3"/></svg></span>Перевозка тралом</a>
+            <a class="dropdown-item" href="/uslugi/sbornyy-gruz" onclick="event.preventDefault();navigate('/uslugi/sbornyy-gruz')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5" rx="1"/><line x1="10" y1="12" x2="14" y2="12"/></svg></span>Сборные грузы</a>
+            <a class="dropdown-item" href="/uslugi/dostavka-po-gorodu" onclick="event.preventDefault();navigate('/uslugi/dostavka-po-gorodu')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V7l7-4v18M17 21V11l4-2v12"/><path d="M3 21h18"/><path d="M10 9v2M10 14v2M10 18v2M17 14v2M17 18v2"/></svg></span>Доставка по Алматы</a>
           </div>
           <div class="drop-col">
             <div class="drop-label">Направления</div>
-            <div class="dropdown-item" onclick="navigate('/uslugi/po-kazakhstanu')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg></span>По Казахстану</div>
-            <div class="dropdown-item" onclick="navigate('/uslugi/rossiya-sng')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></span>Россия и СНГ</div>
-            <div class="dropdown-item" onclick="navigate('/uslugi/kitay')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1 .6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M19.38 20A11.6 11.6 0 0021 14l-9-4-9 4c1.77 3.44 4.9 5.7 7.38 6"/><path d="M19 13V7l-7-2-7 2v6M12 5V2.5"/></svg></span>Из Китая</div>
+            <a class="dropdown-item" href="/uslugi/po-kazakhstanu" onclick="event.preventDefault();navigate('/uslugi/po-kazakhstanu')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg></span>По Казахстану</a>
+            <a class="dropdown-item" href="/uslugi/rossiya-sng" onclick="event.preventDefault();navigate('/uslugi/rossiya-sng')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></span>Россия и СНГ</a>
+            <a class="dropdown-item" href="/uslugi/kitay" onclick="event.preventDefault();navigate('/uslugi/kitay')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1 .6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M19.38 20A11.6 11.6 0 0021 14l-9-4-9 4c1.77 3.44 4.9 5.7 7.38 6"/><path d="M19 13V7l-7-2-7 2v6M12 5V2.5"/></svg></span>Из Китая</a>
             <div class="drop-divider"></div>
-            <div class="dropdown-item" onclick="navigate('/napravleniya')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg></span>Все направления →</div>
+            <a class="dropdown-item" href="/napravleniya" onclick="event.preventDefault();navigate('/napravleniya')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg></span>Все направления →</a>
           </div>
         </div>
       </li>
       <li class="nav-item">
-        <button class="nav-link" id="nl-regions" onclick="navigate('/regiony')">
+        <a class="nav-link" id="nl-regions" href="/regiony" onclick="event.preventDefault();navigate('/regiony')">
           Регионы
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
+        </a>
         <div class="dropdown wide">
           <div class="drop-col">
             <div class="drop-label">Север и центр</div>
-            <div class="dropdown-item" onclick="navigate('/region/astana')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="1"/><path d="M6 11V7l6-4 6 4v4"/><path d="M3 22h18M10 22v-6h4v6"/></svg></span>Астана</div>
-            <div class="dropdown-item" onclick="navigate('/region/karaganda')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 6l-9.5 9.5a2.12 2.12 0 003 3L17 9"/><path d="M7 13l4-4M2 22l4-4M16 4l4 4"/></svg></span>Карагандa</div>
-            <div class="dropdown-item" onclick="navigate('/region/kostanay')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22L16 8M3.47 12.53L5 11l1.53 1.53a3.5 3.5 0 010 4.94L5 19l-1.53-1.53a3.5 3.5 0 010-4.94zM7.47 8.53L9 7l1.53 1.53a3.5 3.5 0 010 4.94L9 15l-1.53-1.53a3.5 3.5 0 010-4.94zM11.47 4.53L13 3l1.53 1.53a3.5 3.5 0 010 4.94L13 11l-1.53-1.53a3.5 3.5 0 010-4.94z"/></svg></span>Костанай</div>
-            <div class="dropdown-item" onclick="navigate('/region/pavlodar')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20V10l-6 4V10l-6 4V4H2v16z"/><path d="M2 20V4"/><path d="M6 8h2M6 12h2M6 16h2M14 16h2M18 16h2"/></svg></span>Павлодар</div>
+            <a class="dropdown-item" href="/region/astana" onclick="event.preventDefault();navigate('/region/astana')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="1"/><path d="M6 11V7l6-4 6 4v4"/><path d="M3 22h18M10 22v-6h4v6"/></svg></span>Астана</a>
+            <a class="dropdown-item" href="/region/karaganda" onclick="event.preventDefault();navigate('/region/karaganda')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 6l-9.5 9.5a2.12 2.12 0 003 3L17 9"/><path d="M7 13l4-4M2 22l4-4M16 4l4 4"/></svg></span>Карагандa</a>
+            <a class="dropdown-item" href="/region/kostanay" onclick="event.preventDefault();navigate('/region/kostanay')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22L16 8M3.47 12.53L5 11l1.53 1.53a3.5 3.5 0 010 4.94L5 19l-1.53-1.53a3.5 3.5 0 010-4.94zM7.47 8.53L9 7l1.53 1.53a3.5 3.5 0 010 4.94L9 15l-1.53-1.53a3.5 3.5 0 010-4.94zM11.47 4.53L13 3l1.53 1.53a3.5 3.5 0 010 4.94L13 11l-1.53-1.53a3.5 3.5 0 010-4.94z"/></svg></span>Костанай</a>
+            <a class="dropdown-item" href="/region/pavlodar" onclick="event.preventDefault();navigate('/region/pavlodar')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20V10l-6 4V10l-6 4V4H2v16z"/><path d="M2 20V4"/><path d="M6 8h2M6 12h2M6 16h2M14 16h2M18 16h2"/></svg></span>Павлодар</a>
           </div>
           <div class="drop-col">
             <div class="drop-label">Юг и запад</div>
-            <div class="dropdown-item" onclick="navigate('/region/almaty')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V7l7-4v18M17 21V11l4-2v12"/><path d="M3 21h18"/><path d="M10 9v2M10 14v2M10 18v2M17 14v2M17 18v2"/></svg></span>Алматы</div>
-            <div class="dropdown-item" onclick="navigate('/region/shymkent')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8C8 10 5.9 16.17 3.82 19.82A3 3 0 002 19.82C2 18 3 16 6 15"/><path d="M22 2C22 2 10 4 8 16c1.5 1.5 4 2 5 0C14 8 22 2 22 2z"/></svg></span>Шымкент</div>
-            <div class="dropdown-item" onclick="navigate('/region/atyrau')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></span>Атырау</div>
-            <div class="dropdown-item" onclick="navigate('/region/aktau')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><line x1="12" y1="8" x2="12" y2="21"/><path d="M5 12H2a10 10 0 0020 0h-3"/></svg></span>Актау</div>
+            <a class="dropdown-item" href="/region/almaty" onclick="event.preventDefault();navigate('/region/almaty')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V7l7-4v18M17 21V11l4-2v12"/><path d="M3 21h18"/><path d="M10 9v2M10 14v2M10 18v2M17 14v2M17 18v2"/></svg></span>Алматы</a>
+            <a class="dropdown-item" href="/region/shymkent" onclick="event.preventDefault();navigate('/region/shymkent')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8C8 10 5.9 16.17 3.82 19.82A3 3 0 002 19.82C2 18 3 16 6 15"/><path d="M22 2C22 2 10 4 8 16c1.5 1.5 4 2 5 0C14 8 22 2 22 2z"/></svg></span>Шымкент</a>
+            <a class="dropdown-item" href="/region/atyrau" onclick="event.preventDefault();navigate('/region/atyrau')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></span>Атырау</a>
+            <a class="dropdown-item" href="/region/aktau" onclick="event.preventDefault();navigate('/region/aktau')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><line x1="12" y1="8" x2="12" y2="21"/><path d="M5 12H2a10 10 0 0020 0h-3"/></svg></span>Актау</a>
           </div>
         </div>
       </li>
-      <li class="nav-item"><button class="nav-link" id="nl-about" onclick="navigate('/o-kompanii')">О компании</button></li>
+      <li class="nav-item"><a class="nav-link" id="nl-about" href="/o-kompanii" onclick="event.preventDefault();navigate('/o-kompanii')">О компании</a></li>
       <li class="nav-item">
-        <button class="nav-link" id="nl-blog-main" onclick="navigate('/blog')">
+        <a class="nav-link" id="nl-blog-main" href="/blog" onclick="event.preventDefault();navigate('/blog')">
           Блог компании
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
+        </a>
         <div class="dropdown">
           <div class="drop-col">
             <div class="drop-label">Статьи о логистике</div>
-            <div class="dropdown-item" onclick="navigate('/blog/gruzoperevozki-po-kazakhstanu')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="5" width="14" height="11" rx="1"/><path d="M15 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/><path d="M8 16H1M15 16h-3.5"/></svg></span>Грузоперевозки по КЗ</div>
-            <div class="dropdown-item" onclick="navigate('/blog/almaty-astana')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17L6 3h12l3 14"/><path d="M3 17h18M12 8v4M12 3v2"/></svg></span>Алматы - Астана</div>
-            <div class="dropdown-item" onclick="navigate('/blog/dostavka-iz-kitaya')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1 .6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M19.38 20A11.6 11.6 0 0021 14l-9-4-9 4c1.77 3.44 4.9 5.7 7.38 6"/><path d="M19 13V7l-7-2-7 2v6M12 5V2.5"/></svg></span>Доставка из Китая</div>
-            <div class="dropdown-item" onclick="navigate('/blog/chto-takoe-logistika')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></span>Что такое логистика</div>
-            <div class="dropdown-item" onclick="navigate('/blog/raschet-stoimosti')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="12" y2="18"/></svg></span>Расчёт стоимости</div>
+            <a class="dropdown-item" href="/blog/gruzoperevozki-po-kazakhstanu" onclick="event.preventDefault();navigate('/blog/gruzoperevozki-po-kazakhstanu')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="5" width="14" height="11" rx="1"/><path d="M15 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/><path d="M8 16H1M15 16h-3.5"/></svg></span>Грузоперевозки по КЗ</a>
+            <a class="dropdown-item" href="/blog/almaty-astana" onclick="event.preventDefault();navigate('/blog/almaty-astana')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17L6 3h12l3 14"/><path d="M3 17h18M12 8v4M12 3v2"/></svg></span>Алматы - Астана</a>
+            <a class="dropdown-item" href="/blog/dostavka-iz-kitaya" onclick="event.preventDefault();navigate('/blog/dostavka-iz-kitaya')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1 .6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M19.38 20A11.6 11.6 0 0021 14l-9-4-9 4c1.77 3.44 4.9 5.7 7.38 6"/><path d="M19 13V7l-7-2-7 2v6M12 5V2.5"/></svg></span>Доставка из Китая</a>
+            <a class="dropdown-item" href="/blog/chto-takoe-logistika" onclick="event.preventDefault();navigate('/blog/chto-takoe-logistika')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></span>Что такое логистика</a>
+            <a class="dropdown-item" href="/blog/raschet-stoimosti" onclick="event.preventDefault();navigate('/blog/raschet-stoimosti')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="12" y2="18"/></svg></span>Расчёт стоимости</a>
             <div class="drop-divider"></div>
-            <div class="dropdown-item" onclick="navigate('/blog')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0a2 2 0 01-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg></span>Все статьи →</div>
+            <a class="dropdown-item" href="/blog" onclick="event.preventDefault();navigate('/blog')"><span class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0a2 2 0 01-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg></span>Все статьи →</a>
           </div>
         </div>
       </li>
-      <li class="nav-item"><button class="nav-link" id="nl-ologo" onclick="navigate('/o-logistike')">О логистике</button></li>
+      <li class="nav-item"><a class="nav-link" id="nl-ologo" href="/o-logistike" onclick="event.preventDefault();navigate('/o-logistike')">О логистике</a></li>
     </ul>
     <a class="nav-phone" href="https://wa.me/77752427744" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" style="flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.862L.057 23.886a.5.5 0 00.609.61l6.098-1.498A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.955 9.955 0 01-5.058-1.374l-.36-.214-3.733.917.95-3.653-.234-.375A9.955 9.955 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
       +7 775 242 77 44
     </a>
-    <button class="nav-cta" onclick="navigate('/kontakty')">Заявка на перевозку</button>
+    <a class="nav-cta" href="/kontakty" onclick="event.preventDefault();navigate('/kontakty')">Заявка на перевозку</a>
   </div>
 </nav>
 
@@ -566,43 +566,43 @@ footer{background:var(--dark2);border-top:1px solid var(--border2);padding:56px;
     <div>
       <div class="footer-col-title">Услуги</div>
       <div class="footer-links">
-        <a onclick="navigate('/uslugi/avtoperevozki')">Автоперевозки</a>
-        <a onclick="navigate('/uslugi/negabarit')">Негабаритные грузы</a>
-        <a onclick="navigate('/uslugi/tral')">Перевозка тралом</a>
-        <a onclick="navigate('/uslugi/kitay')">Из Китая</a>
-        <a onclick="navigate('/uslugi/rossiya-sng')">Россия и СНГ</a>
+        <a href="/uslugi/avtoperevozki" onclick="event.preventDefault();navigate('/uslugi/avtoperevozki')">Автоперевозки</a>
+        <a href="/uslugi/negabarit" onclick="event.preventDefault();navigate('/uslugi/negabarit')">Негабаритные грузы</a>
+        <a href="/uslugi/tral" onclick="event.preventDefault();navigate('/uslugi/tral')">Перевозка тралом</a>
+        <a href="/uslugi/kitay" onclick="event.preventDefault();navigate('/uslugi/kitay')">Из Китая</a>
+        <a href="/uslugi/rossiya-sng" onclick="event.preventDefault();navigate('/uslugi/rossiya-sng')">Россия и СНГ</a>
       </div>
     </div>
     <div>
       <div class="footer-col-title">Регионы КЗ</div>
       <div class="footer-links">
-        <a onclick="navigate('/region/almaty')">Алматы</a>
-        <a onclick="navigate('/region/astana')">Астана</a>
-        <a onclick="navigate('/region/shymkent')">Шымкент</a>
-        <a onclick="navigate('/region/karaganda')">Карагандa</a>
-        <a onclick="navigate('/region/atyrau')">Атырау</a>
-        <a onclick="navigate('/region/aktau')">Актау</a>
+        <a href="/region/almaty" onclick="event.preventDefault();navigate('/region/almaty')">Алматы</a>
+        <a href="/region/astana" onclick="event.preventDefault();navigate('/region/astana')">Астана</a>
+        <a href="/region/shymkent" onclick="event.preventDefault();navigate('/region/shymkent')">Шымкент</a>
+        <a href="/region/karaganda" onclick="event.preventDefault();navigate('/region/karaganda')">Карагандa</a>
+        <a href="/region/atyrau" onclick="event.preventDefault();navigate('/region/atyrau')">Атырау</a>
+        <a href="/region/aktau" onclick="event.preventDefault();navigate('/region/aktau')">Актау</a>
       </div>
     </div>
     <div>
       <div class="footer-col-title">Компания</div>
       <div class="footer-links">
-        <a onclick="navigate('/o-kompanii')">О компании</a>
-        <a onclick="navigate('/napravleniya')">Направления</a>
-        <a onclick="navigate('/blog')">Блог компании</a>
-        <a onclick="navigate('/o-logistike')">О логистике</a>
-        <a onclick="navigate('/karta-sayta')">Карта сайта</a>
-        <a onclick="navigate('/kontakty')">Контакты</a>
+        <a href="/o-kompanii" onclick="event.preventDefault();navigate('/o-kompanii')">О компании</a>
+        <a href="/napravleniya" onclick="event.preventDefault();navigate('/napravleniya')">Направления</a>
+        <a href="/blog" onclick="event.preventDefault();navigate('/blog')">Блог компании</a>
+        <a href="/o-logistike" onclick="event.preventDefault();navigate('/o-logistike')">О логистике</a>
+        <a href="/karta-sayta" onclick="event.preventDefault();navigate('/karta-sayta')">Карта сайта</a>
+        <a href="/kontakty" onclick="event.preventDefault();navigate('/kontakty')">Контакты</a>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
     <span class="footer-copy">© 2005-2026 On Time Service · Алматы, Казахстан · Все права защищены</span>
     <div class="footer-seo-links">
-      <a onclick="navigate('/region/almaty')">Грузоперевозки Алматы</a>
-      <a onclick="navigate('/region/astana')">Грузоперевозки Астана</a>
-      <a onclick="navigate('/region/shymkent')">Грузоперевозки Шымкент</a>
-      <a onclick="navigate('/uslugi/kitay')">Грузы из Китая</a>
+      <a href="/region/almaty" onclick="event.preventDefault();navigate('/region/almaty')">Грузоперевозки Алматы</a>
+      <a href="/region/astana" onclick="event.preventDefault();navigate('/region/astana')">Грузоперевозки Астана</a>
+      <a href="/region/shymkent" onclick="event.preventDefault();navigate('/region/shymkent')">Грузоперевозки Шымкент</a>
+      <a href="/uslugi/kitay" onclick="event.preventDefault();navigate('/uslugi/kitay')">Грузы из Китая</a>
     </div>
   </div>
 </footer>
@@ -782,13 +782,56 @@ function renderPage(path) {
 
   let ogUrl = document.querySelector('meta[property="og:url"]');
   if (ogUrl) ogUrl.setAttribute('content', SITE_URL + canonPath);
+
+  // ── Per-page Schema.org JSON-LD ──
+  const OLD_SCHEMA = document.getElementById('page-schema');
+  if (OLD_SCHEMA) OLD_SCHEMA.remove();
+
+  const ORG_REF = `{"@type":"Organization","@id":"${SITE_URL}/#organization","name":"On Time Service"}`;
+
+  const serviceSchemas = {
+    '/uslugi/avtoperevozki': {name:'Автомобильные грузоперевозки по Казахстану', desc:'Автоперевозки FTL и LTL по Казахстану, России и СНГ. Все типы транспорта.'},
+    '/uslugi/negabarit':     {name:'Перевозка негабаритных грузов', desc:'Перевозка нестандартных и крупногабаритных грузов по Казахстану.'},
+    '/uslugi/tral':          {name:'Перевозка тралом', desc:'Перевозка тяжёлой техники и конструкций на низкорамных трейлерах.'},
+    '/uslugi/kitay':         {name:'Доставка грузов из Китая в Казахстан', desc:'Полный цикл доставки из Китая через Хоргос и Достык. Таможенное оформление.'},
+    '/uslugi/rossiya-sng':   {name:'Грузоперевозки Казахстан — Россия — СНГ', desc:'Международные грузоперевозки между Казахстаном, Россией и странами СНГ.'},
+    '/uslugi/dostavka-po-gorodu': {name:'Доставка по Алматы', desc:'Срочная городская доставка грузов по Алматы. Газели, грузовики, экспресс.'},
+    '/uslugi/sbornyy-gruz':  {name:'Сборные грузы LTL', desc:'Консолидация грузов нескольких отправителей. Экономия до 60%.'},
+    '/uslugi/po-kazakhstanu':{name:'Грузоперевозки по Казахстану', desc:'Межгородские грузоперевозки по всем регионам Казахстана.'},
+  };
+
+  let schemaObj = null;
+
+  if (path === '/') {
+    schemaObj = {"@context":"https://schema.org","@type":"WebSite","url":SITE_URL,"name":"On Time Service","description":"Грузоперевозки по Казахстану, России, Китаю и СНГ"};
+  } else if (serviceSchemas[path]) {
+    const s = serviceSchemas[path];
+    schemaObj = {"@context":"https://schema.org","@type":"Service","name":s.name,"description":s.desc,"url":SITE_URL+path,"provider":{"@type":"Organization","@id":SITE_URL+"/#organization","name":"On Time Service"},"areaServed":{"@type":"Country","name":"Казахстан"}};
+  } else if (path.startsWith('/region/')) {
+    const city = path.replace('/region/','').replace(/-/g,' ');
+    schemaObj = {"@context":"https://schema.org","@type":"LocalBusiness","name":"On Time Service — Грузоперевозки "+city,"url":SITE_URL+path,"telephone":"+77752427744","address":{"@type":"PostalAddress","addressLocality":city,"addressCountry":"KZ"},"parentOrganization":{"@type":"Organization","@id":SITE_URL+"/#organization","name":"On Time Service"}};
+  } else if (path.startsWith('/blog/')) {
+    const titleEl = titles[path] || '';
+    const descEl  = metaDesc[path] || '';
+    schemaObj = {"@context":"https://schema.org","@type":"Article","headline":titleEl,"description":descEl,"url":SITE_URL+path,"author":{"@type":"Organization","name":"On Time Service"},"publisher":{"@type":"Organization","name":"On Time Service","url":SITE_URL},"datePublished":"2025-10-01","inLanguage":"ru"};
+  } else if (path === '/blog') {
+    schemaObj = {"@context":"https://schema.org","@type":"Blog","name":"Блог On Time Service","url":SITE_URL+"/blog","publisher":{"@type":"Organization","name":"On Time Service","url":SITE_URL}};
+  }
+
+  if (schemaObj) {
+    const sc = document.createElement('script');
+    sc.id   = 'page-schema';
+    sc.type = 'application/ld+json';
+    sc.textContent = JSON.stringify(schemaObj);
+    document.head.appendChild(sc);
+  }
 }
 
 // Breadcrumb helper
 function bc(items) {
   const parts = items.map((item, i) => {
     if (i === items.length - 1) return `<span class="current">${item.label}</span>`;
-    return `<span onclick="navigate('${item.path}')">${item.label}</span>`;
+    return `<a href="${item.path}" onclick="event.preventDefault();navigate('${item.path}')">${item.label}</a>`;
   });
   return `<div class="breadcrumb">${parts.join('<span class="sep"> / </span>')}</div>`;
 }
@@ -864,8 +907,8 @@ PAGES['/'] = () => `
     <div class="hero-sub anim-2">Казахстан · Россия · Китай</div>
     <p class="hero-p anim-3">Транспортная компания Казахстан - грузоперевозки по Алматы, Астане и всем регионам РК. Доставка в Россию, Китай и СНГ. Любой груз от 100 кг до 70 тонн - точно в срок.</p>
     <div class="hero-btns anim-4">
-      <button class="btn btn-gold" onclick="navigate('/kontakty')">${ARR} Рассчитать доставку</button>
-      <button class="btn btn-outline" onclick="navigate('/uslugi')">Наши услуги</button>
+      <a class="btn btn-gold" href="/kontakty" onclick="event.preventDefault();navigate('/kontakty')">${ARR} Рассчитать доставку</a>
+      <a class="btn btn-outline" href="/uslugi" onclick="event.preventDefault();navigate('/uslugi')">Наши услуги</a>
     </div>
   </div>
   <div class="hero-stats">
@@ -881,7 +924,7 @@ PAGES['/'] = () => `
   <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Что мы предлагаем</span></div>
   <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px;">
     <h2 class="title fade">Наши<br>услуги</h2>
-    <button class="btn btn-outline fade" onclick="navigate('/uslugi')">Все услуги ${ARR}</button>
+    <a class="btn btn-outline fade" href="/uslugi" onclick="event.preventDefault();navigate('/uslugi')">Все услуги ${ARR}</a>
   </div>
   <div class="grid4">
     ${[
@@ -894,13 +937,13 @@ PAGES['/'] = () => `
       [IC.box,'07','Сборные грузы','Консолидация грузов, экономия на перевозке','/uslugi/sbornyy-gruz'],
       [IC.city,'08','Доставка по Алматы','Срочная городская доставка','/uslugi/dostavka-po-gorodu'],
     ].map(([icon,num,title,desc,path]) => `
-    <div class="card card-link fade" onclick="navigate('${path}')">
+    <a class="card card-link fade" href="${path}" onclick="event.preventDefault();navigate('${path}')">
       <div class="card-num">${num}</div>
       <div class="card-icon">${icon}</div>
       <div class="card-title">${title}</div>
       <div class="card-desc">${desc}</div>
       <div class="card-arr">${ARR}</div>
-    </div>`).join('')}
+    </a>`).join('')}
   </div>
 </section>
 
@@ -909,7 +952,7 @@ PAGES['/'] = () => `
   <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">SEO по регионам</span></div>
   <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px;">
     <h2 class="title fade">Регионы<br>Казахстана</h2>
-    <button class="btn btn-outline fade" onclick="navigate('/regiony')">Все регионы ${ARR}</button>
+    <a class="btn btn-outline fade" href="/regiony" onclick="event.preventDefault();navigate('/regiony')">Все регионы ${ARR}</a>
   </div>
   <div class="grid4">
     ${[
@@ -922,12 +965,12 @@ PAGES['/'] = () => `
       [IC.wheat,'Костанай','Зерновой регион севера','/region/kostanay'],
       [IC.factory,'Павлодар','Промышленный север страны','/region/pavlodar'],
     ].map(([icon,name,desc,path]) => `
-    <div class="card card-link fade" onclick="navigate('${path}')">
+    <a class="card card-link fade" href="${path}" onclick="event.preventDefault();navigate('${path}')">
       <div class="card-icon">${icon}</div>
       <div class="card-title">Грузоперевозки<br>${name}</div>
       <div class="card-desc">${desc}</div>
       <div class="card-arr">${ARR}</div>
-    </div>`).join('')}
+    </a>`).join('')}
   </div>
 </section>
 
@@ -942,7 +985,7 @@ PAGES['/'] = () => `
         <div class="quote-label">Наша миссия</div>
         <div class="quote-text">Быть вашим надёжным партнёром в сфере транспортной логистики. Качественный, профессиональный подход в области транспортно-экспедиторских услуг.</div>
       </div>
-      <button class="btn btn-outline" onclick="navigate('/o-kompanii')" style="margin-top:20px;">Подробнее ${ARR}</button>
+      <a class="btn btn-outline" href="/o-kompanii" onclick="event.preventDefault();navigate('/o-kompanii')" style="margin-top:20px;">Подробнее ${ARR}</a>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;" class="fade">
       ${[
@@ -966,7 +1009,7 @@ PAGES['/'] = () => `
     <div class="sec-label" style="justify-content:center;"><div class="sec-label-line"></div><span class="sec-label-text">Начните прямо сейчас</span><div class="sec-label-line"></div></div>
     <h2 class="title" style="margin-bottom:16px;">Нужна перевозка?</h2>
     <p class="desc" style="max-width:500px;margin:0 auto 28px;">Оставьте заявку - менеджер свяжется в течение 30 минут и рассчитает стоимость доставки</p>
-    <button class="btn btn-gold" onclick="navigate('/kontakty')" style="font-size:13px;padding:16px 40px;">${ARR} Оставить заявку</button>
+    <a class="btn btn-gold" href="/kontakty" onclick="event.preventDefault();navigate('/kontakty')" style="font-size:13px;padding:16px 40px;">${ARR} Оставить заявку</a>
   </div>
 </section>
 `;
@@ -1016,7 +1059,7 @@ ${bc([{label:'Главная',path:'/'},{label:'Услуги',path:'/uslugi'},{l
   <h2 class="title anim-2">${data.title}</h2>
   <p class="desc anim-3" style="max-width:650px;">${data.subtitle}</p>
   <div style="margin-top:20px;" class="anim-4">
-    <button class="btn btn-gold" onclick="navigate('/kontakty')">${ARR} Получить расчёт</button>
+    <a class="btn btn-gold" href="/kontakty" onclick="event.preventDefault();navigate('/kontakty')">${ARR} Получить расчёт</a>
   </div>
 </div>
 <section class="sec">
@@ -1042,7 +1085,7 @@ ${bc([{label:'Главная',path:'/'},{label:'Услуги',path:'/uslugi'},{l
 <section class="sec-sm" style="background:var(--dark2);">
   <div class="sec-label reveal-3d"><div class="sec-label-line"></div><span class="sec-label-text">Смотрите также</span></div>
   <div class="grid3" style="margin-top:20px;">
-    ${data.related.map(([icon,title,path],i) => `<div class="card card-link reveal-3d d${i+1}" onclick="navigate('${path}')"><div class="card-icon">${icon}</div><div class="card-title">${title}</div><div class="card-arr">${ARR}</div></div>`).join('')}
+    ${data.related.map(([icon,title,path],i) => `<a class="card card-link reveal-3d d${i+1}" href="${path}" onclick="event.preventDefault();navigate('${path}')"><div class="card-icon">${icon}</div><div class="card-title">${title}</div><div class="card-arr">${ARR}</div></a>`).join('')}
   </div>
 </section>
 `;
@@ -1222,7 +1265,7 @@ ${bc([{label:'Главная',path:'/'},{label:'Регионы Казахста�
       [IC.truck,'Актобе','Западный КЗ. Нефть и газ.','500 000+','жителей','/region/aktobe'],
       [IC.book,'Семей','Восточный КЗ. Торговый центр.','340 000+','жителей','/region/semey'],
     ].map(([icon,name,desc,pop,unit,path]) => `
-    <div class="card card-link fade" onclick="navigate('${path}')">
+    <a class="card card-link fade" href="${path}" onclick="event.preventDefault();navigate('${path}')">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
         <span style="width:26px;height:26px;flex-shrink:0;color:var(--gold);">${icon}</span>
         <div>
@@ -1232,7 +1275,7 @@ ${bc([{label:'Главная',path:'/'},{label:'Регионы Казахста�
       <div class="card-desc" style="margin-bottom:12px;">${desc}</div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--gold);">${pop} <span style="font-size:13px;color:var(--text3);">${unit}</span></div>
       <div class="card-arr">${ARR}</div>
-    </div>`).join('')}
+    </a>`).join('')}
   </div>
 </section>
 `;
@@ -1249,8 +1292,8 @@ ${bc([{label:'Главная',path:'/'},{label:'Регионы',path:'/regiony'}
   <h2 class="title anim-2">Грузоперевозки<br>${data.name}</h2>
   <p class="desc anim-3" style="max-width:650px;">${data.subtitle}</p>
   <div style="margin-top:20px;display:flex;gap:12px;" class="anim-4">
-    <button class="btn btn-gold" onclick="navigate('/kontakty')">${ARR} Заявка на перевозку в ${data.name}</button>
-    <button class="btn btn-outline" onclick="navigate('/uslugi')">Все услуги</button>
+    <a class="btn btn-gold" href="/kontakty" onclick="event.preventDefault();navigate('/kontakty')">${ARR} Заявка на перевозку в ${data.name}</a>
+    <a class="btn btn-outline" href="/uslugi" onclick="event.preventDefault();navigate('/uslugi')">Все услуги</a>
   </div>
 </div>
 <section class="sec">
@@ -1263,7 +1306,7 @@ ${bc([{label:'Главная',path:'/'},{label:'Регионы',path:'/regiony'}
       <div style="margin-top:24px;">
         <div class="sec-label reveal-3d d1"><div class="sec-label-line"></div><span class="sec-label-text">Популярные маршруты</span></div>
         <div style="margin-top:14px;display:flex;flex-direction:column;gap:8px;">
-          ${data.routes.map((r,i) => `<div class="region-card reveal-3d d${i+1}" onclick="navigate('/kontakty')"><div class="rc-icon">${IC.truck}</div><div class="rc-info"><div class="rc-name">${r.from} → ${r.to}</div><div class="rc-sub">${r.desc}</div></div><div class="rc-arr">${ARR}</div></div>`).join('')}
+          ${data.routes.map((r,i) => `<a class="region-card reveal-3d d${i+1}" href="/kontakty" onclick="event.preventDefault();navigate('/kontakty')"><div class="rc-icon">${IC.truck}</div><div class="rc-info"><div class="rc-name">${r.from} → ${r.to}</div><div class="rc-sub">${r.desc}</div></div><div class="rc-arr">${ARR}</div></a>`).join('')}
         </div>
       </div>
     </div>
@@ -1275,14 +1318,14 @@ ${bc([{label:'Главная',path:'/'},{label:'Регионы',path:'/regiony'}
         <div class="card-title" style="margin-bottom:14px;">Актуальные услуги для региона</div>
         ${data.services.map((s,i) => `<div class="feat-item reveal-3d d${i+1}" style="padding:12px 0;"><div class="feat-icon">${s.icon}</div><div><div class="feat-title" style="font-size:13px;">${s.title}</div><div class="feat-desc">${s.desc}</div></div></div>`).join('')}
       </div>
-      <button class="btn btn-gold" onclick="navigate('/kontakty')" style="width:100%;">${ARR} Рассчитать доставку в ${data.name}</button>
+      <a class="btn btn-gold" href="/kontakty" onclick="event.preventDefault();navigate('/kontakty')" style="width:100%;">${ARR} Рассчитать доставку в ${data.name}</a>
     </div>
   </div>
 </section>
 <section class="sec-sm" style="background:var(--dark2);">
   <div class="sec-label reveal-3d"><div class="sec-label-line"></div><span class="sec-label-text">Другие регионы</span></div>
   <div class="grid4" style="margin-top:16px;">
-    ${data.related.map(([icon,name,path],i) => `<div class="card card-link reveal-3d d${i+1}" onclick="navigate('${path}')"><div class="card-icon">${icon}</div><div class="card-title">Грузоперевозки ${name}</div><div class="card-arr">${ARR}</div></div>`).join('')}
+    ${data.related.map(([icon,name,path],i) => `<a class="card card-link reveal-3d d${i+1}" href="${path}" onclick="event.preventDefault();navigate('${path}')"><div class="card-icon">${icon}</div><div class="card-title">Грузоперевозки ${name}</div><div class="card-arr">${ARR}</div></a>`).join('')}
   </div>
 </section>
 `;
@@ -1578,7 +1621,7 @@ ${bc([{label:'Главная',path:'/'},{label:'Направления'}])}
       <div class="page-icon" style="margin:0 auto 16px;">${icon}</div>
       <div class="card-title" style="font-size:18px;margin-bottom:12px;">${title}</div>
       <div class="card-desc" style="margin-bottom:20px;">${desc}</div>
-      <button class="btn btn-outline" onclick="navigate('${path}')">${cta} ${ARR}</button>
+      <a class="btn btn-outline" href="${path}" onclick="event.preventDefault();navigate('${path}')">${cta} ${ARR}</a>
     </div>`).join('')}
   </div>
 
@@ -1605,7 +1648,7 @@ ${bc([{label:'Главная',path:'/'},{label:'Направления'}])}
         ['Шанхай → Алматы','~6 000 км','14-18 дней','Импорт'],
         ['Алматы → Бишкек','300 км','4-5 ч','СНГ'],
         ['Алматы → Ташкент','1 100 км','12-14 ч','СНГ'],
-      ].map(([r,d,t,type]) => `<tr class="fade"><td onclick="navigate('/kontakty')">${r}</td><td>${d}</td><td>${t}</td><td><span class="tag" style="font-size:9px;">${type}</span></td></tr>`).join('')}
+      ].map(([r,d,t,type]) => `<tr class="fade"><td><a href="/kontakty" onclick="event.preventDefault();navigate('/kontakty')" style="color:inherit;">${r}</a></td><td>${d}</td><td>${t}</td><td><span class="tag" style="font-size:9px;">${type}</span></td></tr>`).join('')}
     </tbody>
   </table>
 </section>
@@ -1710,7 +1753,7 @@ ${bc([{label:'Главная',path:'/'},{label:'О логистике'}])}
       <div class="card fade">
         <div class="card-title" style="margin-bottom:10px;">Нужна консультация?</div>
         <div class="card-desc" style="margin-bottom:16px;">On Time Service - профессиональный логистический партнёр для вашего бизнеса в Казахстане</div>
-        <button class="btn btn-gold" onclick="navigate('/kontakty')" style="width:100%;">${ARR} Связаться с нами</button>
+        <a class="btn btn-gold" href="/kontakty" onclick="event.preventDefault();navigate('/kontakty')" style="width:100%;">${ARR} Связаться с нами</a>
       </div>
     </div>
   </div>
@@ -1808,9 +1851,9 @@ ${bc([{label:'Главная',path:'/'},{label:'Карта сайта'}])}
   <div class="two-col">
     <div>
       <div class="sitemap-tree fade">
-        <div class="sm-root" onclick="navigate('/')">${IC.home} Главная страница</div>
+        <a class="sm-root" href="/" onclick="event.preventDefault();navigate('/')">${IC.home} Главная страница</a>
         <div class="sm-branch">
-          <div class="sm-node" onclick="navigate('/uslugi')"><span class="sm-node-icon">${IC.truck}</span>Услуги<span class="sm-seo">SEO</span></div>
+          <a class="sm-node" href="/uslugi" onclick="event.preventDefault();navigate('/uslugi')"><span class="sm-node-icon">${IC.truck}</span>Услуги<span class="sm-seo">SEO</span></a>
           <div class="sm-branch">
             ${[
               ['/uslugi/avtoperevozki',IC.truck,'Автоперевозки'],
@@ -1821,19 +1864,19 @@ ${bc([{label:'Главная',path:'/'},{label:'Карта сайта'}])}
               ['/uslugi/po-kazakhstanu',IC.map,'По Казахстану'],
               ['/uslugi/rossiya-sng',IC.globe,'Россия и СНГ'],
               ['/uslugi/kitay',IC.ship,'Из Китая'],
-            ].map(([p,i,t]) => `<div class="sm-node" onclick="navigate('${p}')"><span class="sm-node-icon">${i}</span>${t}<span class="sm-seo">SEO</span></div>`).join('')}
+            ].map(([p,i,t]) => `<a class="sm-node" href="${p}" onclick="event.preventDefault();navigate('${p}')"><span class="sm-node-icon">${i}</span>${t}<span class="sm-seo">SEO</span></a>`).join('')}
           </div>
-          <div class="sm-node" onclick="navigate('/napravleniya')"><span class="sm-node-icon">${IC.map}</span>Направления</div>
-          <div class="sm-node" onclick="navigate('/o-kompanii')"><span class="sm-node-icon">${IC.building}</span>О компании</div>
-          <div class="sm-node" onclick="navigate('/o-logistike')"><span class="sm-node-icon">${IC.book}</span>О логистике<span class="sm-seo">SEO</span></div>
-          <div class="sm-node" onclick="navigate('/kontakty')"><span class="sm-node-icon">${IC.phone}</span>Контакты</div>
-          <div class="sm-node" onclick="navigate('/karta-sayta')"><span class="sm-node-icon">${IC.plan}</span>Карта сайта</div>
+          <a class="sm-node" href="/napravleniya" onclick="event.preventDefault();navigate('/napravleniya')"><span class="sm-node-icon">${IC.map}</span>Направления</a>
+          <a class="sm-node" href="/o-kompanii" onclick="event.preventDefault();navigate('/o-kompanii')"><span class="sm-node-icon">${IC.building}</span>О компании</a>
+          <a class="sm-node" href="/o-logistike" onclick="event.preventDefault();navigate('/o-logistike')"><span class="sm-node-icon">${IC.book}</span>О логистике<span class="sm-seo">SEO</span></a>
+          <a class="sm-node" href="/kontakty" onclick="event.preventDefault();navigate('/kontakty')"><span class="sm-node-icon">${IC.phone}</span>Контакты</a>
+          <a class="sm-node" href="/karta-sayta" onclick="event.preventDefault();navigate('/karta-sayta')"><span class="sm-node-icon">${IC.plan}</span>Карта сайта</a>
         </div>
       </div>
     </div>
     <div>
       <div class="sitemap-tree fade">
-        <div class="sm-root" onclick="navigate('/regiony')">${IC.pin} Регионы Казахстана - SEO</div>
+        <a class="sm-root" href="/regiony" onclick="event.preventDefault();navigate('/regiony')">${IC.pin} Регионы Казахстана - SEO</a>
         <div class="sm-branch">
           ${[
             ['/region/almaty',IC.city,'Грузоперевозки Алматы'],
@@ -1848,7 +1891,7 @@ ${bc([{label:'Главная',path:'/'},{label:'Карта сайта'}])}
             ['/region/taraz',IC.leaf,'Грузоперевозки Тараз'],
             ['/region/aktobe',IC.truck,'Грузоперевозки Актобе'],
             ['/region/semey',IC.book,'Грузоперевозки Семей'],
-          ].map(([p,i,t]) => `<div class="sm-node" onclick="navigate('${p}')"><span class="sm-node-icon">${i}</span>${t}<span class="sm-seo">SEO</span></div>`).join('')}
+          ].map(([p,i,t]) => `<a class="sm-node" href="${p}" onclick="event.preventDefault();navigate('${p}')"><span class="sm-node-icon">${i}</span>${t}<span class="sm-seo">SEO</span></a>`).join('')}
         </div>
       </div>
       <div style="margin-top:20px;" class="fade">
@@ -2275,10 +2318,10 @@ function blogSidebar(currentSlug, relatedSlugs) {
   const relItems = relatedSlugs.map(s => {
     const p = BLOG_POSTS.find(x => x.slug === s);
     if (!p) return '';
-    return `<div class="blog-related-item" onclick="navigate('/blog/${p.slug}')">
+    return `<a class="blog-related-item" href="/blog/${p.slug}" onclick="event.preventDefault();navigate('/blog/${p.slug}')">
       <div class="blog-related-icon">${p.icon}</div>
       <div class="blog-related-title">${p.title}</div>
-    </div>`;
+    </a>`;
   }).join('');
 
   return `
@@ -2290,7 +2333,7 @@ function blogSidebar(currentSlug, relatedSlugs) {
     <div class="blog-sidebar-card">
       <div style="font-size:14px;font-weight:700;margin-bottom:12px;color:var(--gold);">Рассчитать доставку</div>
       <p style="font-size:13px;color:var(--text2);margin-bottom:14px;">Оставьте заявку — перезвоним в течение 30 минут</p>
-      <button class="btn btn-gold" onclick="navigate('/kontakty')" style="width:100%;font-size:13px;">${ARR} Оставить заявку</button>
+      <a class="btn btn-gold" href="/kontakty" onclick="event.preventDefault();navigate('/kontakty')" style="width:100%;font-size:13px;">${ARR} Оставить заявку</a>
       <div style="margin-top:12px;text-align:center;">
         <a href="https://wa.me/77752427744" target="_blank" rel="noopener" style="font-size:13px;color:var(--gold);">или WhatsApp: ${SITE_PHONE}</a>
       </div>
@@ -2364,7 +2407,7 @@ function blogArticlePage(post) {
       <div class="blog-cta-block">
         <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--gold);margin-bottom:8px;">Нужна перевозка?</div>
         <p>Рассчитаем стоимость за 30 минут. Работаем по всему Казахстану и СНГ с 2005 года.</p>
-        <button class="btn btn-gold" onclick="navigate('/kontakty')">${ARR} Рассчитать доставку за 30 минут</button>
+        <a class="btn btn-gold" href="/kontakty" onclick="event.preventDefault();navigate('/kontakty')">${ARR} Рассчитать доставку за 30 минут</a>
       </div>
       <div class="blog-faq">
         <h2 style="font-size:20px;font-weight:700;margin-bottom:16px;">Часто задаваемые вопросы</h2>
@@ -2379,7 +2422,7 @@ function blogArticlePage(post) {
   <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Другие статьи блога</span></div>
   <div class="blog-grid" style="margin-top:16px;">
     ${BLOG_POSTS.filter(p => p.slug !== post.slug).slice(0,3).map(p => `
-      <div class="blog-card fade" onclick="navigate('/blog/${p.slug}')">
+      <a class="blog-card fade" href="/blog/${p.slug}" onclick="event.preventDefault();navigate('/blog/${p.slug}')">
         <div class="blog-card-thumb" style="background-image:url('${UNS}${p.imgId}?w=400&h=225&fit=crop&auto=format&q=60');background-size:cover;background-position:center;">&nbsp;</div>
         <div class="blog-card-body">
           <div class="blog-card-tag">${p.cat}</div>
@@ -2387,7 +2430,7 @@ function blogArticlePage(post) {
           <div class="blog-card-excerpt">${p.excerpt}</div>
           <div class="blog-card-meta"><span>📅 ${p.dateDisplay}</span><span>⏱ ${p.readTime}</span></div>
         </div>
-      </div>`).join('')}
+      </a>`).join('')}
   </div>
 </section>`;
 }
@@ -2403,7 +2446,7 @@ PAGES['/blog'] = () => `
   <p class="desc fade" style="margin-bottom:32px;">Полезные статьи от практиков: маршруты, тарифы, таможня, советы по выбору перевозчика. 20 лет опыта — в каждой статье.</p>
   <div class="blog-grid">
     ${BLOG_POSTS.map(p => `
-      <div class="blog-card fade" onclick="navigate('/blog/${p.slug}')">
+      <a class="blog-card fade" href="/blog/${p.slug}" onclick="event.preventDefault();navigate('/blog/${p.slug}')">
         <div class="blog-card-thumb" style="background-image:url('${UNS}${p.imgId}?w=400&h=225&fit=crop&auto=format&q=60');background-size:cover;background-position:center;">&nbsp;</div>
         <div class="blog-card-body">
           <div class="blog-card-tag">${p.cat}</div>
@@ -2414,7 +2457,7 @@ PAGES['/blog'] = () => `
             <span>⏱ ${p.readTime}</span>
           </div>
         </div>
-      </div>`).join('')}
+      </a>`).join('')}
   </div>
 </section>`;
 
@@ -2431,7 +2474,7 @@ PAGES['404'] = () => `
   <div style="font-family:'Bebas Neue',sans-serif;font-size:120px;color:var(--gold);opacity:.15;line-height:1;">404</div>
   <h2 class="title" style="margin-bottom:12px;">Страница не найдена</h2>
   <p class="desc" style="margin-bottom:24px;">Эта страница ещё в разработке или перемещена</p>
-  <button class="btn btn-gold" onclick="navigate('/')">${ARR} На главную</button>
+  <a class="btn btn-gold" href="/" onclick="event.preventDefault();navigate('/')">${ARR} На главную</a>
 </section>
 `;
 
@@ -2509,20 +2552,18 @@ async function submitContactForm() {
 // ══════════════════════════════════════════
 // INIT
 // ══════════════════════════════════════════
-navigate('/');
-
-// Hash routing support
-window.addEventListener('hashchange', () => {
-  const path = location.hash.slice(1) || '/';
-  if (path !== currentPath) navigate(path);
+// History API routing — чистые URL без # (SEO)
+window.addEventListener('popstate', () => {
+  const path = location.pathname || '/';
+  if (path !== currentPath) _baseNavigate(path);
 });
-// Update hash on navigate
-const origNavigate = navigate;
+const _baseNavigate = navigate;
 window.navigate = (path) => {
-  location.hash = path;
-  origNavigate(path);
+  if (path !== location.pathname) history.pushState({path}, '', path);
+  _baseNavigate(path);
 };
-navigate('/');
+// Загружаем страницу из URL при первом открытии
+navigate(location.pathname || '/');
 </script>
 
 <!-- ══ FLOATING WIDGET ══ -->
