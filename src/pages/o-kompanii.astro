@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { IC, ARR } from '../data/icons.js';
+
+const SITE_PHONE = '+7 775 242 77 44';
+---
+<Layout
+  title="О компании On Time Service — Грузоперевозки по Казахстану с 2005 года"
+  description={`ТЛК On Time Service — транспортно-логистическая компания с 2005 года. Автоперевозки, негабарит, трал, сборные грузы. ✓ 20 лет опыта. Тел: ${SITE_PHONE}`}
+  canonical="/o-kompanii"
+>
+
+<div class="breadcrumb">
+  <a href="/">Главная</a><span class="sep"> / </span><span class="current">О компании</span>
+</div>
+<div class="page-header">
+  <div class="sec-label anim-1"><div class="sec-label-line"></div><span class="sec-label-text">Кто мы</span></div>
+  <h1 class="title anim-2">О компании</h1>
+  <p class="desc anim-3" style="max-width:640px;">ТЛК «On Time Service» — транспортно-логистическая компания, работающая на рынке Казахстана с 2005 года. Специализируемся на автоперевозках, негабаритных и тяжёлых грузах, импорте из Китая.</p>
+</div>
+
+<!-- Main about -->
+<section class="sec">
+  <div class="two-col">
+    <div class="fade">
+      <div class="sec-label"><div class="sec-label-line"></div><span class="sec-label-text">История</span></div>
+      <h2 class="title" style="margin-bottom:20px;">20 лет<br>на рынке</h2>
+      <p class="desc" style="margin-bottom:16px;">Компания основана в 2005 году в Алматы. За два десятилетия работы мы выросли из небольшой транспортной компании в полноценного логистического оператора, охватывающего весь Казахстан и международные направления.</p>
+      <p class="desc" style="margin-bottom:16px;">Наша команда — это опытные логисты, диспетчеры и водители, которые знают каждый маршрут и понимают специфику груза любой сложности.</p>
+      <div class="quote-block" style="margin-bottom:24px;">
+        <div class="quote-label">Наша миссия</div>
+        <div class="quote-text">Быть вашим надёжным партнёром в сфере транспортной логистики. Качественный, профессиональный подход в области транспортно-экспедиторских услуг.</div>
+      </div>
+      <a class="btn btn-outline" href="/kontakty">Связаться с нами <Fragment set:html={ARR} /></a>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;" class="fade">
+      {[
+        {val:'20+', label:'лет на рынке'},
+        {val:'70Т', label:'максимальный груз'},
+        {val:'12', label:'регионов КЗ'},
+        {val:'3', label:'страны'},
+      ].map(({val, label}) => (
+        <div class="info-card">
+          <div class="metric-val">{val}</div>
+          <div class="metric-label">{label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Values -->
+<section class="sec" style="background:var(--dark2);">
+  <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Наши принципы</span></div>
+  <h2 class="title fade" style="margin-bottom:32px;">Ценности компании</h2>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+    {[
+      {iconKey:'plan', title:'Надёжность', desc:'Выполняем обязательства точно в срок. Ваш груз — наша ответственность.'},
+      {iconKey:'phone', title:'Прозрачность', desc:'Вы всегда знаете, где ваш груз. GPS-трекинг и регулярные уведомления.'},
+      {iconKey:'chart', title:'Профессионализм', desc:'20 лет опыта, обученный персонал, современное оборудование.'},
+      {iconKey:'handshake', title:'Партнёрство', desc:'Выстраиваем долгосрочные отношения. Индивидуальный подход к каждому клиенту.'},
+      {iconKey:'pin', title:'Точность', desc:'Соблюдаем сроки и условия договора. On Time — вовремя, это наш принцип.'},
+      {iconKey:'warehouse', title:'Полный сервис', desc:'От подачи заявки до выгрузки — всё под нашим контролем.'},
+    ].map(({iconKey, title, desc}) => (
+      <div class="card fade">
+        <div class="card-icon"><Fragment set:html={IC[iconKey]} /></div>
+        <div class="card-title" style="margin-bottom:8px;">{title}</div>
+        <div class="card-desc">{desc}</div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sec" style="text-align:center;">
+  <div class="fade">
+    <div class="sec-label" style="justify-content:center;"><div class="sec-label-line"></div><span class="sec-label-text">Начните сотрудничество</span><div class="sec-label-line"></div></div>
+    <h2 class="title" style="margin-bottom:16px;">Станьте нашим клиентом</h2>
+    <p class="desc" style="max-width:500px;margin:0 auto 28px;">Свяжитесь с нами — обсудим ваши задачи и предложим оптимальное решение</p>
+    <a class="btn btn-gold" href="/kontakty" style="font-size:13px;padding:16px 40px;"><Fragment set:html={ARR} /> Связаться с нами</a>
+  </div>
+</section>
+
+</Layout>

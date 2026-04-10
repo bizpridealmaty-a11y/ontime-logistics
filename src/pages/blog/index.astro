@@ -1,0 +1,78 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { BLOG_POSTS, UNS } from '../../data/blog.js';
+import { IC, ARR } from '../../data/icons.js';
+
+const SITE_PHONE = '+7 775 242 77 44';
+const sorted = [...BLOG_POSTS].sort((a, b) => new Date(b.date) - new Date(a.date));
+---
+<Layout
+  title="Блог о грузоперевозках — On Time Service Алматы | Советы, маршруты, логистика"
+  description={`Блог транспортной компании On Time Service. Статьи о грузоперевозках по Казахстану, негабарите, логистике из Китая, выборе перевозчика. Тел: ${SITE_PHONE}`}
+  canonical="/blog"
+>
+
+<div class="breadcrumb">
+  <a href="/">Главная</a><span class="sep"> / </span><span class="current">Блог</span>
+</div>
+<div class="page-header">
+  <div class="sec-label anim-1"><div class="sec-label-line"></div><span class="sec-label-text">Экспертные материалы</span></div>
+  <h1 class="title anim-2">Блог</h1>
+  <p class="desc anim-3" style="max-width:600px;">Статьи о грузоперевозках, логистике и транспортном рынке Казахстана от экспертов On Time Service.</p>
+</div>
+
+<section class="sec">
+  <!-- Featured post -->
+  {sorted[0] && (
+    <a class="card card-link fade" href={`/blog/${sorted[0].slug}`} style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:32px;overflow:hidden;padding:0;">
+      <div style="overflow:hidden;">
+        <img
+          src={`${UNS}${sorted[0].imgId}?auto=format&fit=crop&w=700&q=70`}
+          alt={sorted[0].altHero}
+          loading="lazy"
+          width="700" height="400"
+          style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;"
+        />
+      </div>
+      <div style="padding:32px;display:flex;flex-direction:column;justify-content:center;">
+        <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;">
+          <span style="background:var(--gold);color:#000;font-size:10px;font-weight:700;padding:3px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.06em;">{sorted[0].cat}</span>
+          <span style="color:var(--gray);font-size:12px;">{sorted[0].dateDisplay}</span>
+          <span style="color:var(--gray);font-size:12px;">{sorted[0].readTime}</span>
+        </div>
+        <h2 style="color:var(--light);font-size:1.4rem;margin-bottom:12px;line-height:1.3;">{sorted[0].title}</h2>
+        <p class="desc" style="margin-bottom:20px;font-size:14px;">{sorted[0].excerpt}</p>
+        <div class="btn btn-outline" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;font-size:12px;width:fit-content;">
+          Читать статью <Fragment set:html={ARR} />
+        </div>
+      </div>
+    </a>
+  )}
+
+  <!-- Grid of remaining posts -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+    {sorted.slice(1).map(post => (
+      <a class="card card-link fade" href={`/blog/${post.slug}`} style="padding:0;overflow:hidden;display:flex;flex-direction:column;">
+        <div style="overflow:hidden;height:180px;">
+          <img
+            src={`${UNS}${post.imgId}?auto=format&fit=crop&w=400&q=65`}
+            alt={post.altHero}
+            loading="lazy"
+            width="400" height="180"
+            style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;"
+          />
+        </div>
+        <div style="padding:20px;flex:1;display:flex;flex-direction:column;">
+          <div style="display:flex;gap:8px;margin-bottom:10px;align-items:center;flex-wrap:wrap;">
+            <span style="background:rgba(201,168,76,.15);color:var(--gold);font-size:10px;font-weight:600;padding:2px 8px;border-radius:3px;">{post.cat}</span>
+            <span style="color:var(--gray);font-size:11px;">{post.readTime}</span>
+          </div>
+          <h3 style="color:var(--light);font-size:1rem;line-height:1.4;margin-bottom:10px;flex:1;">{post.title}</h3>
+          <div style="color:var(--gray);font-size:12px;">{post.dateDisplay}</div>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
+
+</Layout>

@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { ARR } from '../data/icons.js';
+import { SERVICES } from '../data/services.js';
+import { REGIONS } from '../data/regions.js';
+
+const SITE_PHONE = '+7 775 242 77 44';
+---
+<Layout
+  title="Карта сайта — On Time Service | Грузоперевозки по Казахстану"
+  description="Карта сайта транспортной компании On Time Service. Все страницы: услуги, регионы, направления, контакты."
+  canonical="/karta-sayta"
+>
+
+<div class="breadcrumb">
+  <a href="/">Главная</a><span class="sep"> / </span><span class="current">Карта сайта</span>
+</div>
+<div class="page-header">
+  <div class="sec-label anim-1"><div class="sec-label-line"></div><span class="sec-label-text">Навигация</span></div>
+  <h1 class="title anim-2">Карта сайта</h1>
+</div>
+
+<section class="sec">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px;">
+    <!-- Main pages -->
+    <div class="fade">
+      <h3 style="color:var(--gold);font-size:14px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border);">Основные страницы</h3>
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+        {[
+          ['Главная', '/'],
+          ['Услуги', '/uslugi'],
+          ['Регионы', '/regiony'],
+          ['Направления', '/napravleniya'],
+          ['О компании', '/o-kompanii'],
+          ['О логистике', '/o-logistike'],
+          ['Блог', '/blog'],
+          ['Контакты', '/kontakty'],
+        ].map(([title, path]) => (
+          <li>
+            <a href={path} style="color:var(--gray);font-size:14px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;">
+              <span style="width:14px;height:14px;color:var(--gold);flex-shrink:0;"><Fragment set:html={ARR} /></span>
+              {title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Services -->
+    <div class="fade">
+      <h3 style="color:var(--gold);font-size:14px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border);">Услуги</h3>
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+        {SERVICES.map(s => (
+          <li>
+            <a href={`/uslugi/${s.slug}`} style="color:var(--gray);font-size:14px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;">
+              <span style="width:14px;height:14px;color:var(--gold);flex-shrink:0;"><Fragment set:html={ARR} /></span>
+              {s.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Regions -->
+    <div class="fade">
+      <h3 style="color:var(--gold);font-size:14px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border);">Регионы</h3>
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+        {REGIONS.map(r => (
+          <li>
+            <a href={`/region/${r.slug}`} style="color:var(--gray);font-size:14px;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;">
+              <span style="width:14px;height:14px;color:var(--gold);flex-shrink:0;"><Fragment set:html={ARR} /></span>
+              Грузоперевозки {r.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+</Layout>

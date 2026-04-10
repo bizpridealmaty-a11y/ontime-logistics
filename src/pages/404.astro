@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { ARR } from '../data/icons.js';
+---
+<Layout
+  title="404 — Страница не найдена | On Time Service"
+  description="Страница не найдена. Вернитесь на главную страницу On Time Service — грузоперевозки по Казахстану."
+  canonical="/404"
+>
+
+<section class="sec" style="text-align:center;min-height:60vh;display:flex;align-items:center;justify-content:center;">
+  <div class="fade">
+    <div style="font-size:6rem;font-weight:900;color:var(--gold);line-height:1;margin-bottom:8px;">404</div>
+    <h1 style="color:var(--light);font-size:1.8rem;margin-bottom:16px;">Страница не найдена</h1>
+    <p class="desc" style="max-width:450px;margin:0 auto 32px;">Возможно, страница была перемещена или удалена. Вернитесь на главную страницу.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a class="btn btn-gold" href="/"><Fragment set:html={ARR} /> На главную</a>
+      <a class="btn btn-outline" href="/uslugi">Наши услуги</a>
+      <a class="btn btn-outline" href="/kontakty">Контакты</a>
+    </div>
+  </div>
+</section>
+
+</Layout>

@@ -1,0 +1,121 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { IC, ARR } from '../data/icons.js';
+
+const SITE_PHONE = '+7 775 242 77 44';
+---
+<Layout
+  title="Контакты — On Time Service | Грузоперевозки по Казахстану, Алматы"
+  description={`Контакты транспортной компании On Time Service. Алматы, Казахстан. Тел: ${SITE_PHONE}. Оставьте заявку — перезвоним в течение 30 минут.`}
+  canonical="/kontakty"
+>
+
+<div class="breadcrumb">
+  <a href="/">Главная</a><span class="sep"> / </span><span class="current">Контакты</span>
+</div>
+<div class="page-header">
+  <div class="sec-label anim-1"><div class="sec-label-line"></div><span class="sec-label-text">Связаться с нами</span></div>
+  <h1 class="title anim-2">Контакты</h1>
+  <p class="desc anim-3" style="max-width:600px;">Оставьте заявку или позвоните — менеджер свяжется в течение 30 минут и рассчитает стоимость доставки.</p>
+</div>
+
+<section class="sec">
+  <div class="two-col">
+    <!-- Contact form -->
+    <div class="fade">
+      <div class="sec-label"><div class="sec-label-line"></div><span class="sec-label-text">Заявка на перевозку</span></div>
+      <h2 class="title" style="margin-bottom:24px;">Рассчитать<br>доставку</h2>
+
+      <div id="cf-form">
+        <div style="display:grid;gap:14px;">
+          <div>
+            <label style="display:block;color:var(--gray);font-size:12px;margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em;">Ваше имя *</label>
+            <input id="cf_name" type="text" placeholder="Иван Иванов" style="width:100%;background:var(--dark2);border:1px solid var(--border);color:var(--light);padding:12px 16px;border-radius:6px;font-size:14px;box-sizing:border-box;outline:none;" />
+          </div>
+          <div>
+            <label style="display:block;color:var(--gray);font-size:12px;margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em;">Телефон *</label>
+            <input id="cf_phone" type="tel" placeholder="+7 777 000 00 00" style="width:100%;background:var(--dark2);border:1px solid var(--border);color:var(--light);padding:12px 16px;border-radius:6px;font-size:14px;box-sizing:border-box;outline:none;" />
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div>
+              <label style="display:block;color:var(--gray);font-size:12px;margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em;">Откуда</label>
+              <input id="cf_from" type="text" placeholder="Алматы" style="width:100%;background:var(--dark2);border:1px solid var(--border);color:var(--light);padding:12px 16px;border-radius:6px;font-size:14px;box-sizing:border-box;outline:none;" />
+            </div>
+            <div>
+              <label style="display:block;color:var(--gray);font-size:12px;margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em;">Куда</label>
+              <input id="cf_to" type="text" placeholder="Астана" style="width:100%;background:var(--dark2);border:1px solid var(--border);color:var(--light);padding:12px 16px;border-radius:6px;font-size:14px;box-sizing:border-box;outline:none;" />
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div>
+              <label style="display:block;color:var(--gray);font-size:12px;margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em;">Тип груза</label>
+              <select id="cf_cargo" style="width:100%;background:var(--dark2);border:1px solid var(--border);color:var(--light);padding:12px 16px;border-radius:6px;font-size:14px;box-sizing:border-box;outline:none;">
+                <option value="general">Стандартный</option>
+                <option value="oversize">Негабаритный</option>
+                <option value="heavy">Тяжеловозный</option>
+                <option value="consolidated">Сборный</option>
+                <option value="temperature">Температурный</option>
+                <option value="china">Из Китая</option>
+              </select>
+            </div>
+            <div>
+              <label style="display:block;color:var(--gray);font-size:12px;margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em;">Вес / объём</label>
+              <input id="cf_weight" type="text" placeholder="5 тонн / 20 м³" style="width:100%;background:var(--dark2);border:1px solid var(--border);color:var(--light);padding:12px 16px;border-radius:6px;font-size:14px;box-sizing:border-box;outline:none;" />
+            </div>
+          </div>
+          <div>
+            <label style="display:block;color:var(--gray);font-size:12px;margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em;">Комментарий</label>
+            <textarea id="cf_comment" placeholder="Дополнительная информация о грузе..." rows="3" style="width:100%;background:var(--dark2);border:1px solid var(--border);color:var(--light);padding:12px 16px;border-radius:6px;font-size:14px;box-sizing:border-box;outline:none;resize:vertical;font-family:inherit;"></textarea>
+          </div>
+          <button id="cf_btn" onclick="submitContactForm()" class="btn btn-gold" style="width:100%;justify-content:center;font-size:14px;padding:16px;">
+            <Fragment set:html={ARR} /> Отправить заявку
+          </button>
+          <p style="color:var(--gray);font-size:11px;text-align:center;">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
+        </div>
+      </div>
+
+      <div id="cf-success" style="display:none;text-align:center;padding:40px 20px;">
+        <div style="font-size:48px;margin-bottom:16px;">✓</div>
+        <h3 style="color:var(--gold);margin-bottom:12px;">Заявка отправлена!</h3>
+        <p class="desc">Менеджер свяжется с вами в течение 30 минут</p>
+      </div>
+    </div>
+
+    <!-- Contact info -->
+    <div class="fade" style="display:flex;flex-direction:column;gap:20px;">
+      <div class="card">
+        <div class="card-icon" style="margin-bottom:12px;"><Fragment set:html={IC.phone} /></div>
+        <div class="card-title" style="margin-bottom:8px;">Телефон</div>
+        <a href={`tel:${SITE_PHONE.replace(/\s/g,'')}`} style="color:var(--gold);font-size:1.2rem;font-weight:600;text-decoration:none;">{SITE_PHONE}</a>
+        <div style="color:var(--gray);font-size:12px;margin-top:6px;">Пн-Пт: 9:00 — 18:00, Сб: 10:00 — 15:00</div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon" style="margin-bottom:12px;"><Fragment set:html={IC.pin} /></div>
+        <div class="card-title" style="margin-bottom:8px;">Адрес</div>
+        <div style="color:var(--gray);font-size:14px;line-height:1.6;">Казахстан, г. Алматы<br>Транспортно-логистический центр</div>
+      </div>
+
+      <div class="card">
+        <div style="display:flex;gap:12px;">
+          <a href={`https://wa.me/${SITE_PHONE.replace(/\D/g,'')}`} target="_blank" rel="noopener" class="btn btn-gold" style="flex:1;justify-content:center;font-size:13px;">WhatsApp</a>
+          <a href={`tel:${SITE_PHONE.replace(/\s/g,'')}`} class="btn btn-outline" style="flex:1;justify-content:center;font-size:13px;">Позвонить</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title" style="margin-bottom:12px;">Работаем с грузами</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          {['От 100 кг','До 70 тонн','По всему КЗ','Россия и СНГ','Из Китая','24/7 диспетчер'].map(item => (
+            <div style="display:flex;align-items:center;gap:6px;color:var(--gray);font-size:13px;">
+              <span style="width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0;"></span>
+              {item}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</Layout>

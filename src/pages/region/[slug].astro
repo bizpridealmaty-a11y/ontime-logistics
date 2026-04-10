@@ -1,0 +1,99 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { REGIONS } from '../../data/regions.js';
+import { IC, ARR } from '../../data/icons.js';
+
+export function getStaticPaths() {
+  return REGIONS.map(region => ({
+    params: { slug: region.slug },
+    props: { region },
+  }));
+}
+
+const { region } = Astro.props;
+const SITE_PHONE = '+7 775 242 77 44';
+---
+<Layout
+  title={region.titleSeo}
+  description={region.descSeo}
+  canonical={`/region/${region.slug}`}
+>
+
+<div class="breadcrumb">
+  <a href="/">Главная</a><span class="sep"> / </span><a href="/regiony">Регионы</a><span class="sep"> / </span><span class="current">{region.name}</span>
+</div>
+
+<div class="page-header">
+  <div class="sec-label anim-1"><div class="sec-label-line"></div><span class="sec-label-text">{region.tag}</span></div>
+  <h1 class="title anim-2">Грузоперевозки<br>{region.name}</h1>
+  <p class="desc anim-3" style="max-width:640px;">{region.desc}</p>
+  <div class="anim-4" style="margin-top:24px;">
+    <a class="btn btn-gold" href="/kontakty"><Fragment set:html={ARR} /> Рассчитать доставку</a>
+  </div>
+</div>
+
+<!-- About region -->
+<section class="sec">
+  <div class="two-col">
+    <div class="fade">
+      <div class="sec-label"><div class="sec-label-line"></div><span class="sec-label-text">О регионе</span></div>
+      <h2 class="title" style="margin-bottom:20px;">{region.name}</h2>
+      <p class="desc" style="margin-bottom:24px;">{region.about}</p>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px;">
+        {region.facts.map(fact => (
+          <div style="display:flex;align-items:center;gap:10px;color:var(--gray);font-size:14px;">
+            <span style="width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0;"></span>
+            {fact}
+          </div>
+        ))}
+      </div>
+      <a class="btn btn-outline" href="/kontakty">Оставить заявку <Fragment set:html={ARR} /></a>
+    </div>
+    <div class="fade" style="display:flex;flex-direction:column;gap:16px;justify-content:center;">
+      <div class="card" style="padding:32px;">
+        <div class="card-icon" style="margin-bottom:16px;"><Fragment set:html={IC[region.iconKey]} /></div>
+        <div class="card-title" style="margin-bottom:12px;">Грузоперевозки {region.nameRod}</div>
+        <p class="card-desc" style="margin-bottom:20px;">Звоните — рассчитаем стоимость доставки в течение 30 минут</p>
+        <a class="btn btn-gold" href={`tel:${SITE_PHONE.replace(/\s/g,'')}`} style="width:100%;justify-content:center;">{SITE_PHONE}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEO text -->
+<section class="sec" style="background:var(--dark2);">
+  <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Подробнее</span></div>
+  <h2 class="title fade" style="margin-bottom:32px;">Логистика {region.nameRod}</h2>
+  <div style="max-width:800px;">
+    {region.seoText.map(para => (
+      <p class="desc fade" style="margin-bottom:16px;">{para}</p>
+    ))}
+  </div>
+</section>
+
+<!-- Related services -->
+<section class="sec">
+  <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Наши услуги</span></div>
+  <h2 class="title fade" style="margin-bottom:32px;">Что мы предлагаем</h2>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+    {region.related.map(([iconKey, title, path]) => (
+      <a class="card card-link fade" href={path}>
+        <div class="card-icon"><Fragment set:html={IC[iconKey]} /></div>
+        <div class="card-title">{title}</div>
+        <div class="card-arr"><Fragment set:html={ARR} /></div>
+      </a>
+    ))}
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sec" style="background:var(--dark2);text-align:center;">
+  <div class="fade">
+    <div class="sec-label" style="justify-content:center;"><div class="sec-label-line"></div><span class="sec-label-text">Начните прямо сейчас</span><div class="sec-label-line"></div></div>
+    <h2 class="title" style="margin-bottom:16px;">Нужна перевозка в {region.nameRod}?</h2>
+    <p class="desc" style="max-width:500px;margin:0 auto 28px;">Оставьте заявку — менеджер свяжется в течение 30 минут и рассчитает стоимость доставки</p>
+    <a class="btn btn-gold" href="/kontakty" style="font-size:13px;padding:16px 40px;"><Fragment set:html={ARR} /> Оставить заявку</a>
+  </div>
+</section>
+
+</Layout>

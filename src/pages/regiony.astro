@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { REGIONS } from '../data/regions.js';
+import { IC, ARR } from '../data/icons.js';
+
+const SITE_PHONE = '+7 775 242 77 44';
+---
+<Layout
+  title="Грузоперевозки по регионам Казахстана — On Time Service Алматы"
+  description={`Грузоперевозки по всем регионам Казахстана. Алматы, Астана, Шымкент, Атырау, Актау и другие города. ✓ 20 лет опыта. ✓ Расчёт за 30 мин. Тел: ${SITE_PHONE}`}
+  canonical="/regiony"
+>
+
+<div class="breadcrumb">
+  <a href="/">Главная</a><span class="sep"> / </span><span class="current">Регионы Казахстана</span>
+</div>
+<div class="page-header">
+  <div class="sec-label anim-1"><div class="sec-label-line"></div><span class="sec-label-text">География доставки</span></div>
+  <h1 class="title anim-2">Регионы<br>Казахстана</h1>
+  <p class="desc anim-3" style="max-width:600px;">Грузоперевозки по всем регионам Республики Казахстан. От Алматы до Актау — доставим точно в срок.</p>
+</div>
+
+<section class="sec">
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+    {REGIONS.map(region => (
+      <a class="card card-link fade" href={`/region/${region.slug}`}>
+        <div class="card-icon"><Fragment set:html={IC[region.iconKey]} /></div>
+        <div class="card-title">Грузоперевозки<br>{region.name}</div>
+        <div class="card-desc">{region.desc}</div>
+        <div class="card-arr"><Fragment set:html={ARR} /></div>
+      </a>
+    ))}
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sec" style="background:var(--dark2);text-align:center;">
+  <div class="fade">
+    <div class="sec-label" style="justify-content:center;"><div class="sec-label-line"></div><span class="sec-label-text">Нужен расчёт?</span><div class="sec-label-line"></div></div>
+    <h2 class="title" style="margin-bottom:16px;">Доставим в любой регион</h2>
+    <p class="desc" style="max-width:500px;margin:0 auto 28px;">Оставьте заявку — рассчитаем стоимость доставки до вашего города в течение 30 минут</p>
+    <a class="btn btn-gold" href="/kontakty" style="font-size:13px;padding:16px 40px;"><Fragment set:html={ARR} /> Рассчитать доставку</a>
+  </div>
+</section>
+
+</Layout>

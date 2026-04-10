@@ -1,0 +1,179 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { BLOG_POSTS, UNS } from '../../data/blog.js';
+import { ARR } from '../../data/icons.js';
+
+export function getStaticPaths() {
+  return BLOG_POSTS.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const related = post.related
+  .map(slug => BLOG_POSTS.find(p => p.slug === slug))
+  .filter(Boolean);
+
+const SITE_PHONE = '+7 775 242 77 44';
+---
+<Layout
+  title={post.title + ' — On Time Service'}
+  description={post.excerpt}
+  canonical={`/blog/${post.slug}`}
+  schema={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "description": post.excerpt,
+    "datePublished": post.date,
+    "author": {
+      "@type": "Organization",
+      "name": "On Time Service"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "On Time Service",
+      "url": "https://ontime-logistics.netlify.app"
+    },
+    "image": `${UNS}${post.imgId}?auto=format&fit=crop&w=1200&q=80`,
+    "mainEntityOfPage": `https://ontime-logistics.netlify.app/blog/${post.slug}`
+  }}
+>
+
+<div class="breadcrumb">
+  <a href="/">Главная</a><span class="sep"> / </span><a href="/blog">Блог</a><span class="sep"> / </span><span class="current">{post.title}</span>
+</div>
+
+<!-- Hero image -->
+<div style="width:100%;height:420px;overflow:hidden;position:relative;">
+  <img
+    src={`${UNS}${post.imgId}?auto=format&fit=crop&w=1400&q=75`}
+    alt={post.altHero}
+    loading="eager"
+    width="1400" height="420"
+    style="width:100%;height:100%;object-fit:cover;display:block;"
+  />
+  <div style="position:absolute;inset:0;background:linear-gradient(to bottom, transparent 40%, rgba(12,14,18,.9));"></div>
+  <div style="position:absolute;bottom:0;left:0;right:0;padding:32px 40px;">
+    <div style="display:flex;gap:12px;margin-bottom:12px;align-items:center;flex-wrap:wrap;">
+      <span style="background:var(--gold);color:#000;font-size:11px;font-weight:700;padding:4px 10px;border-radius:3px;text-transform:uppercase;">{post.cat}</span>
+      <span style="color:rgba(255,255,255,.7);font-size:13px;">{post.dateDisplay}</span>
+      <span style="color:rgba(255,255,255,.7);font-size:13px;">{post.readTime} чтения</span>
+    </div>
+    <h1 style="color:#fff;font-size:clamp(1.4rem,3vw,2.2rem);line-height:1.2;max-width:800px;">{post.h1}</h1>
+  </div>
+</div>
+
+<!-- Content layout -->
+<section class="sec">
+  <div style="display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:start;">
+
+    <!-- Article body -->
+    <article>
+      <!-- Pullquote -->
+      {post.pullquote && (
+        <blockquote style="border-left:3px solid var(--gold);padding:16px 24px;margin:0 0 32px;background:var(--dark2);border-radius:0 6px 6px 0;">
+          <p style="color:var(--light);font-size:1.05rem;line-height:1.6;font-style:italic;margin:0;">"{post.pullquote}"</p>
+        </blockquote>
+      )}
+
+      <!-- Illustration -->
+      {post.illId && !post.mapEmbed && (
+        <img
+          src={`${UNS}${post.illId}?auto=format&fit=crop&w=800&q=70`}
+          alt={post.altIll}
+          loading="lazy"
+          width="800" height="400"
+          style="width:100%;border-radius:8px;margin-bottom:28px;display:block;"
+        />
+      )}
+      {post.mapEmbed && (
+        <div style="margin-bottom:28px;border-radius:8px;overflow:hidden;height:300px;">
+          <iframe
+            src={post.mapEmbed}
+            width="100%" height="300"
+            style="border:0;display:block;"
+            allowfullscreen loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      )}
+
+      <!-- Article content -->
+      <div class="article-content" set:html={post.content} />
+
+      <!-- FAQ -->
+      {post.faq && post.faq.length > 0 && (
+        <div style="margin-top:40px;">
+          <h2 style="color:var(--light);font-size:1.3rem;margin-bottom:20px;">Частые вопросы</h2>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            {post.faq.map(({q, a}) => (
+              <div class="blog-faq-item" style="border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+                <div class="blog-faq-q" style="padding:16px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:var(--light);font-weight:500;font-size:14px;">
+                  {q}
+                  <span style="color:var(--gold);font-size:20px;line-height:1;flex-shrink:0;margin-left:12px;">+</span>
+                </div>
+                <div class="blog-faq-a" style="display:none;padding:0 20px 16px;color:var(--gray);font-size:14px;line-height:1.6;">{a}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- CTA in article -->
+      <div style="margin-top:40px;background:var(--dark2);border:1px solid var(--border);border-radius:10px;padding:32px;text-align:center;">
+        <div style="color:var(--gold);font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;">On Time Service</div>
+        <h3 style="color:var(--light);font-size:1.2rem;margin-bottom:12px;">Нужна перевозка?</h3>
+        <p style="color:var(--gray);font-size:14px;margin-bottom:20px;">Оставьте заявку — рассчитаем стоимость за 30 минут</p>
+        <a class="btn btn-gold" href="/kontakty"><Fragment set:html={ARR} /> Рассчитать доставку</a>
+      </div>
+    </article>
+
+    <!-- Sidebar -->
+    <aside style="position:sticky;top:100px;">
+      <!-- TOC -->
+      <div id="blog-toc" class="card" style="margin-bottom:20px;">
+        <div style="color:var(--gold);font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Содержание</div>
+        <ul id="toc-list" style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--gray);"></ul>
+      </div>
+
+      <!-- Contact card -->
+      <div class="card" style="text-align:center;">
+        <div style="color:var(--gold);font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Расчёт бесплатно</div>
+        <a href={`tel:${SITE_PHONE.replace(/\s/g,'')}`} style="display:block;color:var(--light);font-size:1.1rem;font-weight:600;text-decoration:none;margin-bottom:12px;">{SITE_PHONE}</a>
+        <a class="btn btn-gold" href="/kontakty" style="width:100%;justify-content:center;font-size:12px;">Оставить заявку</a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- Related posts -->
+{related.length > 0 && (
+  <section class="sec" style="background:var(--dark2);">
+    <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Читайте также</span></div>
+    <h2 class="title fade" style="margin-bottom:32px;">Похожие статьи</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+      {related.map(rpost => (
+        <a class="card card-link fade" href={`/blog/${rpost.slug}`} style="padding:0;overflow:hidden;display:flex;flex-direction:column;">
+          <div style="overflow:hidden;height:160px;">
+            <img
+              src={`${UNS}${rpost.imgId}?auto=format&fit=crop&w=400&q=60`}
+              alt={rpost.altHero}
+              loading="lazy"
+              width="400" height="160"
+              style="width:100%;height:100%;object-fit:cover;display:block;"
+            />
+          </div>
+          <div style="padding:16px 20px;">
+            <div style="color:var(--gold);font-size:10px;font-weight:600;margin-bottom:8px;">{rpost.cat}</div>
+            <h3 style="color:var(--light);font-size:0.95rem;line-height:1.4;margin-bottom:6px;">{rpost.title}</h3>
+            <div style="color:var(--gray);font-size:12px;">{rpost.dateDisplay}</div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+)}
+
+</Layout>

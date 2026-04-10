@@ -1,0 +1,157 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { IC, ARR } from '../data/icons.js';
+
+const SITE_PHONE = '+7 775 242 77 44';
+---
+<Layout
+  title="Грузоперевозки по Казахстану — On Time Service | Алматы, с 2005 года"
+  description={`Транспортная логистика по Казахстану, России, Китаю и СНГ. Грузы от 100 кг до 70 тонн. Автоперевозки, негабарит, трал, сборные грузы. ✓ 20 лет опыта. ✓ Расчёт за 30 мин. Тел: ${SITE_PHONE}`}
+  canonical="/"
+  keywords="грузоперевозки Алматы, грузоперевозки по Казахстану, транспортная логистика Казахстан, грузоперевозки Астана, логистическая компания Алматы, доставка грузов из Китая в Казахстан, негабаритные грузы Казахстан, LTL перевозки Казахстан, транспортно-экспедиторские услуги Алматы, сборные грузы Алматы"
+  schema={{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": "https://ontime-logistics.netlify.app",
+    "name": "On Time Service",
+    "description": "Грузоперевозки по Казахстану, России, Китаю и СНГ"
+  }}
+>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <video class="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+    <source src="/video (1).mp4#t=0.5" type="video/mp4">
+  </video>
+  <div class="hero-horse" aria-hidden="true">
+    <svg viewBox="0 0 500 420" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="hg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#C9A84C" stop-opacity=".6"/>
+          <stop offset="100%" stop-color="#C9A84C" stop-opacity=".02"/>
+        </linearGradient>
+      </defs>
+      <path d="M380 95 C400 75 420 55 415 38 C410 21 392 24 382 36 C372 48 368 62 364 72 C352 62 340 47 324 42 C308 37 297 47 292 62 C282 77 285 94 287 110 C267 105 247 100 226 106 C205 112 189 123 179 140 C164 162 162 190 164 215 C158 227 147 243 142 260 C137 277 141 294 149 300 C133 312 117 329 112 351 C107 373 118 393 130 404 C124 415 122 430 130 441 C138 452 153 452 158 440 C164 428 160 413 164 401 C175 408 192 408 202 400 C208 413 205 433 213 443 C221 453 236 452 241 441 C246 430 242 413 246 401 C262 408 283 410 298 401 C304 415 301 434 309 444 C317 454 334 452 338 441 C342 430 338 413 340 401 C353 408 370 406 378 396 C386 386 381 368 373 354 C386 340 395 320 392 298 C389 276 373 259 360 248 C371 231 382 209 385 185 C388 161 381 140 376 127 C386 122 382 100 380 95 Z" fill="url(#hg)" stroke="rgba(201,168,76,.25)" stroke-width="1.5"/>
+      <path d="M364 72 C370 55 378 36 387 25 C396 14 409 11 418 22 C427 33 424 52 418 66 C412 80 399 88 388 84 C379 80 368 76 364 72 Z" fill="url(#hg)" stroke="rgba(201,168,76,.25)" stroke-width="1.5"/>
+      <circle cx="410" cy="36" r="3" fill="rgba(201,168,76,.9)"/>
+      <line x1="40" y1="380" x2="470" y2="380" stroke="rgba(201,168,76,.12)" stroke-width="1"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow anim-1">
+      <div class="hero-eyebrow-line"></div>
+      <span>На рынке с 2005 года</span>
+    </div>
+    <h1 class="hero-h anim-2">ON TIME<span class="gold">SERVICE</span></h1>
+    <div class="hero-sub anim-2">Казахстан · Россия · Китай</div>
+    <p class="hero-p anim-3">Транспортная компания Казахстан - грузоперевозки по Алматы, Астане и всем регионам РК. Доставка в Россию, Китай и СНГ. Любой груз от 100 кг до 70 тонн - точно в срок.</p>
+    <div class="hero-btns anim-4">
+      <a class="btn btn-gold" href="/kontakty"><Fragment set:html={ARR} /> Рассчитать доставку</a>
+      <a class="btn btn-outline" href="/uslugi">Наши услуги</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div><div class="stat-n">20+</div><div class="stat-l">Лет опыта</div></div>
+    <div><div class="stat-n">70Т</div><div class="stat-l">Макс. груз</div></div>
+    <div><div class="stat-n">12</div><div class="stat-l">Регионов</div></div>
+    <div><div class="stat-n">3</div><div class="stat-l">Страны</div></div>
+  </div>
+</section>
+
+<!-- Services preview -->
+<section class="sec" style="background:var(--dark2);">
+  <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Что мы предлагаем</span></div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px;">
+    <h2 class="title fade">Наши<br>услуги</h2>
+    <a class="btn btn-outline fade" href="/uslugi">Все услуги <Fragment set:html={ARR} /></a>
+  </div>
+  <div class="grid4">
+    {[
+      [IC.truck,'01','Автоперевозки','Грузовые перевозки по всем направлениям','/uslugi/avtoperevozki'],
+      [IC.oversize,'02','Негабаритные грузы','Спецтранспорт для крупных и тяжёлых грузов','/uslugi/negabarit'],
+      [IC.ship,'03','Из Китая','Импортная логистика и таможенное оформление','/uslugi/kitay'],
+      [IC.lowboy,'04','Перевозка тралом','Тяжёлая и строительная техника','/uslugi/tral'],
+      [IC.globe,'05','Россия и СНГ','Международные перевозки и сопровождение','/uslugi/rossiya-sng'],
+      [IC.map,'06','По Казахстану','Все регионы страны - от Алматы до Актау','/uslugi/po-kazakhstanu'],
+      [IC.box,'07','Сборные грузы','Консолидация грузов, экономия на перевозке','/uslugi/sbornyy-gruz'],
+      [IC.city,'08','Доставка по Алматы','Срочная городская доставка','/uslugi/dostavka-po-gorodu'],
+    ].map(([icon,num,title,desc,path]) => (
+      <a class="card card-link fade" href={path}>
+        <div class="card-num">{num}</div>
+        <div class="card-icon"><Fragment set:html={icon} /></div>
+        <div class="card-title">{title}</div>
+        <div class="card-desc">{desc}</div>
+        <div class="card-arr"><Fragment set:html={ARR} /></div>
+      </a>
+    ))}
+  </div>
+</section>
+
+<!-- Regions preview -->
+<section class="sec">
+  <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">SEO по регионам</span></div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px;">
+    <h2 class="title fade">Регионы<br>Казахстана</h2>
+    <a class="btn btn-outline fade" href="/regiony">Все регионы <Fragment set:html={ARR} /></a>
+  </div>
+  <div class="grid4">
+    {[
+      [IC.city,'Алматы','Южная столица, деловой центр','/region/almaty'],
+      [IC.building,'Астана','Столица и транспортный хаб','/region/astana'],
+      [IC.leaf,'Шымкент','Юг, 3-й по величине город','/region/shymkent'],
+      [IC.mining,'Карагандa','Промышленный центр страны','/region/karaganda'],
+      [IC.oil,'Атырау','Нефтяная столица Казахстана','/region/atyrau'],
+      [IC.anchor,'Актау','Порт на Каспийском море','/region/aktau'],
+      [IC.wheat,'Костанай','Зерновой регион севера','/region/kostanay'],
+      [IC.factory,'Павлодар','Промышленный север страны','/region/pavlodar'],
+    ].map(([icon,name,desc,path]) => (
+      <a class="card card-link fade" href={path}>
+        <div class="card-icon"><Fragment set:html={icon} /></div>
+        <div class="card-title">Грузоперевозки<br>{name}</div>
+        <div class="card-desc">{desc}</div>
+        <div class="card-arr"><Fragment set:html={ARR} /></div>
+      </a>
+    ))}
+  </div>
+</section>
+
+<!-- About snippet -->
+<section class="sec" style="background:var(--dark2);">
+  <div class="two-col">
+    <div class="fade">
+      <div class="sec-label"><div class="sec-label-line"></div><span class="sec-label-text">О компании</span></div>
+      <h2 class="title">Надёжное<br>звено</h2>
+      <p class="desc" style="margin-bottom:24px;">ТЛК «On Time Service» - транспортно-логистическая компания, работающая на рынке Казахстана с 2005 года. Специализируемся на автоперевозках, негабаритных и тяжёлых грузах, импорте из Китая.</p>
+      <div class="quote-block">
+        <div class="quote-label">Наша миссия</div>
+        <div class="quote-text">Быть вашим надёжным партнёром в сфере транспортной логистики. Качественный, профессиональный подход в области транспортно-экспедиторских услуг.</div>
+      </div>
+      <a class="btn btn-outline" href="/o-kompanii" style="margin-top:20px;">Подробнее <Fragment set:html={ARR} /></a>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;" class="fade">
+      {[
+        {from:5, to:20, suffix:'+', label:'лет на рынке'},
+        {from:60,to:70, suffix:'Т', label:'максимальный груз'},
+        {from:5, to:12, suffix:'',  label:'регионов КЗ'},
+        {from:1, to:3,  suffix:'',  label:'страны'}
+      ].map(({from,to,suffix,label}) => (
+        <div class="info-card" data-from={from} data-to={to} data-suffix={suffix}>
+          <div class="metric-val">{from}{suffix}</div>
+          <div class="metric-label">{label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sec" style="text-align:center;">
+  <div class="fade">
+    <div class="sec-label" style="justify-content:center;"><div class="sec-label-line"></div><span class="sec-label-text">Начните прямо сейчас</span><div class="sec-label-line"></div></div>
+    <h2 class="title" style="margin-bottom:16px;">Нужна перевозка?</h2>
+    <p class="desc" style="max-width:500px;margin:0 auto 28px;">Оставьте заявку - менеджер свяжется в течение 30 минут и рассчитает стоимость доставки</p>
+    <a class="btn btn-gold" href="/kontakty" style="font-size:13px;padding:16px 40px;"><Fragment set:html={ARR} /> Оставить заявку</a>
+  </div>
+</section>
+
+</Layout>
