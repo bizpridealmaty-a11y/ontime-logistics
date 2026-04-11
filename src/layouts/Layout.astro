@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Analytics from '../components/Analytics.astro';
 
 interface Props {
   title: string;
@@ -125,6 +126,9 @@ const canonicalUrl = `${SITE_URL}${canonical === '/' ? '/' : canonical}`;
   <link rel="preload" as="font" type="font/woff2" href="/fonts/manrope-cyrillic.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="/fonts/manrope-latin.woff2" crossorigin>
   <link rel="stylesheet" href="/fonts/fonts.css">
+
+  <!-- Analytics (prod only) -->
+  <Analytics />
 </head>
 <body>
 
