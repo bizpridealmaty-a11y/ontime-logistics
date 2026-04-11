@@ -111,22 +111,14 @@ const canonicalUrl = `${SITE_URL}${canonical === '/' ? '/' : canonical}`;
 
   {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
 
-  <!-- Preconnect: Google Fonts + image CDN -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Preconnect to image CDN -->
   <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
   <link rel="dns-prefetch" href="https://images.unsplash.com">
 
-  <!-- Fonts: async load to unblock render. Weights: 300 (thin desc), 400, 600, 700 -->
-  <link
-    rel="preload"
-    as="style"
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;600;700&display=swap"
-    onload="this.onload=null;this.rel='stylesheet'"
-  >
-  <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;600;700&display=swap">
-  </noscript>
+  <!-- Self-hosted fonts (Manrope variable + Bebas Neue). Same-origin = no extra DNS/TLS handshake. -->
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/manrope-cyrillic.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/manrope-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="/fonts/fonts.css">
 </head>
 <body>
 

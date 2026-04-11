@@ -50,6 +50,12 @@
   [headers.values]
     Cache-Control = "public, max-age=2592000"
 
+# ─── Self-hosted fonts (never change unless redeployed with new name) ───
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
 # ─── HTML pages ───
 # Must revalidate on each request so deploys are picked up instantly.
 # Netlify edge still caches until the next deploy invalidates cache.
