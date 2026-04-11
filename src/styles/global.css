@@ -235,16 +235,34 @@ footer{background:var(--dark2);border-top:1px solid var(--border2);padding:56px;
 
 /* ─── MOBILE ─── */
 @media(max-width:900px){
-  #nav{padding:0 20px;}
+  #nav{padding:0 16px;}
+  .nav-inner{gap:12px;}
+  .nav-brand{margin-right:0;}
+  .nav-brand-main{font-size:15px;letter-spacing:2px;}
+  .nav-brand-sub{font-size:7px;letter-spacing:2px;}
   .nav-menu{display:none;}
   .nav-phone{display:none;}
+  .nav-cta{margin-left:auto;padding:9px 14px;font-size:10px;letter-spacing:1px;}
   .sec,.sec-sm,.hero,.page-header{padding-left:20px;padding-right:20px;}
-  .breadcrumb{padding-left:20px;}
-  .grid2,.grid3,.grid4,.two-col,.two-col-40,.form-row2{grid-template-columns:1fr;}
+  .sec{padding-top:56px;padding-bottom:56px;}
+  .page-header{padding-top:40px;padding-bottom:36px;}
+  .breadcrumb{padding-left:20px;padding-right:20px;}
+  .grid2,.grid3,.two-col,.two-col-40,.form-row2{grid-template-columns:1fr;}
+  .grid4{grid-template-columns:1fr 1fr;}
+  /* Catch inline grids on service/region/etc pages */
+  [style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important;}
+  [style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr 1fr!important;}
+  .card{padding:22px;}
+  h1.title,h2.title{font-size:clamp(28px,8vw,44px)!important;word-wrap:break-word;}
   .hero-horse{display:none;}
   .hero-stats{right:20px;}
   .footer-top{grid-template-columns:1fr 1fr;}
   footer{padding:40px 20px;}
+}
+@media(max-width:520px){
+  .grid4,[style*="grid-template-columns:repeat(4"]{grid-template-columns:1fr!important;}
+  .nav-cta{padding:8px 10px;font-size:9px;}
+  .nav-brand-sub{display:none;}
 }
 
 /* ══ MODERN ANIMATIONS ══ */
