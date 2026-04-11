@@ -12,9 +12,15 @@ const SITE_PHONE = '+7 775 242 77 44';
   schema={{
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "url": "https://ontime-logistics.netlify.app",
+    "url": "https://ontimeservice.kz",
     "name": "On Time Service",
-    "description": "Грузоперевозки по Казахстану, России, Китаю и СНГ"
+    "description": "Грузоперевозки по Казахстану, России, Китаю и СНГ",
+    "inLanguage": "ru-KZ",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://ontimeservice.kz/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
   }}
 >
 
