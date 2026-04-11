@@ -7,9 +7,11 @@ interface Props {
   canonical?: string;
   schema?: object;
   keywords?: string;
+  heroImageSrcset?: string;
+  heroImageSizes?: string;
 }
 
-const { title, description, canonical = Astro.url.pathname, schema, keywords } = Astro.props;
+const { title, description, canonical = Astro.url.pathname, schema, keywords, heroImageSrcset, heroImageSizes } = Astro.props;
 const SITE_URL = 'https://ontimeservice.kz';
 const SITE_PHONE = '+7 775 242 77 44';
 
@@ -114,6 +116,10 @@ const canonicalUrl = `${SITE_URL}${canonical === '/' ? '/' : canonical}`;
   <!-- Preconnect to image CDN -->
   <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
   <link rel="dns-prefetch" href="https://images.unsplash.com">
+
+  {heroImageSrcset && (
+    <link rel="preload" as="image" imagesrcset={heroImageSrcset} imagesizes={heroImageSizes ?? '100vw'} />
+  )}
 
   <!-- Self-hosted fonts (Manrope variable + Bebas Neue). Same-origin = no extra DNS/TLS handshake. -->
   <link rel="preload" as="font" type="font/woff2" href="/fonts/manrope-cyrillic.woff2" crossorigin>
@@ -280,6 +286,6 @@ const canonicalUrl = `${SITE_URL}${canonical === '/' ? '/' : canonical}`;
   </svg>
 </a>
 
-<script src="/scripts/animations.js" is:inline></script>
+<script src="/scripts/animations.js" is:inline defer></script>
 </body>
 </html>

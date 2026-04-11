@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { BLOG_POSTS, UNS } from '../../data/blog.js';
+import { BLOG_POSTS, unsUrl, unsSrcset } from '../../data/blog.js';
 import { ARR } from '../../data/icons.js';
 
 export function getStaticPaths() {
@@ -16,11 +16,18 @@ const related = post.related
   .filter(Boolean);
 
 const SITE_PHONE = '+7 775 242 77 44';
+
+// Preload data for LCP image (Unsplash hero).
+// Browser will pick the right source from the srcset based on viewport width.
+const heroSrcset = unsSrcset(post.imgId, [640, 960, 1280, 1600], 75);
+const heroSizes = '100vw';
 ---
 <Layout
   title={post.title + ' — On Time Service'}
   description={post.excerpt}
   canonical={`/blog/${post.slug}`}
+  heroImageSrcset={heroSrcset}
+  heroImageSizes={heroSizes}
   schema={{
     "@context": "https://schema.org",
     "@type": "Article",
@@ -34,10 +41,10 @@ const SITE_PHONE = '+7 775 242 77 44';
     "publisher": {
       "@type": "Organization",
       "name": "On Time Service",
-      "url": "https://ontime-logistics.netlify.app"
+      "url": "https://ontimeservice.kz"
     },
-    "image": `${UNS}${post.imgId}?auto=format&fit=crop&w=1200&q=80`,
-    "mainEntityOfPage": `https://ontime-logistics.netlify.app/blog/${post.slug}`
+    "image": unsUrl(post.imgId, 1200, 80),
+    "mainEntityOfPage": `https://ontimeservice.kz/blog/${post.slug}`
   }}
 >
 
@@ -48,10 +55,14 @@ const SITE_PHONE = '+7 775 242 77 44';
 <!-- Hero image -->
 <div class="blog-post-hero">
   <img
-    src={`${UNS}${post.imgId}?auto=format&fit=crop&w=1400&q=75`}
+    src={unsUrl(post.imgId, 1280, 75)}
+    srcset={heroSrcset}
+    sizes={heroSizes}
     alt={post.altHero}
     loading="eager"
-    width="1400" height="420"
+    fetchpriority="high"
+    decoding="async"
+    width="1280" height="384"
   />
   <div class="blog-post-hero-fade"></div>
   <div class="blog-post-hero-meta">
@@ -80,10 +91,13 @@ const SITE_PHONE = '+7 775 242 77 44';
       <!-- Illustration -->
       {post.illId && !post.mapEmbed && (
         <img
-          src={`${UNS}${post.illId}?auto=format&fit=crop&w=800&q=70`}
+          src={unsUrl(post.illId, 800, 70)}
+          srcset={unsSrcset(post.illId, [400, 640, 800, 1000], 70)}
+          sizes="(max-width:900px) 100vw, 720px"
           alt={post.altIll}
           loading="lazy"
-          width="800" height="400"
+          decoding="async"
+          width="800" height="450"
           style="width:100%;border-radius:8px;margin-bottom:28px;display:block;"
         />
       )}
@@ -157,10 +171,13 @@ const SITE_PHONE = '+7 775 242 77 44';
         <a class="card card-link fade" href={`/blog/${rpost.slug}`} style="padding:0;overflow:hidden;display:flex;flex-direction:column;">
           <div style="overflow:hidden;height:160px;">
             <img
-              src={`${UNS}${rpost.imgId}?auto=format&fit=crop&w=400&q=60`}
+              src={unsUrl(rpost.imgId, 400, 60)}
+              srcset={unsSrcset(rpost.imgId, [320, 400, 640], 60)}
+              sizes="(max-width:900px) 100vw, 33vw"
               alt={rpost.altHero}
               loading="lazy"
-              width="400" height="160"
+              decoding="async"
+              width="400" height="240"
               style="width:100%;height:100%;object-fit:cover;display:block;"
             />
           </div>

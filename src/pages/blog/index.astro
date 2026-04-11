@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { BLOG_POSTS, UNS } from '../../data/blog.js';
+import { BLOG_POSTS, unsUrl, unsSrcset } from '../../data/blog.js';
 import { IC, ARR } from '../../data/icons.js';
 
 const SITE_PHONE = '+7 775 242 77 44';
@@ -27,10 +27,14 @@ const sorted = [...BLOG_POSTS].sort((a, b) => new Date(b.date) - new Date(a.date
     <a class="card card-link fade" href={`/blog/${sorted[0].slug}`} style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:32px;overflow:hidden;padding:0;">
       <div style="overflow:hidden;">
         <img
-          src={`${UNS}${sorted[0].imgId}?auto=format&fit=crop&w=700&q=70`}
+          src={unsUrl(sorted[0].imgId, 800)}
+          srcset={unsSrcset(sorted[0].imgId, [400, 640, 800, 1200])}
+          sizes="(max-width:900px) 100vw, 50vw"
           alt={sorted[0].altHero}
-          loading="lazy"
-          width="700" height="400"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          width="800" height="450"
           style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;"
         />
       </div>
@@ -55,10 +59,13 @@ const sorted = [...BLOG_POSTS].sort((a, b) => new Date(b.date) - new Date(a.date
       <a class="card card-link fade" href={`/blog/${post.slug}`} style="padding:0;overflow:hidden;display:flex;flex-direction:column;">
         <div style="overflow:hidden;height:180px;">
           <img
-            src={`${UNS}${post.imgId}?auto=format&fit=crop&w=400&q=65`}
+            src={unsUrl(post.imgId, 480, 65)}
+            srcset={unsSrcset(post.imgId, [320, 480, 640, 800], 65)}
+            sizes="(max-width:520px) 100vw, (max-width:900px) 50vw, 33vw"
             alt={post.altHero}
             loading="lazy"
-            width="400" height="180"
+            decoding="async"
+            width="480" height="270"
             style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;"
           />
         </div>

@@ -1,5 +1,22 @@
 export const UNS = 'https://images.unsplash.com/photo-';
 
+/**
+ * Build an Unsplash URL for a given image id and width.
+ * auto=format → lets Unsplash serve AVIF/WebP when supported.
+ * fit=crop → consistent aspect crop from the center.
+ */
+export function unsUrl(id, w, q = 70) {
+  return `${UNS}${id}?auto=format&fit=crop&w=${w}&q=${q}`;
+}
+
+/**
+ * Build a responsive srcset (multiple widths, comma separated) for <img srcset>.
+ * widths default covers phone → desktop retina.
+ */
+export function unsSrcset(id, widths = [400, 640, 960, 1280, 1600], q = 70) {
+  return widths.map(w => `${UNS}${id}?auto=format&fit=crop&w=${w}&q=${q} ${w}w`).join(', ');
+}
+
 export const BLOG_POSTS = [
   {
     slug:'gruzoperevozki-po-kazakhstanu', cat:'Грузоперевозки', readTime:'7 мин', date:'2025-03-05', dateDisplay:'5 марта 2025',

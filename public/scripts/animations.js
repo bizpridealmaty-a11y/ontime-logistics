@@ -1,27 +1,50 @@
 (function(){
-  /* ── 1. Scroll progress bar ── */
+  /* ── 1. Scroll progress bar (rAF-throttled) ── */
   const bar = document.getElementById('scroll-bar');
   if (bar) {
+    let barTicking = false;
     window.addEventListener('scroll', () => {
-      const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
-      bar.style.width = Math.min(pct, 100) + '%';
+      if (barTicking) return;
+      barTicking = true;
+      requestAnimationFrame(() => {
+        const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+        bar.style.width = Math.min(pct, 100) + '%';
+        barTicking = false;
+      });
     }, {passive:true});
   }
 
-  /* ── 2. Cursor glow ── */
+  /* ── 2. Cursor glow (desktop only, no hover = no listener) ── */
   const glow = document.getElementById('cursor-glow');
-  if (glow) {
+  if (glow && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
     window.addEventListener('mousemove', e => {
       glow.style.left = e.clientX + 'px';
       glow.style.top  = e.clientY + 'px';
     }, {passive:true});
+  } else if (glow) {
+    glow.style.display = 'none';
   }
 
-  /* ── 3. Parallax hero video on scroll ── */
-  window.addEventListener('scroll', () => {
-    const vid = document.querySelector('.hero-video');
-    if (vid) vid.style.transform = `translateY(${window.scrollY * 0.3}px)`;
-  }, {passive:true});
+  /* ── 3. Parallax hero video on scroll (only while hero in view) ── */
+  const vid = document.querySelector('.hero-video');
+  if (vid) {
+    let scrollTicking = false;
+    let heroVisible = true;
+    const onScroll = () => {
+      if (!heroVisible || scrollTicking) return;
+      scrollTicking = true;
+      requestAnimationFrame(() => {
+        vid.style.transform = `translate3d(0, ${window.scrollY * 0.3}px, 0)`;
+        scrollTicking = false;
+      });
+    };
+    const heroObs = new IntersectionObserver(entries => {
+      heroVisible = entries[0].isIntersecting;
+    }, { rootMargin: '200px' });
+    const heroSection = vid.closest('.hero') || vid.parentElement;
+    if (heroSection) heroObs.observe(heroSection);
+    window.addEventListener('scroll', onScroll, {passive:true});
+  }
 
   /* ── 4. Fade-in observer ── */
   const obs = new IntersectionObserver(entries => {
