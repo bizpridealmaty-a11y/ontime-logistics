@@ -130,13 +130,13 @@ const SITE_PHONE = '+7 775 242 77 44';
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;" class="fade">
       {[
-        {from:5, to:20, suffix:'+', label:'лет на рынке'},
-        {from:60,to:70, suffix:'Т', label:'максимальный груз'},
-        {from:5, to:12, suffix:'',  label:'регионов КЗ'},
-        {from:1, to:3,  suffix:'',  label:'страны'}
+        {from:0,  to:20, suffix:'+', label:'лет на рынке'},
+        {from:0,  to:70, suffix:'Т', label:'максимальный груз'},
+        {from:0,  to:12, suffix:'',  label:'регионов КЗ'},
+        {from:0,  to:3,  suffix:'',  label:'страны'}
       ].map(({from,to,suffix,label}) => (
         <div class="info-card" data-from={from} data-to={to} data-suffix={suffix}>
-          <div class="metric-val">{from}{suffix}</div>
+          <div class="metric-val">{to}{suffix}</div>
           <div class="metric-label">{label}</div>
         </div>
       ))}

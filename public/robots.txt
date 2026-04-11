@@ -1,8 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /api/
 
 # Sitemap
-Sitemap: https://ontime-logistics.netlify.app/sitemap.xml
+Sitemap: https://ontimeservice.kz/sitemap.xml
 
 # Яндекс
 User-agent: Yandex
@@ -12,3 +13,6 @@ Crawl-delay: 1
 # Google
 User-agent: Googlebot
 Allow: /
+
+# Host directive (Яндекс)
+Host: https://ontimeservice.kz

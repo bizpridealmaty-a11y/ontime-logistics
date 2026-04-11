@@ -1,1 +1,6 @@
-/* /index.html 200
+# Legacy domain redirect — if anyone hits the old Netlify URL, 301 to production
+https://ontime-logistics.netlify.app/*  https://ontimeservice.kz/:splat  301!
+
+# Trailing-slash normalization is handled by Astro build output.
+# No SPA fallback — Astro generates real .html files for every route,
+# and Netlify serves 404.html automatically for unknown paths with HTTP 404.

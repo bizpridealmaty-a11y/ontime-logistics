@@ -10,7 +10,7 @@ interface Props {
 }
 
 const { title, description, canonical = Astro.url.pathname, schema, keywords } = Astro.props;
-const SITE_URL = 'https://ontime-logistics.netlify.app';
+const SITE_URL = 'https://ontimeservice.kz';
 const SITE_PHONE = '+7 775 242 77 44';
 
 const orgSchema = {
@@ -111,8 +111,22 @@ const canonicalUrl = `${SITE_URL}${canonical === '/' ? '/' : canonical}`;
 
   {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
 
+  <!-- Preconnect: Google Fonts + image CDN -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+  <link rel="dns-prefetch" href="https://images.unsplash.com">
+
+  <!-- Fonts: async load to unblock render. Weights: 300 (thin desc), 400, 600, 700 -->
+  <link
+    rel="preload"
+    as="style"
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;600;700&display=swap"
+    onload="this.onload=null;this.rel='stylesheet'"
+  >
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;600;700&display=swap">
+  </noscript>
 </head>
 <body>
 
@@ -251,12 +265,6 @@ const canonicalUrl = `${SITE_URL}${canonical === '/' ? '/' : canonical}`;
   </div>
   <div class="footer-bottom">
     <span class="footer-copy">© 2005-2026 On Time Service · Алматы, Казахстан · Все права защищены</span>
-    <div class="footer-seo-links">
-      <a href="/region/almaty">Грузоперевозки Алматы</a>
-      <a href="/region/astana">Грузоперевозки Астана</a>
-      <a href="/region/shymkent">Грузоперевозки Шымкент</a>
-      <a href="/uslugi/kitay">Грузы из Китая</a>
-    </div>
   </div>
 </footer>
 
