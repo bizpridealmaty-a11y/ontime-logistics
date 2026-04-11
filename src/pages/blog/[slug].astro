@@ -46,28 +46,27 @@ const SITE_PHONE = '+7 775 242 77 44';
 </div>
 
 <!-- Hero image -->
-<div style="width:100%;height:420px;overflow:hidden;position:relative;">
+<div class="blog-post-hero">
   <img
     src={`${UNS}${post.imgId}?auto=format&fit=crop&w=1400&q=75`}
     alt={post.altHero}
     loading="eager"
     width="1400" height="420"
-    style="width:100%;height:100%;object-fit:cover;display:block;"
   />
-  <div style="position:absolute;inset:0;background:linear-gradient(to bottom, transparent 40%, rgba(12,14,18,.9));"></div>
-  <div style="position:absolute;bottom:0;left:0;right:0;padding:32px 40px;">
-    <div style="display:flex;gap:12px;margin-bottom:12px;align-items:center;flex-wrap:wrap;">
-      <span style="background:var(--gold);color:#000;font-size:11px;font-weight:700;padding:4px 10px;border-radius:3px;text-transform:uppercase;">{post.cat}</span>
-      <span style="color:rgba(255,255,255,.7);font-size:13px;">{post.dateDisplay}</span>
-      <span style="color:rgba(255,255,255,.7);font-size:13px;">{post.readTime} чтения</span>
+  <div class="blog-post-hero-fade"></div>
+  <div class="blog-post-hero-meta">
+    <div class="blog-post-hero-tags">
+      <span class="blog-post-cat">{post.cat}</span>
+      <span class="blog-post-date">{post.dateDisplay}</span>
+      <span class="blog-post-date">{post.readTime} чтения</span>
     </div>
-    <h1 style="color:#fff;font-size:clamp(1.4rem,3vw,2.2rem);line-height:1.2;max-width:800px;">{post.h1}</h1>
+    <h1 class="blog-post-h1">{post.h1}</h1>
   </div>
 </div>
 
 <!-- Content layout -->
 <section class="sec">
-  <div style="display:grid;grid-template-columns:1fr 300px;gap:40px;align-items:start;">
+  <div class="blog-layout">
 
     <!-- Article body -->
     <article>
@@ -131,7 +130,7 @@ const SITE_PHONE = '+7 775 242 77 44';
     </article>
 
     <!-- Sidebar -->
-    <aside style="position:sticky;top:100px;">
+    <aside class="blog-sidebar">
       <!-- TOC -->
       <div id="blog-toc" class="card" style="margin-bottom:20px;">
         <div style="color:var(--gold);font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">Содержание</div>
