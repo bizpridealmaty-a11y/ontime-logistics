@@ -11,43 +11,43 @@
 
   <!-- ОСНОВНЫЕ СТРАНИЦЫ -->
   <url>
-    <loc>https://ontimeservice.kz/uslugi</loc>
+    <loc>https://ontimeservice.kz/uslugi/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/napravleniya</loc>
+    <loc>https://ontimeservice.kz/napravleniya/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/o-kompanii</loc>
+    <loc>https://ontimeservice.kz/o-kompanii/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/o-logistike</loc>
+    <loc>https://ontimeservice.kz/o-logistike/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/kontakty</loc>
+    <loc>https://ontimeservice.kz/kontakty/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/karta-sayta</loc>
+    <loc>https://ontimeservice.kz/karta-sayta/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/politika-konfidentsialnosti</loc>
+    <loc>https://ontimeservice.kz/politika-konfidentsialnosti/</loc>
     <lastmod>2026-04-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
@@ -55,49 +55,49 @@
 
   <!-- СТРАНИЦЫ УСЛУГ -->
   <url>
-    <loc>https://ontimeservice.kz/uslugi/avtoperevozki</loc>
+    <loc>https://ontimeservice.kz/uslugi/avtoperevozki/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/uslugi/negabarit</loc>
+    <loc>https://ontimeservice.kz/uslugi/negabarit/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/uslugi/tral</loc>
+    <loc>https://ontimeservice.kz/uslugi/tral/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/uslugi/kitay</loc>
+    <loc>https://ontimeservice.kz/uslugi/kitay/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/uslugi/rossiya-sng</loc>
+    <loc>https://ontimeservice.kz/uslugi/rossiya-sng/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/uslugi/dostavka-po-gorodu</loc>
+    <loc>https://ontimeservice.kz/uslugi/dostavka-po-gorodu/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/uslugi/sbornyy-gruz</loc>
+    <loc>https://ontimeservice.kz/uslugi/sbornyy-gruz/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/uslugi/po-kazakhstanu</loc>
+    <loc>https://ontimeservice.kz/uslugi/po-kazakhstanu/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
@@ -105,79 +105,79 @@
 
   <!-- РЕГИОНАЛЬНЫЕ СТРАНИЦЫ — Алматы и Астана = наивысший приоритет -->
   <url>
-    <loc>https://ontimeservice.kz/regiony</loc>
+    <loc>https://ontimeservice.kz/regiony/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/region/almaty</loc>
+    <loc>https://ontimeservice.kz/region/almaty/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/region/astana</loc>
+    <loc>https://ontimeservice.kz/region/astana/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/region/shymkent</loc>
+    <loc>https://ontimeservice.kz/region/shymkent/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/region/karaganda</loc>
+    <loc>https://ontimeservice.kz/region/karaganda/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/region/atyrau</loc>
+    <loc>https://ontimeservice.kz/region/atyrau/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/region/aktau</loc>
+    <loc>https://ontimeservice.kz/region/aktau/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/region/kostanay</loc>
+    <loc>https://ontimeservice.kz/region/kostanay/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/region/pavlodar</loc>
+    <loc>https://ontimeservice.kz/region/pavlodar/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/region/ust-kamenogorsk</loc>
+    <loc>https://ontimeservice.kz/region/ust-kamenogorsk/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/region/taraz</loc>
+    <loc>https://ontimeservice.kz/region/taraz/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/region/aktobe</loc>
+    <loc>https://ontimeservice.kz/region/aktobe/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/region/semey</loc>
+    <loc>https://ontimeservice.kz/region/semey/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -185,128 +185,128 @@
 
   <!-- БЛОГ — статьи (5+5+5 по плану публикаций) -->
   <url>
-    <loc>https://ontimeservice.kz/blog</loc>
+    <loc>https://ontimeservice.kz/blog/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/blog/gruzoperevozki-po-kazakhstanu</loc>
+    <loc>https://ontimeservice.kz/blog/gruzoperevozki-po-kazakhstanu/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/blog/almaty-astana</loc>
+    <loc>https://ontimeservice.kz/blog/almaty-astana/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/blog/chto-takoe-logistika</loc>
+    <loc>https://ontimeservice.kz/blog/chto-takoe-logistika/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/blog/dostavka-iz-kitaya</loc>
+    <loc>https://ontimeservice.kz/blog/dostavka-iz-kitaya/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/blog/raschet-stoimosti</loc>
+    <loc>https://ontimeservice.kz/blog/raschet-stoimosti/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/blog/sbornyy-gruz-ltl</loc>
+    <loc>https://ontimeservice.kz/blog/sbornyy-gruz-ltl/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/blog/negabaritnyy-gruz</loc>
+    <loc>https://ontimeservice.kz/blog/negabaritnyy-gruz/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/blog/perevozka-tralom</loc>
+    <loc>https://ontimeservice.kz/blog/perevozka-tralom/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/blog/ftl-vs-ltl</loc>
+    <loc>https://ontimeservice.kz/blog/ftl-vs-ltl/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/blog/kak-vybrat-kompaniyu</loc>
+    <loc>https://ontimeservice.kz/blog/kak-vybrat-kompaniyu/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/blog/kazakhstan-rossiya</loc>
+    <loc>https://ontimeservice.kz/blog/kazakhstan-rossiya/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/blog/rynok-2025</loc>
+    <loc>https://ontimeservice.kz/blog/rynok-2025/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/blog/tamozhennoe-oformlenie</loc>
+    <loc>https://ontimeservice.kz/blog/tamozhennoe-oformlenie/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/blog/gruzoperevozki-atyrau</loc>
+    <loc>https://ontimeservice.kz/blog/gruzoperevozki-atyrau/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ontimeservice.kz/blog/upakovka-gruza</loc>
+    <loc>https://ontimeservice.kz/blog/upakovka-gruza/</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- ПОСАДОЧНЫЕ -->
-  <url><loc>https://ontimeservice.kz/raschet-stoimosti</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://ontimeservice.kz/dokumenty</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://ontimeservice.kz/voprosy-otvety</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://ontimeservice.kz/kak-rabotaem</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ontimeservice.kz/raschet-stoimosti/</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://ontimeservice.kz/dokumenty/</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ontimeservice.kz/voprosy-otvety/</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ontimeservice.kz/kak-rabotaem/</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- УСЛУГА × РЕГИОН -->
-  <url><loc>https://ontimeservice.kz/uslugi-region/negabarit-almaty</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://ontimeservice.kz/uslugi-region/tral-atyrau</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://ontimeservice.kz/uslugi-region/kitay-almaty</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://ontimeservice.kz/uslugi-region/negabarit-almaty/</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://ontimeservice.kz/uslugi-region/tral-atyrau/</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://ontimeservice.kz/uslugi-region/kitay-almaty/</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
 
   <!-- МАРШРУТЫ -->
-  <url><loc>https://ontimeservice.kz/marshruty</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://ontimeservice.kz/marshruty/almaty-astana</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://ontimeservice.kz/marshruty/almaty-shymkent</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://ontimeservice.kz/marshruty/almaty-atyrau</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://ontimeservice.kz/marshruty/almaty-aktau</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://ontimeservice.kz/marshruty/almaty-bishkek</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://ontimeservice.kz/marshruty/almaty-tashkent</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://ontimeservice.kz/marshruty/almaty-moskva</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://ontimeservice.kz/marshruty/khorgos-almaty</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://ontimeservice.kz/marshruty/</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://ontimeservice.kz/marshruty/almaty-astana/</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://ontimeservice.kz/marshruty/almaty-shymkent/</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://ontimeservice.kz/marshruty/almaty-atyrau/</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://ontimeservice.kz/marshruty/almaty-aktau/</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://ontimeservice.kz/marshruty/almaty-bishkek/</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://ontimeservice.kz/marshruty/almaty-tashkent/</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://ontimeservice.kz/marshruty/almaty-moskva/</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://ontimeservice.kz/marshruty/khorgos-almaty/</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
 
   <!-- КЕЙСЫ -->
-  <url><loc>https://ontimeservice.kz/keysy</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://ontimeservice.kz/keysy/almaty-moskva-2t</loc><lastmod>2026-04-29</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://ontimeservice.kz/keysy/guangzhou-astana-3t</loc><lastmod>2026-04-29</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://ontimeservice.kz/keysy/novorossiysk-shymkent-1.8t</loc><lastmod>2026-04-29</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ontimeservice.kz/keysy/</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ontimeservice.kz/keysy/almaty-moskva-2t/</loc><lastmod>2026-04-29</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ontimeservice.kz/keysy/guangzhou-astana-3t/</loc><lastmod>2026-04-29</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ontimeservice.kz/keysy/novorossiysk-shymkent-1.8t/</loc><lastmod>2026-04-29</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
 
 </urlset>

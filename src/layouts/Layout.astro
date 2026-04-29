@@ -80,7 +80,12 @@ const orgSchema = {
   ]
 };
 
-const canonicalUrl = `${SITE_URL}${canonical === '/' ? '/' : canonical}`;
+// Normalize canonical URL with trailing slash (matches Astro's directory output format).
+const normalizeCanonical = (path) => {
+  if (path === '/' || path === '') return '/';
+  return path.endsWith('/') ? path : path + '/';
+};
+const canonicalUrl = `${SITE_URL}${normalizeCanonical(canonical)}`;
 ---
 <!DOCTYPE html>
 <html lang="ru" prefix="og: https://ogp.me/ns#">
