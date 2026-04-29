@@ -1,0 +1,140 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { IC, ARR } from '../data/icons.js';
+
+const SITE_PHONE = '+7 775 242 77 44';
+const SITE_URL = 'https://ontimeservice.kz';
+
+const dokumentySchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Главная", "item": `${SITE_URL}/`},
+        {"@type": "ListItem", "position": 2, "name": "Документы", "item": `${SITE_URL}/dokumenty`}
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": "Документы при грузоперевозках: CMR, ТТН, акт",
+      "description": "Полный список товаросопроводительных документов при автомобильных грузоперевозках по РК и международных рейсах.",
+      "author": {"@id": `${SITE_URL}/#organization`},
+      "publisher": {"@id": `${SITE_URL}/#organization`},
+      "url": `${SITE_URL}/dokumenty`,
+      "inLanguage": "ru-KZ"
+    }
+  ]
+};
+---
+<Layout
+  title="Документы при грузоперевозках — CMR, ТТН, акт | On Time Service"
+  description={`Полный список документов для грузоперевозок: ТТН, CMR, акт приёма-передачи, договор. Образцы и пояснения. ✓ Помогаем с оформлением. Тел: ${SITE_PHONE}`}
+  canonical="/dokumenty"
+  schema={dokumentySchema}
+>
+
+<div class="breadcrumb">
+  <a href="/">Главная</a><span class="sep"> / </span><span class="current">Документы</span>
+</div>
+
+<div class="page-header">
+  <div class="sec-label anim-1"><div class="sec-label-line"></div><span class="sec-label-text">Что мы оформляем</span></div>
+  <h1 class="title anim-2">Документы<br>при перевозке</h1>
+  <p class="desc anim-3" style="max-width:680px;">Что выдаём клиенту и какие документы нужны для разных типов перевозок: внутренних по Казахстану, в страны ЕАЭС, в третьи страны (Китай, Турция, Иран).</p>
+</div>
+
+<!-- Что выдаём клиенту -->
+<section class="sec">
+  <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Стандартный пакет</span></div>
+  <h2 class="title fade" style="margin-bottom:32px;">Что вы получите</h2>
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;">
+    {[
+      {title:'Договор на оказание транспортно-экспедиционных услуг', desc:'Двусторонний договор с чёткими условиями: сроки, ответственность, штрафы за просрочку, порядок расчётов. Юридическая основа всех отношений.'},
+      {title:'Транспортная накладная (ТТН / CMR)', desc:'Главный товаросопроводительный документ. ТТН — для внутренних перевозок по РК, CMR — для международных. Подтверждает факт перевозки и приёма груза.'},
+      {title:'Заявка на перевозку', desc:'Содержит детали: точки загрузки/выгрузки, описание груза, тип транспорта, контактные лица, особые требования. Прикладывается к договору.'},
+      {title:'Акт приёма-передачи груза', desc:'Подписывается отправителем при погрузке и получателем при выгрузке. Фиксирует состояние груза, отсутствие повреждений.'},
+      {title:'Счёт-фактура и акт выполненных работ', desc:'Финансовые документы для бухгалтерского учёта. Закрывают перевозку, дают основание для оплаты.'},
+      {title:'Страховой полис (по запросу)', desc:'Полис страхования груза на полную стоимость. Защита от потерь, повреждений, кражи. 0,1-0,3% от стоимости груза.'},
+    ].map(d => (
+      <div class="card fade">
+        <div class="card-icon"><Fragment set:html={IC.book} /></div>
+        <div class="card-title" style="margin-bottom:8px;">{d.title}</div>
+        <div class="card-desc">{d.desc}</div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- Подробно по основным -->
+<section class="sec" style="background:var(--dark2);">
+  <div class="container" style="max-width:900px;margin:0 auto;">
+    <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Детально</span></div>
+    <h2 class="title fade" style="margin-bottom:32px;">Основные документы — подробно</h2>
+
+    <div class="fade" style="margin-bottom:32px;">
+      <h3 class="title" style="font-size:clamp(22px,2.5vw,32px);margin-bottom:14px;color:var(--gold);">ТТН — товарно-транспортная накладная</h3>
+      <p class="desc" style="margin-bottom:12px;">ТТН — основной документ для внутренних автомобильных перевозок по Республике Казахстан. Оформляется грузоотправителем. Имеет товарную и транспортную часть.</p>
+      <p class="desc" style="margin-bottom:12px;"><strong>Товарная часть</strong> описывает груз: наименование, количество, единицы измерения, цена, общая стоимость. На её основе товар принимается на бухгалтерский учёт у получателя.</p>
+      <p class="desc" style="margin-bottom:12px;"><strong>Транспортная часть</strong> содержит: маршрут, государственный номер транспорта, ФИО водителя, дату погрузки и выгрузки. Подписывается отправителем, перевозчиком и получателем.</p>
+      <p class="desc">Без ТТН вычет НДС по перевозке невозможен. Документ оформляется в трёх экземплярах: отправителю, получателю, перевозчику.</p>
+    </div>
+
+    <div class="fade" style="margin-bottom:32px;">
+      <h3 class="title" style="font-size:clamp(22px,2.5vw,32px);margin-bottom:14px;color:var(--gold);">CMR — международная транспортная накладная</h3>
+      <p class="desc" style="margin-bottom:12px;">CMR — обязательный документ для международных автоперевозок согласно Конвенции о договоре международной дорожной перевозки грузов 1956 года. Используется для рейсов в Россию, Узбекистан, Кыргызстан, Беларусь, Турцию, Иран и далее.</p>
+      <p class="desc" style="margin-bottom:12px;">CMR содержит 24 поля. Ключевые: отправитель, получатель, место и дата принятия груза, место доставки, наименование и упаковка груза, количество мест, вес брутто, инструкции по таможенному оформлению.</p>
+      <p class="desc" style="margin-bottom:12px;">Заполняется на трёх языках: русском, языке страны отправления и языке страны получения. Стандартный бланк имеет красную полосу — это оригинал для отправителя; синюю — для получателя; зелёную — для перевозчика.</p>
+      <p class="desc">Без CMR груз не пройдёт таможенный и пограничный контроль ни в одной стране. Перевозчик отвечает за груз с момента приёма по CMR до момента сдачи получателю под подпись.</p>
+    </div>
+
+    <div class="fade" style="margin-bottom:32px;">
+      <h3 class="title" style="font-size:clamp(22px,2.5vw,32px);margin-bottom:14px;color:var(--gold);">Договор перевозки</h3>
+      <p class="desc" style="margin-bottom:12px;">Двусторонний договор между заказчиком (отправитель/получатель) и перевозчиком. Регулируется Гражданским кодексом РК и Законом «Об автомобильном транспорте».</p>
+      <p class="desc" style="margin-bottom:12px;">Обязательные разделы: предмет договора, сроки доставки, стоимость и порядок расчётов, права и обязанности сторон, ответственность за нарушение, форс-мажор, срок действия и условия расторжения.</p>
+      <p class="desc">Без договора перевозка считается «серой» — нет юридической защиты ни у отправителя, ни у получателя. On Time Service работает только по договору. Шаблон договора предоставляется при заключении.</p>
+    </div>
+
+    <div class="fade">
+      <h3 class="title" style="font-size:clamp(22px,2.5vw,32px);margin-bottom:14px;color:var(--gold);">Акт приёма-передачи груза</h3>
+      <p class="desc" style="margin-bottom:12px;">Подписывается в двух точках: при погрузке (между отправителем и водителем) и при выгрузке (между водителем и получателем). Фиксирует состояние груза в каждой точке.</p>
+      <p class="desc" style="margin-bottom:12px;">При обнаружении повреждений или несоответствий — оформляется акт с описанием. Это основание для претензии и страховой выплаты. Без акта доказать повреждение в пути практически невозможно.</p>
+      <p class="desc">Рекомендуем при погрузке делать фотографии упаковки и состояния груза, при выгрузке — повторно. Это доказательство сохранности при возможных спорах.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Дополнительные для разных типов перевозок -->
+<section class="sec">
+  <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Дополнительно</span></div>
+  <h2 class="title fade" style="margin-bottom:32px;">Документы для особых случаев</h2>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+    <div class="card fade">
+      <div class="card-icon"><Fragment set:html={IC.customs} /></div>
+      <div class="card-title" style="margin-bottom:8px;">Импорт из третьих стран</div>
+      <div class="card-desc">Дополнительно: коммерческий инвойс, упаковочный лист, контракт купли-продажи, сертификаты соответствия (EAC, ISO, фитосанитарный, ветеринарный — по виду товара), экспортная декларация страны отправления.</div>
+    </div>
+    <div class="card fade">
+      <div class="card-icon"><Fragment set:html={IC.oversize} /></div>
+      <div class="card-title" style="margin-bottom:8px;">Негабаритные грузы</div>
+      <div class="card-desc">Специальное разрешение на перевозку, согласованный маршрут движения, договор на сопровождение (при необходимости), технический паспорт груза, расчёт нагрузок на ось.</div>
+    </div>
+    <div class="card fade">
+      <div class="card-icon"><Fragment set:html={IC.box} /></div>
+      <div class="card-title" style="margin-bottom:8px;">Опасные грузы (ADR)</div>
+      <div class="card-desc">DGD (Dangerous Goods Declaration), свидетельство о допуске водителя ADR, паспорт безопасности, согласование маршрута с УВД, аварийная карточка.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sec" style="background:var(--dark2);text-align:center;">
+  <div class="fade">
+    <div class="sec-label" style="justify-content:center;"><div class="sec-label-line"></div><span class="sec-label-text">Помогаем оформить</span><div class="sec-label-line"></div></div>
+    <h2 class="title" style="margin-bottom:16px;">Не хотите разбираться сами?</h2>
+    <p class="desc" style="max-width:540px;margin:0 auto 28px;">Берём оформление документов на себя. Подготовим CMR/ТТН, согласуем с таможней, передадим клиенту полный пакет.</p>
+    <a class="btn btn-gold" href="/kontakty" style="font-size:13px;padding:16px 40px;"><Fragment set:html={ARR} /> Оформить заявку</a>
+  </div>
+</section>
+
+</Layout>

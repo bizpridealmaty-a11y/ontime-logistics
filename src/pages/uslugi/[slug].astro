@@ -107,7 +107,7 @@ const serviceSchema = {
       <div class="sec-label"><div class="sec-label-line"></div><span class="sec-label-text">{service.seoTitle}</span></div>
       <h2 class="title" style="margin-bottom:24px;">{service.title}<br>по Казахстану</h2>
       {service.seoText.map(para => (
-        <p class="desc" style="margin-bottom:16px;">{para}</p>
+        <p class="desc" style="margin-bottom:16px;" set:html={para}></p>
       ))}
       <a class="btn btn-outline" href="/kontakty" style="margin-top:8px;">Оставить заявку <Fragment set:html={ARR} /></a>
     </div>

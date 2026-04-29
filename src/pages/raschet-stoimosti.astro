@@ -1,0 +1,173 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { IC, ARR } from '../data/icons.js';
+
+const SITE_PHONE = '+7 775 242 77 44';
+const SITE_URL = 'https://ontimeservice.kz';
+
+const raschetSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Главная", "item": `${SITE_URL}/`},
+        {"@type": "ListItem", "position": 2, "name": "Расчёт стоимости", "item": `${SITE_URL}/raschet-stoimosti`}
+      ]
+    },
+    {
+      "@type": "Service",
+      "name": "Расчёт стоимости грузоперевозки",
+      "provider": {"@id": `${SITE_URL}/#organization`},
+      "description": "Бесплатный онлайн-расчёт стоимости грузовой перевозки за 30 минут.",
+      "url": `${SITE_URL}/raschet-stoimosti`,
+      "areaServed": {"@type": "Country", "name": "Казахстан"}
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"Сколько времени занимает расчёт стоимости?","acceptedAnswer":{"@type":"Answer","text":"Менеджер связывается в течение 30 минут после получения заявки и предоставляет точный расчёт. В рабочее время — обычно за 5-15 минут."}},
+        {"@type":"Question","name":"Из чего складывается стоимость грузоперевозки?","acceptedAnswer":{"@type":"Answer","text":"Шесть основных факторов: расстояние, вес и объём (объёмный вес), тип груза, тип транспорта, срочность, дополнительные услуги (погрузка, страховка, таможенное оформление)."}},
+        {"@type":"Question","name":"Что такое объёмный вес?","acceptedAnswer":{"@type":"Answer","text":"Объёмный вес = (длина × ширина × высота в см) / 4000. Если ваш груз лёгкий, но большой по объёму — оплата идёт по объёмному весу, а не фактическому."}},
+        {"@type":"Question","name":"Можно ли получить расчёт без полных данных?","acceptedAnswer":{"@type":"Answer","text":"Да. Если вы не знаете точный вес или объём, мы дадим ориентировочную вилку цен и уточним после получения деталей."}}
+      ]
+    }
+  ]
+};
+---
+<Layout
+  title="Расчёт стоимости грузоперевозки — On Time Service | Калькулятор за 30 мин"
+  description={`Бесплатный расчёт стоимости перевозки. ✓ За 30 минут. ✓ По Казахстану, России, Китаю и СНГ. ✓ Любой груз от 100 кг до 70 тонн. Тел: ${SITE_PHONE}`}
+  canonical="/raschet-stoimosti"
+  schema={raschetSchema}
+>
+
+<div class="breadcrumb">
+  <a href="/">Главная</a><span class="sep"> / </span><span class="current">Расчёт стоимости</span>
+</div>
+
+<div class="page-header">
+  <div class="sec-label anim-1"><div class="sec-label-line"></div><span class="sec-label-text">Калькулятор</span></div>
+  <h1 class="title anim-2">Расчёт<br>стоимости</h1>
+  <p class="desc anim-3" style="max-width:640px;">Получите точный расчёт стоимости грузоперевозки за 30 минут. Опишите задачу — мы рассчитаем тариф с учётом маршрута, веса, типа груза и сроков.</p>
+</div>
+
+<!-- Как считаем -->
+<section class="sec">
+  <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Из чего складывается цена</span></div>
+  <h2 class="title fade" style="margin-bottom:32px;">6 факторов стоимости</h2>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+    {[
+      {icon:IC.road, num:'01', title:'Расстояние', desc:'Главный фактор. Тариф за километр меняется в зависимости от направления, типа дороги и сезонности.'},
+      {icon:IC.box, num:'02', title:'Вес и объём', desc:'Считается по большему: фактическому весу или объёмному (длина × ширина × высота в см / 4000).'},
+      {icon:IC.oversize, num:'03', title:'Тип груза', desc:'Опасные, хрупкие, негабаритные, температурные грузы требуют спецтранспорта и стоят дороже.'},
+      {icon:IC.truck, num:'04', title:'Тип транспорта', desc:'Газель, фура, рефрижератор, низкорамный трал — выбираем оптимальный по соотношению цены и возможностей.'},
+      {icon:IC.calc, num:'05', title:'Срочность', desc:'Срочная доставка (экспресс) на 30-50% дороже стандартной. Регулярные рейсы — самый экономичный вариант.'},
+      {icon:IC.handshake, num:'06', title:'Доп. услуги', desc:'Погрузочные работы, упаковка, страховка груза, таможенное оформление — включаются по запросу.'},
+    ].map(f => (
+      <div class="card fade">
+        <div class="card-num">{f.num}</div>
+        <div class="card-icon"><Fragment set:html={f.icon} /></div>
+        <div class="card-title" style="margin-bottom:8px;">{f.title}</div>
+        <div class="card-desc">{f.desc}</div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- Базовые тарифы -->
+<section class="sec" style="background:var(--dark2);">
+  <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Ориентировочные цены</span></div>
+  <h2 class="title fade" style="margin-bottom:24px;">Базовые тарифы по маршрутам</h2>
+  <p class="desc fade" style="margin-bottom:32px;max-width:760px;">Цены указаны для стандартного груза без особых условий. Для точной стоимости нужны параметры вашего груза — оставьте заявку, рассчитаем за 30 минут.</p>
+  <div style="overflow-x:auto;">
+    <table class="seo-table" style="min-width:720px;">
+      <thead>
+        <tr>
+          <th>Маршрут</th>
+          <th>Расстояние</th>
+          <th>Газель (1.5 т)</th>
+          <th>Фура (20 т)</th>
+          <th>LTL (за кг)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Алматы — Астана</td><td>1280 км</td><td>от 180 000 ₸</td><td>от 350 000 ₸</td><td>от 800 ₸</td></tr>
+        <tr><td>Алматы — Шымкент</td><td>690 км</td><td>от 110 000 ₸</td><td>от 220 000 ₸</td><td>от 500 ₸</td></tr>
+        <tr><td>Алматы — Атырау</td><td>2500 км</td><td>от 280 000 ₸</td><td>от 650 000 ₸</td><td>от 1 500 ₸</td></tr>
+        <tr><td>Алматы — Актау</td><td>3300 км</td><td>от 380 000 ₸</td><td>от 850 000 ₸</td><td>от 2 000 ₸</td></tr>
+        <tr><td>Алматы — Бишкек</td><td>250 км</td><td>от 45 000 ₸</td><td>от 90 000 ₸</td><td>от 250 ₸</td></tr>
+        <tr><td>Алматы — Ташкент</td><td>1100 км</td><td>от 170 000 ₸</td><td>от 380 000 ₸</td><td>от 850 ₸</td></tr>
+        <tr><td>Алматы — Москва</td><td>4600 км</td><td>от 550 000 ₸</td><td>от 1 200 000 ₸</td><td>от 2 800 ₸</td></tr>
+        <tr><td>Хоргос — Алматы</td><td>350 км</td><td>от 95 000 ₸</td><td>от 180 000 ₸</td><td>от 600 ₸</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Форма расчёта -->
+<section class="sec">
+  <div class="two-col">
+    <div class="fade">
+      <div class="sec-label"><div class="sec-label-line"></div><span class="sec-label-text">Получить расчёт</span></div>
+      <h2 class="title" style="margin-bottom:20px;">Свяжитесь с нами</h2>
+      <p class="desc" style="margin-bottom:16px;">Чтобы получить точный расчёт, нам нужно знать:</p>
+      <ul class="desc" style="padding-left:24px;line-height:1.85;margin-bottom:24px;">
+        <li>Откуда и куда везти груз (точные адреса);</li>
+        <li>Что за груз — тип, упаковка;</li>
+        <li>Вес и габариты (хотя бы примерно);</li>
+        <li>Желаемые сроки доставки;</li>
+        <li>Дополнительные требования (страховка, погрузка, температурный режим).</li>
+      </ul>
+      <a class="btn btn-gold" href="/kontakty"><Fragment set:html={ARR} /> Заполнить заявку</a>
+    </div>
+    <div class="fade" style="display:flex;flex-direction:column;gap:14px;">
+      <a href={`tel:${SITE_PHONE.replace(/\s/g,'')}`} class="card" style="text-align:center;padding:32px;text-decoration:none;color:inherit;">
+        <div class="card-icon" style="margin:0 auto 12px;"><Fragment set:html={IC.phone} /></div>
+        <div class="card-title" style="margin-bottom:8px;">Позвонить</div>
+        <div style="font-family:Bebas Neue,sans-serif;font-size:24px;color:var(--gold);letter-spacing:1px;">{SITE_PHONE}</div>
+        <div class="card-desc" style="margin-top:8px;">Без выходных</div>
+      </a>
+      <a href="https://wa.me/77752427744?text=Здравствуйте,%20нужен%20расчёт%20перевозки" target="_blank" rel="noopener" class="card" style="text-align:center;padding:32px;text-decoration:none;color:inherit;">
+        <div class="card-icon" style="margin:0 auto 12px;color:#25D366;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="44" height="44"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></div>
+        <div class="card-title" style="margin-bottom:8px;">WhatsApp</div>
+        <div class="card-desc">Напишите параметры груза — ответим в течение 30 минут</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" style="background:var(--dark2);">
+  <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Вопросы по расчёту</span></div>
+  <h2 class="title fade" style="margin-bottom:32px;">Частые вопросы</h2>
+  <div style="display:flex;flex-direction:column;gap:12px;max-width:900px;">
+    {[
+      {q:'Сколько времени занимает расчёт стоимости?', a:'Менеджер связывается в течение 30 минут после получения заявки и предоставляет точный расчёт. В рабочее время — обычно за 5-15 минут.'},
+      {q:'Можно ли получить расчёт без полных данных?', a:'Да. Если вы не знаете точный вес или объём, мы дадим ориентировочную вилку цен и уточним после получения деталей. Для приблизительного расчёта достаточно знать примерный вес и тип груза.'},
+      {q:'Что такое объёмный вес и зачем он нужен?', a:'Объёмный вес = (длина × ширина × высота в см) / 4000. Используется, когда груз лёгкий, но занимает много места (например, мебель, упаковка). Оплата идёт по большему из двух — фактическому или объёмному весу.'},
+      {q:'Влияет ли упаковка на стоимость?', a:'Да, в двух смыслах: 1) Хорошо упакованный паллетированный груз выгоднее — быстрее погрузка/разгрузка, ниже риск повреждений. 2) Если упаковка нужна (хрупкое, опасное), услуга включается в смету отдельно.'},
+      {q:'Включается ли страхование в стоимость?', a:'Базовый тариф включает ответственность перевозчика согласно законодательству. Расширенное страхование груза на полную стоимость — отдельная услуга, обычно 0,1-0,3% от стоимости груза.'},
+      {q:'Меняется ли цена после расчёта?', a:'Если параметры груза совпадают с заявленными — нет. Если на месте окажется больше веса/объёма или потребуются доп. услуги, мы согласовываем доплату до начала перевозки. Все условия фиксируются в договоре.'},
+    ].map(({q,a}) => (
+      <details class="card fade" style="cursor:pointer;padding:0;overflow:hidden;">
+        <summary style="padding:20px 24px;font-size:15px;font-weight:600;color:var(--text);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;">
+          <span>{q}</span>
+          <span style="color:var(--gold);font-size:20px;flex-shrink:0;">+</span>
+        </summary>
+        <div style="padding:0 24px 20px;color:var(--text2);font-size:14px;line-height:1.7;">{a}</div>
+      </details>
+    ))}
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sec" style="text-align:center;">
+  <div class="fade">
+    <h2 class="title" style="margin-bottom:16px;">Готовы рассчитать перевозку?</h2>
+    <p class="desc" style="max-width:520px;margin:0 auto 28px;">Оставьте заявку — менеджер свяжется в течение 30 минут и предоставит точную смету.</p>
+    <a class="btn btn-gold" href="/kontakty" style="font-size:13px;padding:16px 40px;"><Fragment set:html={ARR} /> Получить расчёт</a>
+  </div>
+</section>
+
+</Layout>
