@@ -1,0 +1,176 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { IC, ARR } from '../data/icons.js';
+
+const SITE_PHONE = '+7 775 242 77 44';
+const SITE_URL = 'https://ontimeservice.kz';
+
+const STAGES = [
+  {
+    num: '01',
+    iconKey: 'phone',
+    title: 'Заявка',
+    short: 'Получаем задачу',
+    desc: 'Вы оставляете заявку любым удобным способом — по телефону, в WhatsApp, через форму на сайте или email. Описываете груз, маршрут, желаемые сроки.',
+    detail: 'Менеджер задаёт уточняющие вопросы по типу груза (вес, габариты, упаковка, особые требования), точкам погрузки и выгрузки, желаемому графику. Если у вас нет всех данных — даём ориентировочный расчёт по минимуму информации.',
+    time: '5-15 минут',
+  },
+  {
+    num: '02',
+    iconKey: 'calc',
+    title: 'Расчёт',
+    short: 'Считаем стоимость',
+    desc: 'В течение 30 минут предоставляем точный расчёт стоимости. Учитываем все факторы: расстояние, вес, объём, тип транспорта, сроки, дополнительные услуги.',
+    detail: 'Расчёт включает: базовую стоимость рейса, погрузочно-разгрузочные работы (если необходимы), страхование груза (по запросу), таможенное оформление (для международных), дополнительные услуги (упаковка, маркировка, хранение).',
+    time: 'до 30 минут',
+  },
+  {
+    num: '03',
+    iconKey: 'handshake',
+    title: 'Договор',
+    short: 'Закрепляем условия',
+    desc: 'Заключаем договор на оказание транспортно-экспедиционных услуг. Чёткие сроки, ответственность сторон, штрафы за просрочку, порядок расчётов.',
+    detail: 'Договор фиксирует: маршрут и точки доставки, тип транспорта, стоимость и порядок оплаты (предоплата / постоплата / частями), сроки доставки с учётом форс-мажора, материальную ответственность перевозчика, штрафы за просрочку, условия страхования.',
+    time: '1-2 рабочих дня',
+  },
+  {
+    num: '04',
+    iconKey: 'truck',
+    title: 'Подача транспорта',
+    short: 'Подбираем машину',
+    desc: 'Подаём подходящий транспорт в указанное время и место. Газель, фура, рефрижератор, низкорамный трал — выбираем оптимальный для вашего груза.',
+    detail: 'Сообщаем заранее: государственный номер машины, ФИО водителя, его контактный телефон, ориентировочное время прибытия. Водитель приезжает в указанное окно (обычно ±30 минут от назначенного времени).',
+    time: 'по графику',
+  },
+  {
+    num: '05',
+    iconKey: 'box',
+    title: 'Погрузка',
+    short: 'Принимаем груз',
+    desc: 'Погрузка с подписанием товарно-транспортной накладной (ТТН) или CMR. Фиксируем состояние груза, количество мест, вес. Выдаём один экземпляр документа отправителю.',
+    detail: 'Водитель проверяет: соответствие фактического груза заявленному, целостность упаковки и маркировки, наличие всех мест по упаковочному листу. При обнаружении расхождений — составляем акт. Профессиональное крепление груза в кузове цепями, ремнями, антискользящими матами.',
+    time: '30 минут — 4 часа',
+  },
+  {
+    num: '06',
+    iconKey: 'road',
+    title: 'Перевозка',
+    short: 'Везём с GPS',
+    desc: 'Транспортировка по согласованному маршруту с GPS-мониторингом. На крупных рейсах — отчёты диспетчеру каждые 4-6 часов. По запросу — статусы клиенту в WhatsApp/Telegram.',
+    detail: 'Соблюдаем режим труда и отдыха водителя (по ПДД РК — обязательная остановка каждые 4,5 часа). Регулярно проверяем крепление груза в пути. При непредвиденных ситуациях (поломка, погода, пограничный затор) — оперативно информируем клиента и согласуем решение.',
+    time: 'по маршруту',
+  },
+  {
+    num: '07',
+    iconKey: 'pin',
+    title: 'Доставка',
+    short: 'Привозим вовремя',
+    desc: 'Прибытие в точку выгрузки в согласованное время. Связываемся с получателем за 1-2 часа до прибытия. Выгрузка с подписанием акта приёма-передачи.',
+    detail: 'Получатель проверяет: количество мест, целостность упаковки, отсутствие видимых повреждений. Подписывает акт приёма-передачи. При обнаружении повреждений — составляется акт с описанием, фотофиксация, основание для претензии и страховой выплаты.',
+    time: 'по графику',
+  },
+  {
+    num: '08',
+    iconKey: 'plan',
+    title: 'Документы',
+    short: 'Закрываем сделку',
+    desc: 'В течение 1-3 рабочих дней передаём клиенту полный пакет закрывающих документов: счёт-фактуру, акт выполненных работ, оригиналы ТТН/CMR с подписью получателя.',
+    detail: 'Документы передаются согласно условиям договора: оригиналы по почте или курьером, сканы по электронной почте. Полный пакет позволяет: поставить груз на бухгалтерский учёт, принять услуги перевозчика к расходам, получить вычет НДС.',
+    time: '1-3 дня',
+  },
+];
+
+const kakRabotaemSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Главная", "item": `${SITE_URL}/`},
+        {"@type": "ListItem", "position": 2, "name": "Как мы работаем", "item": `${SITE_URL}/kak-rabotaem`}
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "Как работают грузоперевозки в On Time Service",
+      "description": "Пошаговый процесс заказа грузоперевозки: от заявки до получения закрывающих документов.",
+      "step": STAGES.map((s, i) => ({
+        "@type": "HowToStep",
+        "position": i + 1,
+        "name": s.title,
+        "text": s.desc,
+        "url": `${SITE_URL}/kak-rabotaem#step-${s.num}`
+      }))
+    }
+  ]
+};
+---
+<Layout
+  title="Как мы работаем — On Time Service | 8 этапов грузоперевозки"
+  description={`Пошаговый процесс заказа грузоперевозки: заявка, расчёт, договор, доставка, документы. ✓ От 30 минут до расчёта. ✓ 20 лет опыта. Тел: ${SITE_PHONE}`}
+  canonical="/kak-rabotaem"
+  schema={kakRabotaemSchema}
+>
+
+<div class="breadcrumb">
+  <a href="/">Главная</a><span class="sep"> / </span><span class="current">Как мы работаем</span>
+</div>
+
+<div class="page-header">
+  <div class="sec-label anim-1"><div class="sec-label-line"></div><span class="sec-label-text">Процесс заказа</span></div>
+  <h1 class="title anim-2">Как мы<br>работаем</h1>
+  <p class="desc anim-3" style="max-width:680px;">8 этапов от заявки до закрывающих документов. Прозрачный процесс, чёткие сроки, материальная ответственность по договору.</p>
+</div>
+
+<!-- Краткая лента этапов -->
+<section class="sec">
+  <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Краткий обзор</span></div>
+  <h2 class="title fade" style="margin-bottom:32px;">8 этапов перевозки</h2>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;">
+    {STAGES.map(s => (
+      <a class="card card-link fade" href={`#step-${s.num}`} style="text-align:center;">
+        <div class="card-num">{s.num}</div>
+        <div class="card-icon" style="margin:0 auto 12px;"><Fragment set:html={IC[s.iconKey]} /></div>
+        <div class="card-title" style="margin-bottom:8px;font-size:14px;">{s.title}</div>
+        <div class="card-desc" style="font-size:12px;">{s.short}</div>
+      </a>
+    ))}
+  </div>
+</section>
+
+<!-- Подробное описание каждого этапа -->
+{STAGES.map((s, i) => (
+  <section class="sec" id={`step-${s.num}`} style={i % 2 === 1 ? 'background:var(--dark2);' : ''}>
+    <div class="two-col">
+      <div class="fade">
+        <div class="sec-label"><div class="sec-label-line"></div><span class="sec-label-text">Этап {s.num}</span></div>
+        <h2 class="title" style="margin-bottom:20px;">{s.title}</h2>
+        <p class="desc" style="margin-bottom:16px;line-height:1.85;">{s.desc}</p>
+        <p class="desc" style="margin-bottom:16px;line-height:1.85;">{s.detail}</p>
+      </div>
+      <div class="fade" style="display:flex;align-items:center;justify-content:center;">
+        <div class="card" style="text-align:center;padding:48px 32px;width:100%;max-width:280px;">
+          <div class="card-icon" style="margin:0 auto 18px;color:var(--gold);">
+            <Fragment set:html={IC[s.iconKey]} />
+          </div>
+          <div style="font-family:Bebas Neue,sans-serif;font-size:48px;color:var(--gold);letter-spacing:2px;line-height:1;margin-bottom:12px;">{s.num}</div>
+          <div class="card-title" style="margin-bottom:8px;font-size:16px;">{s.title}</div>
+          <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text3);margin-bottom:14px;">Длительность</div>
+          <div style="font-size:14px;color:var(--text);">{s.time}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+))}
+
+<!-- CTA -->
+<section class="sec" style="background:var(--dark2);text-align:center;">
+  <div class="fade">
+    <div class="sec-label" style="justify-content:center;"><div class="sec-label-line"></div><span class="sec-label-text">Начнём работать</span><div class="sec-label-line"></div></div>
+    <h2 class="title" style="margin-bottom:16px;">Готовы оформить заявку?</h2>
+    <p class="desc" style="max-width:520px;margin:0 auto 28px;">Расчёт за 30 минут. Договор за 1-2 дня. Доставка по графику с материальной ответственностью.</p>
+    <a class="btn btn-gold" href="/kontakty" style="font-size:13px;padding:16px 40px;"><Fragment set:html={ARR} /> Оставить заявку</a>
+  </div>
+</section>
+
+</Layout>
