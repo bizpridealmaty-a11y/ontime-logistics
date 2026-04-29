@@ -4,11 +4,22 @@ import { REGIONS } from '../data/regions.js';
 import { IC, ARR } from '../data/icons.js';
 
 const SITE_PHONE = '+7 775 242 77 44';
+const SITE_URL = 'https://ontimeservice.kz';
+
+const regionyIndexSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Главная", "item": `${SITE_URL}/`},
+    {"@type": "ListItem", "position": 2, "name": "Регионы Казахстана", "item": `${SITE_URL}/regiony`}
+  ]
+};
 ---
 <Layout
   title="Грузоперевозки по регионам Казахстана — On Time Service Алматы"
   description={`Грузоперевозки по всем регионам Казахстана. Алматы, Астана, Шымкент, Атырау, Актау и другие города. ✓ 20 лет опыта. ✓ Расчёт за 30 мин. Тел: ${SITE_PHONE}`}
   canonical="/regiony"
+  schema={regionyIndexSchema}
 >
 
 <div class="breadcrumb">

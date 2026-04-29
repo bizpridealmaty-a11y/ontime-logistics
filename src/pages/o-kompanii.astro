@@ -3,11 +3,32 @@ import Layout from '../layouts/Layout.astro';
 import { IC, ARR } from '../data/icons.js';
 
 const SITE_PHONE = '+7 775 242 77 44';
+const SITE_URL = 'https://ontimeservice.kz';
+
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Главная", "item": `${SITE_URL}/`},
+        {"@type": "ListItem", "position": 2, "name": "О компании", "item": `${SITE_URL}/o-kompanii`}
+      ]
+    },
+    {
+      "@type": "AboutPage",
+      "name": "О компании On Time Service",
+      "url": `${SITE_URL}/o-kompanii`,
+      "mainEntity": {"@id": `${SITE_URL}/#organization`}
+    }
+  ]
+};
 ---
 <Layout
   title="О компании On Time Service — Грузоперевозки по Казахстану с 2005 года"
   description={`ТЛК On Time Service — транспортно-логистическая компания с 2005 года. Автоперевозки, негабарит, трал, сборные грузы. ✓ 20 лет опыта. Тел: ${SITE_PHONE}`}
   canonical="/o-kompanii"
+  schema={aboutSchema}
 >
 
 <div class="breadcrumb">

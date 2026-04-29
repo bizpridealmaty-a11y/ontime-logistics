@@ -4,12 +4,42 @@ import { BLOG_POSTS, unsUrl, unsSrcset } from '../../data/blog.js';
 import { IC, ARR } from '../../data/icons.js';
 
 const SITE_PHONE = '+7 775 242 77 44';
+const SITE_URL = 'https://ontimeservice.kz';
 const sorted = [...BLOG_POSTS].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+const blogIndexSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Главная", "item": `${SITE_URL}/`},
+        {"@type": "ListItem", "position": 2, "name": "Блог", "item": `${SITE_URL}/blog`}
+      ]
+    },
+    {
+      "@type": "Blog",
+      "name": "Блог On Time Service",
+      "url": `${SITE_URL}/blog`,
+      "description": "Экспертные статьи о грузоперевозках по Казахстану, негабарите, логистике из Китая, выборе перевозчика.",
+      "publisher": {"@id": `${SITE_URL}/#organization`},
+      "inLanguage": "ru-KZ",
+      "blogPost": sorted.slice(0, 10).map(p => ({
+        "@type": "BlogPosting",
+        "headline": p.title,
+        "url": `${SITE_URL}/blog/${p.slug}`,
+        "datePublished": p.date,
+        "description": p.excerpt
+      }))
+    }
+  ]
+};
 ---
 <Layout
   title="Блог о грузоперевозках — On Time Service Алматы | Советы, маршруты, логистика"
   description={`Блог транспортной компании On Time Service. Статьи о грузоперевозках по Казахстану, негабарите, логистике из Китая, выборе перевозчика. Тел: ${SITE_PHONE}`}
   canonical="/blog"
+  schema={blogIndexSchema}
 >
 
 <div class="breadcrumb">

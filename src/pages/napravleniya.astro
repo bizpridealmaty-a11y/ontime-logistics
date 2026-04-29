@@ -18,11 +18,23 @@ const directions = [
   { from:'Алматы', to:'Ташкент', km:'1100 км', time:'12-14 ч', freq:'2 раза/нед.' },
   { from:'Китай (Хоргос)', to:'Алматы', km:'350 км', time:'6-8 ч', freq:'Ежедневно' },
 ];
+
+const SITE_URL = 'https://ontimeservice.kz';
+
+const napravleniyaSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Главная", "item": `${SITE_URL}/`},
+    {"@type": "ListItem", "position": 2, "name": "Направления", "item": `${SITE_URL}/napravleniya`}
+  ]
+};
 ---
 <Layout
   title="Направления грузоперевозок — On Time Service Алматы | Все маршруты"
   description={`Грузоперевозки по всем направлениям из Алматы. Казахстан, Россия, Китай, СНГ. ✓ 20 лет опыта. ✓ Расчёт за 30 мин. Тел: ${SITE_PHONE}`}
   canonical="/napravleniya"
+  schema={napravleniyaSchema}
 >
 
 <div class="breadcrumb">

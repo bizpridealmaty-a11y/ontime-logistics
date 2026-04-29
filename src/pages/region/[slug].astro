@@ -12,11 +12,36 @@ export function getStaticPaths() {
 
 const { region } = Astro.props;
 const SITE_PHONE = '+7 775 242 77 44';
+const SITE_URL = 'https://ontimeservice.kz';
+
+const regionSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Главная", "item": `${SITE_URL}/`},
+        {"@type": "ListItem", "position": 2, "name": "Регионы", "item": `${SITE_URL}/regiony`},
+        {"@type": "ListItem", "position": 3, "name": region.name, "item": `${SITE_URL}/region/${region.slug}`}
+      ]
+    },
+    {
+      "@type": "Service",
+      "name": `Грузоперевозки ${region.name}`,
+      "description": region.descSeo,
+      "url": `${SITE_URL}/region/${region.slug}`,
+      "provider": {"@id": `${SITE_URL}/#organization`},
+      "areaServed": {"@type": "City", "name": region.name},
+      "serviceType": "Грузоперевозки"
+    }
+  ]
+};
 ---
 <Layout
   title={region.titleSeo}
   description={region.descSeo}
   canonical={`/region/${region.slug}`}
+  schema={regionSchema}
 >
 
 <div class="breadcrumb">

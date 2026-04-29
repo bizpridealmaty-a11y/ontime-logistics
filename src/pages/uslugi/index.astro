@@ -3,11 +3,22 @@ import Layout from '../../layouts/Layout.astro';
 import { IC, ARR } from '../../data/icons.js';
 
 const SITE_PHONE = '+7 775 242 77 44';
+const SITE_URL = 'https://ontimeservice.kz';
+
+const uslugiSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Главная", "item": `${SITE_URL}/`},
+    {"@type": "ListItem", "position": 2, "name": "Услуги", "item": `${SITE_URL}/uslugi`}
+  ]
+};
 ---
 <Layout
   title="Услуги грузоперевозок — On Time Service Алматы | Все виды транспорта"
   description={`Полный спектр транспортно-логистических услуг. Автоперевозки FTL/LTL, негабарит, трал, сборные грузы, доставка из Китая. ✓ 20 лет опыта. ✓ Все регионы Казахстана. Тел: ${SITE_PHONE}`}
   canonical="/uslugi"
+  schema={uslugiSchema}
 >
 
 <div class="breadcrumb">

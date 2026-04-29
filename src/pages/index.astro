@@ -3,25 +3,87 @@ import Layout from '../layouts/Layout.astro';
 import { IC, ARR } from '../data/icons.js';
 
 const SITE_PHONE = '+7 775 242 77 44';
+const SITE_URL = 'https://ontimeservice.kz';
+
+const homeSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      "url": `${SITE_URL}/`,
+      "name": "On Time Service",
+      "description": "Грузоперевозки по Казахстану, России, Китаю и СНГ",
+      "publisher": {"@id": `${SITE_URL}/#organization`},
+      "inLanguage": "ru-KZ",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": `${SITE_URL}/?q={search_term_string}`,
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Сколько стоят грузоперевозки по Казахстану?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Стоимость зависит от расстояния, веса и типа груза. Базовый тариф для маршрута Алматы — Астана (1280 км) — от 180 000 тенге за газель и от 350 000 тенге за фуру. Точный расчёт делается за 30 минут после вашей заявки."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Какой максимальный вес груза вы перевозите?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "На стандартной фуре (еврофуре) — до 20 тонн. На тяжёловозном трале — до 70 тонн. Для негабаритных грузов требуется отдельное согласование маршрута и разрешения."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "За сколько времени делается расчёт стоимости перевозки?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Расчёт стоимости — за 30 минут после получения заявки. Менеджер связывается с вами по телефону или WhatsApp, уточняет параметры груза и направление, после чего предоставляет точную смету."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Перевозите ли вы грузы из Китая в Казахстан?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да, организуем доставку из Китая через погранпереход Хоргос. Сроки — 12-18 дней автотранспортом, 10-14 дней железнодорожным. Помогаем с таможенным оформлением и подготовкой документов."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Какие регионы Казахстана вы охватываете?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Все 17 регионов Казахстана: Алматы, Астана, Шымкент, Караганда, Атырау, Актау, Костанай, Павлодар, Усть-Каменогорск, Тараз, Актобе, Семей, Уральск и другие. Регулярные рейсы по основным направлениям."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Сколько лет компания работает на рынке?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ТЛК On Time Service работает на рынке транспортной логистики Казахстана с 2005 года — более 20 лет. За это время выполнено множество перевозок по Казахстану, России, Китаю и странам СНГ."
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 <Layout
   title="Грузоперевозки по Казахстану — On Time Service | Алматы, с 2005 года"
   description={`Транспортная логистика по Казахстану, России, Китаю и СНГ. Грузы от 100 кг до 70 тонн. Автоперевозки, негабарит, трал, сборные грузы. ✓ 20 лет опыта. ✓ Расчёт за 30 мин. Тел: ${SITE_PHONE}`}
   canonical="/"
   keywords="грузоперевозки Алматы, грузоперевозки по Казахстану, транспортная логистика Казахстан, грузоперевозки Астана, логистическая компания Алматы, доставка грузов из Китая в Казахстан, негабаритные грузы Казахстан, LTL перевозки Казахстан, транспортно-экспедиторские услуги Алматы, сборные грузы Алматы"
-  schema={{
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "url": "https://ontimeservice.kz",
-    "name": "On Time Service",
-    "description": "Грузоперевозки по Казахстану, России, Китаю и СНГ",
-    "inLanguage": "ru-KZ",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://ontimeservice.kz/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }}
+  schema={homeSchema}
 >
 
 <section class="hero">
@@ -150,8 +212,32 @@ const SITE_PHONE = '+7 775 242 77 44';
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="sec" id="faq">
+  <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Вопросы и ответы</span></div>
+  <h2 class="title fade" style="margin-bottom:32px;">Частые вопросы</h2>
+  <div style="display:flex;flex-direction:column;gap:12px;max-width:900px;">
+    {[
+      {q:'Сколько стоят грузоперевозки по Казахстану?', a:'Стоимость зависит от расстояния, веса и типа груза. Базовый тариф для маршрута Алматы — Астана (1280 км) — от 180 000 тенге за газель и от 350 000 тенге за фуру. Точный расчёт делается за 30 минут после вашей заявки.'},
+      {q:'Какой максимальный вес груза вы перевозите?', a:'На стандартной фуре (еврофуре) — до 20 тонн. На тяжёловозном трале — до 70 тонн. Для негабаритных грузов требуется отдельное согласование маршрута и разрешения.'},
+      {q:'За сколько времени делается расчёт стоимости перевозки?', a:'Расчёт стоимости — за 30 минут после получения заявки. Менеджер связывается с вами по телефону или WhatsApp, уточняет параметры груза и направление, после чего предоставляет точную смету.'},
+      {q:'Перевозите ли вы грузы из Китая в Казахстан?', a:'Да, организуем доставку из Китая через погранпереход Хоргос. Сроки — 12-18 дней автотранспортом, 10-14 дней железнодорожным. Помогаем с таможенным оформлением и подготовкой документов.'},
+      {q:'Какие регионы Казахстана вы охватываете?', a:'Все 17 регионов Казахстана: Алматы, Астана, Шымкент, Караганда, Атырау, Актау, Костанай, Павлодар, Усть-Каменогорск, Тараз, Актобе, Семей, Уральск и другие. Регулярные рейсы по основным направлениям.'},
+      {q:'Сколько лет компания работает на рынке?', a:'ТЛК On Time Service работает на рынке транспортной логистики Казахстана с 2005 года — более 20 лет. За это время выполнено множество перевозок по Казахстану, России, Китаю и странам СНГ.'},
+    ].map(({q,a}) => (
+      <details class="card fade" style="cursor:pointer;padding:0;overflow:hidden;">
+        <summary style="padding:20px 24px;font-size:15px;font-weight:600;color:var(--text);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;">
+          <span>{q}</span>
+          <span style="color:var(--gold);font-size:20px;flex-shrink:0;">+</span>
+        </summary>
+        <div style="padding:0 24px 20px;color:var(--text2);font-size:14px;line-height:1.7;">{a}</div>
+      </details>
+    ))}
+  </div>
+</section>
+
 <!-- CTA -->
-<section class="sec" style="text-align:center;">
+<section class="sec" style="text-align:center;background:var(--dark2);">
   <div class="fade">
     <div class="sec-label" style="justify-content:center;"><div class="sec-label-line"></div><span class="sec-label-text">Начните прямо сейчас</span><div class="sec-label-line"></div></div>
     <h2 class="title" style="margin-bottom:16px;">Нужна перевозка?</h2>

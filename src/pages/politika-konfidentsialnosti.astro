@@ -3,13 +3,24 @@ import Layout from '../layouts/Layout.astro';
 
 const SITE_PHONE = '+7 775 242 77 44';
 const SITE_EMAIL = 'info@ontimeservice.kz';
+const SITE_URL = 'https://ontimeservice.kz';
 const COMPANY_NAME = 'ТЛК «On Time Service»';
 const EFFECTIVE_DATE = '29 апреля 2026 г.';
+
+const policySchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Главная", "item": `${SITE_URL}/`},
+    {"@type": "ListItem", "position": 2, "name": "Политика конфиденциальности", "item": `${SITE_URL}/politika-konfidentsialnosti`}
+  ]
+};
 ---
 <Layout
   title="Политика конфиденциальности — On Time Service"
   description="Политика обработки персональных данных ТЛК On Time Service в соответствии с законом РК «О персональных данных и их защите»."
   canonical="/politika-konfidentsialnosti"
+  schema={policySchema}
 >
 
 <div class="breadcrumb">

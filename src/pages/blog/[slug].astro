@@ -16,11 +16,62 @@ const related = post.related
   .filter(Boolean);
 
 const SITE_PHONE = '+7 775 242 77 44';
+const SITE_URL = 'https://ontimeservice.kz';
 
 // Preload data for LCP image (Unsplash hero).
 // Browser will pick the right source from the srcset based on viewport width.
 const heroSrcset = unsSrcset(post.imgId, [640, 960, 1280, 1600], 75);
 const heroSizes = '100vw';
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Главная", "item": `${SITE_URL}/`},
+        {"@type": "ListItem", "position": 2, "name": "Блог", "item": `${SITE_URL}/blog`},
+        {"@type": "ListItem", "position": 3, "name": post.title, "item": `${SITE_URL}/blog/${post.slug}`}
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": post.title,
+      "description": post.excerpt,
+      "datePublished": post.date,
+      "dateModified": post.date,
+      "author": {
+        "@type": "Organization",
+        "name": "On Time Service",
+        "@id": `${SITE_URL}/#organization`
+      },
+      "publisher": {"@id": `${SITE_URL}/#organization`},
+      "image": {
+        "@type": "ImageObject",
+        "url": unsUrl(post.imgId, 1200, 80),
+        "width": 1200,
+        "height": 800
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `${SITE_URL}/blog/${post.slug}`
+      },
+      "articleSection": post.cat,
+      "inLanguage": "ru-KZ"
+    },
+    ...(post.faq && post.faq.length ? [{
+      "@type": "FAQPage",
+      "mainEntity": post.faq.map(item => ({
+        "@type": "Question",
+        "name": item.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.a
+        }
+      }))
+    }] : [])
+  ]
+};
 ---
 <Layout
   title={post.title + ' — On Time Service'}
@@ -28,24 +79,7 @@ const heroSizes = '100vw';
   canonical={`/blog/${post.slug}`}
   heroImageSrcset={heroSrcset}
   heroImageSizes={heroSizes}
-  schema={{
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": post.title,
-    "description": post.excerpt,
-    "datePublished": post.date,
-    "author": {
-      "@type": "Organization",
-      "name": "On Time Service"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "On Time Service",
-      "url": "https://ontimeservice.kz"
-    },
-    "image": unsUrl(post.imgId, 1200, 80),
-    "mainEntityOfPage": `https://ontimeservice.kz/blog/${post.slug}`
-  }}
+  schema={blogSchema}
 >
 
 <div class="breadcrumb">

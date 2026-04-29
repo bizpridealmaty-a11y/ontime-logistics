@@ -5,11 +5,22 @@ import { SERVICES } from '../data/services.js';
 import { REGIONS } from '../data/regions.js';
 
 const SITE_PHONE = '+7 775 242 77 44';
+const SITE_URL = 'https://ontimeservice.kz';
+
+const kartaSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Главная", "item": `${SITE_URL}/`},
+    {"@type": "ListItem", "position": 2, "name": "Карта сайта", "item": `${SITE_URL}/karta-sayta`}
+  ]
+};
 ---
 <Layout
   title="Карта сайта — On Time Service | Грузоперевозки по Казахстану"
   description="Карта сайта транспортной компании On Time Service. Все страницы: услуги, регионы, направления, контакты."
   canonical="/karta-sayta"
+  schema={kartaSchema}
 >
 
 <div class="breadcrumb">

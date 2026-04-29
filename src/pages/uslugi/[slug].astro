@@ -12,11 +12,52 @@ export function getStaticPaths() {
 
 const { service } = Astro.props;
 const SITE_PHONE = '+7 775 242 77 44';
+const SITE_URL = 'https://ontimeservice.kz';
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Главная", "item": `${SITE_URL}/`},
+        {"@type": "ListItem", "position": 2, "name": "Услуги", "item": `${SITE_URL}/uslugi`},
+        {"@type": "ListItem", "position": 3, "name": service.title, "item": `${SITE_URL}/uslugi/${service.slug}`}
+      ]
+    },
+    {
+      "@type": "Service",
+      "name": service.title,
+      "description": service.descSeo,
+      "url": `${SITE_URL}/uslugi/${service.slug}`,
+      "provider": {"@id": `${SITE_URL}/#organization`},
+      "areaServed": [
+        {"@type": "Country", "name": "Казахстан"},
+        {"@type": "City", "name": "Алматы"},
+        {"@type": "City", "name": "Астана"}
+      ],
+      "serviceType": service.title,
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": service.title,
+        "itemListElement": (service.features || []).map(f => ({
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": f.title,
+            "description": f.desc
+          }
+        }))
+      }
+    }
+  ]
+};
 ---
 <Layout
   title={service.titleSeo}
   description={service.descSeo}
   canonical={`/uslugi/${service.slug}`}
+  schema={serviceSchema}
 >
 
 <div class="breadcrumb">

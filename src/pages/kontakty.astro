@@ -3,11 +3,32 @@ import Layout from '../layouts/Layout.astro';
 import { IC, ARR } from '../data/icons.js';
 
 const SITE_PHONE = '+7 775 242 77 44';
+const SITE_URL = 'https://ontimeservice.kz';
+
+const kontaktySchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Главная", "item": `${SITE_URL}/`},
+        {"@type": "ListItem", "position": 2, "name": "Контакты", "item": `${SITE_URL}/kontakty`}
+      ]
+    },
+    {
+      "@type": "ContactPage",
+      "name": "Контакты On Time Service",
+      "url": `${SITE_URL}/kontakty`,
+      "mainEntity": {"@id": `${SITE_URL}/#organization`}
+    }
+  ]
+};
 ---
 <Layout
   title="Контакты — On Time Service | Грузоперевозки по Казахстану, Алматы"
   description={`Контакты транспортной компании On Time Service. Алматы, Казахстан. Тел: ${SITE_PHONE}. Оставьте заявку — перезвоним в течение 30 минут.`}
   canonical="/kontakty"
+  schema={kontaktySchema}
 >
 
 <div class="breadcrumb">
