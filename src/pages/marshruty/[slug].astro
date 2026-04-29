@@ -1,0 +1,203 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { ROUTES } from '../../data/routes.js';
+import { IC, ARR } from '../../data/icons.js';
+
+export function getStaticPaths() {
+  return ROUTES.map(route => ({
+    params: { slug: route.slug },
+    props: { route },
+  }));
+}
+
+const { route } = Astro.props;
+const SITE_PHONE = '+7 775 242 77 44';
+const SITE_URL = 'https://ontimeservice.kz';
+
+const routeSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Главная", "item": `${SITE_URL}/`},
+        {"@type": "ListItem", "position": 2, "name": "Маршруты", "item": `${SITE_URL}/marshruty`},
+        {"@type": "ListItem", "position": 3, "name": `${route.from} — ${route.to}`, "item": `${SITE_URL}/marshruty/${route.slug}`}
+      ]
+    },
+    {
+      "@type": "Service",
+      "name": `Грузоперевозки ${route.from} — ${route.to}`,
+      "description": route.descSeo,
+      "url": `${SITE_URL}/marshruty/${route.slug}`,
+      "provider": {"@id": `${SITE_URL}/#organization`},
+      "areaServed": [
+        {"@type": "Place", "name": route.from},
+        {"@type": "Place", "name": route.to}
+      ],
+      "serviceType": "Грузоперевозки",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "KZT",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "price": route.priceFura,
+          "priceCurrency": "KZT"
+        }
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": route.faq.map(item => ({
+        "@type": "Question",
+        "name": item.q,
+        "acceptedAnswer": {"@type": "Answer", "text": item.a}
+      }))
+    }
+  ]
+};
+---
+<Layout
+  title={route.titleSeo}
+  description={route.descSeo}
+  canonical={`/marshruty/${route.slug}`}
+  schema={routeSchema}
+>
+
+<div class="breadcrumb">
+  <a href="/">Главная</a><span class="sep"> / </span><a href="/marshruty">Маршруты</a><span class="sep"> / </span><span class="current">{route.from} — {route.to}</span>
+</div>
+
+<div class="page-header">
+  <div class="sec-label anim-1"><div class="sec-label-line"></div><span class="sec-label-text">Регулярный маршрут</span></div>
+  <h1 class="title anim-2">{route.h1}</h1>
+  <p class="desc anim-3" style="max-width:720px;">{route.intro}</p>
+  <div class="anim-4" style="margin-top:24px;display:flex;gap:14px;flex-wrap:wrap;">
+    <a class="btn btn-gold" href="/kontakty"><Fragment set:html={ARR} /> Рассчитать доставку</a>
+    <a class="btn btn-outline" href={`tel:${SITE_PHONE.replace(/\s/g,'')}`}>Позвонить {SITE_PHONE}</a>
+  </div>
+</div>
+
+<!-- Key params -->
+<section class="sec">
+  <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Ключевые параметры</span></div>
+  <h2 class="title fade" style="margin-bottom:32px;">Маршрут</h2>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+    <div class="info-card fade">
+      <div class="metric-val">{route.distanceNum}</div>
+      <div class="metric-unit">км</div>
+      <div class="metric-label">Расстояние</div>
+    </div>
+    <div class="info-card fade">
+      <div class="metric-val" style="font-size:36px;">{route.timeAuto.split(' ')[0]}</div>
+      <div class="metric-unit">{route.timeAuto.split(' ').slice(1).join(' ')}</div>
+      <div class="metric-label">Время в пути</div>
+    </div>
+    <div class="info-card fade">
+      <div class="metric-val" style="font-size:36px;">{route.frequency.split(' ')[0]}</div>
+      <div class="metric-unit">{route.frequency.split(' ').slice(1).join(' ') || ''}</div>
+      <div class="metric-label">Частота рейсов</div>
+    </div>
+    <div class="info-card fade">
+      <div class="metric-val" style="font-size:24px;">от</div>
+      <div class="metric-unit" style="font-size:18px;">{route.priceGazel.replace('от ','')}</div>
+      <div class="metric-label">Газель / 1.5т</div>
+    </div>
+  </div>
+</section>
+
+<!-- Route description -->
+<section class="sec" style="background:var(--dark2);">
+  <div class="two-col">
+    <div class="fade">
+      <div class="sec-label"><div class="sec-label-line"></div><span class="sec-label-text">О маршруте</span></div>
+      <h2 class="title" style="margin-bottom:20px;">Дорога и условия</h2>
+      <p class="desc" style="margin-bottom:16px;">{route.routeDescription}</p>
+      <div class="quote-block" style="margin-bottom:16px;">
+        <div class="quote-label">Что обычно перевозят</div>
+        <div class="quote-text" style="font-style:normal;">{route.cargoTypes}</div>
+      </div>
+      <p class="desc">{route.schedule}</p>
+    </div>
+    <div class="fade">
+      <div class="card" style="padding:28px;">
+        <div class="card-title" style="margin-bottom:16px;font-size:14px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">Точки маршрута</div>
+        <div style="display:flex;flex-direction:column;gap:0;">
+          {route.waypoints.map((point, i) => (
+            <div style="display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--border2);">
+              <div style="width:28px;height:28px;border-radius:50%;background:var(--gold-d);color:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;">{i + 1}</div>
+              <div class="card-title" style="margin:0;font-size:14px;">{point}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="sec">
+  <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Цены</span></div>
+  <h2 class="title fade" style="margin-bottom:32px;">Тарифы по маршруту</h2>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+    <div class="card fade">
+      <div class="card-icon"><Fragment set:html={IC.truck} /></div>
+      <div class="card-title" style="margin-bottom:8px;">Газель / 1.5 тонны</div>
+      <div class="card-desc" style="margin-bottom:14px;">Малотоннажный транспорт для срочных грузов и небольших партий.</div>
+      <div style="font-family:Bebas Neue,sans-serif;font-size:24px;color:var(--gold);letter-spacing:1px;">{route.priceGazel}</div>
+    </div>
+    <div class="card fade">
+      <div class="card-icon"><Fragment set:html={IC.lowboy} /></div>
+      <div class="card-title" style="margin-bottom:8px;">Фура / 20 тонн</div>
+      <div class="card-desc" style="margin-bottom:14px;">Стандартный полуприцеп — оптимально для крупных партий и габаритных грузов.</div>
+      <div style="font-family:Bebas Neue,sans-serif;font-size:24px;color:var(--gold);letter-spacing:1px;">{route.priceFura}</div>
+    </div>
+    <div class="card fade">
+      <div class="card-icon"><Fragment set:html={IC.box} /></div>
+      <div class="card-title" style="margin-bottom:8px;">Сборный груз LTL</div>
+      <div class="card-desc" style="margin-bottom:14px;">Экономия до 60% — оплачиваете только своё место в общем транспорте.</div>
+      <div style="font-family:Bebas Neue,sans-serif;font-size:24px;color:var(--gold);letter-spacing:1px;">{route.priceLtl}</div>
+    </div>
+  </div>
+  <p class="desc" style="margin-top:20px;font-size:13px;color:var(--text3);">* Указаны минимальные тарифы. Точная стоимость рассчитывается индивидуально с учётом веса, объёма, типа груза и сроков. Расчёт за 30 минут.</p>
+</section>
+
+<!-- Transport types -->
+<section class="sec" style="background:var(--dark2);">
+  <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Транспорт</span></div>
+  <h2 class="title fade" style="margin-bottom:32px;">Доступные виды транспорта</h2>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;">
+    {route.transport.map(t => (
+      <div class="tag" style="font-size:13px;padding:10px 18px;border:1px solid var(--border);color:var(--text);background:var(--dark3);">{t}</div>
+    ))}
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec">
+  <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Вопросы и ответы</span></div>
+  <h2 class="title fade" style="margin-bottom:32px;">Частые вопросы</h2>
+  <div style="display:flex;flex-direction:column;gap:12px;max-width:900px;">
+    {route.faq.map(({q,a}) => (
+      <details class="card fade" style="cursor:pointer;padding:0;overflow:hidden;">
+        <summary style="padding:20px 24px;font-size:15px;font-weight:600;color:var(--text);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;">
+          <span>{q}</span>
+          <span style="color:var(--gold);font-size:20px;flex-shrink:0;">+</span>
+        </summary>
+        <div style="padding:0 24px 20px;color:var(--text2);font-size:14px;line-height:1.7;">{a}</div>
+      </details>
+    ))}
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sec" style="text-align:center;">
+  <div class="fade">
+    <div class="sec-label" style="justify-content:center;"><div class="sec-label-line"></div><span class="sec-label-text">Готовы отправить груз?</span><div class="sec-label-line"></div></div>
+    <h2 class="title" style="margin-bottom:16px;">{route.cta}</h2>
+    <p class="desc" style="max-width:500px;margin:0 auto 28px;">Оставьте заявку — менеджер свяжется в течение 30 минут и рассчитает точную стоимость доставки</p>
+    <a class="btn btn-gold" href="/kontakty" style="font-size:13px;padding:16px 40px;"><Fragment set:html={ARR} /> Оставить заявку</a>
+  </div>
+</section>
+
+</Layout>

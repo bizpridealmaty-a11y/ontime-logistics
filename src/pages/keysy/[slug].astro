@@ -1,0 +1,120 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { CASES } from '../../data/cases.js';
+import { ARR } from '../../data/icons.js';
+
+export function getStaticPaths() {
+  return CASES.map(c => ({
+    params: { slug: c.slug },
+    props: { caseItem: c },
+  }));
+}
+
+const { caseItem: c } = Astro.props;
+const SITE_PHONE = '+7 775 242 77 44';
+const SITE_URL = 'https://ontimeservice.kz';
+
+const caseSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Главная", "item": `${SITE_URL}/`},
+        {"@type": "ListItem", "position": 2, "name": "Кейсы", "item": `${SITE_URL}/keysy`},
+        {"@type": "ListItem", "position": 3, "name": c.route, "item": `${SITE_URL}/keysy/${c.slug}`}
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": `Кейс: ${c.route}, ${c.cargoType}`,
+      "description": c.cardTeaser,
+      "author": {"@id": `${SITE_URL}/#organization`},
+      "publisher": {"@id": `${SITE_URL}/#organization`},
+      "url": `${SITE_URL}/keysy/${c.slug}`,
+      "inLanguage": "ru-KZ"
+    }
+  ]
+};
+---
+<Layout
+  title={c.titleSeo}
+  description={c.descSeo}
+  canonical={`/keysy/${c.slug}`}
+  schema={caseSchema}
+>
+
+<div class="breadcrumb">
+  <a href="/">Главная</a><span class="sep"> / </span><a href="/keysy">Кейсы</a><span class="sep"> / </span><span class="current">{c.route}</span>
+</div>
+
+<div class="page-header">
+  <div class="sec-label anim-1"><div class="sec-label-line"></div><span class="sec-label-text">{c.industry}</span></div>
+  <h1 class="title anim-2">{c.route}</h1>
+  <p class="desc anim-3" style="max-width:720px;">{c.cardTeaser}</p>
+  <div class="anim-4" style="margin-top:24px;display:flex;gap:14px;flex-wrap:wrap;">
+    <div class="tag">{c.weight}</div>
+    <div class="tag">{c.volume}</div>
+    <div class="tag">{c.distance}</div>
+    <div class="tag">{c.duration}</div>
+  </div>
+</div>
+
+<!-- Метрики -->
+<section class="sec">
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+    {c.metrics.map(m => (
+      <div class="info-card fade">
+        <div class="metric-val" style="font-size:42px;">{m.value}</div>
+        <div class="metric-label">{m.label}</div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- Задача -->
+<section class="sec" style="background:var(--dark2);">
+  <div class="container" style="max-width:820px;margin:0 auto;">
+    <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Шаг 1 — Задача</span></div>
+    <h2 class="title fade" style="margin-bottom:24px;">Что было нужно клиенту</h2>
+    <p class="desc fade" style="margin-bottom:14px;line-height:1.85;">{c.challenge}</p>
+  </div>
+</section>
+
+<!-- Решение -->
+<section class="sec">
+  <div class="container" style="max-width:820px;margin:0 auto;">
+    <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Шаг 2 — Решение</span></div>
+    <h2 class="title fade" style="margin-bottom:24px;">Как мы это сделали</h2>
+    <p class="desc fade" style="margin-bottom:14px;line-height:1.85;">{c.solution}</p>
+    <div class="quote-block fade" style="margin-top:24px;">
+      <div class="quote-label">Транспорт</div>
+      <div class="quote-text" style="font-style:normal;">{c.transport}</div>
+    </div>
+  </div>
+</section>
+
+<!-- Результат -->
+<section class="sec" style="background:var(--dark2);">
+  <div class="container" style="max-width:820px;margin:0 auto;">
+    <div class="sec-label fade"><div class="sec-label-line"></div><span class="sec-label-text">Шаг 3 — Результат</span></div>
+    <h2 class="title fade" style="margin-bottom:24px;">Что получилось</h2>
+    <p class="desc fade" style="margin-bottom:14px;line-height:1.85;">{c.result}</p>
+    <div class="quote-block fade" style="margin-top:24px;border-left-color:var(--gold);">
+      <div class="quote-label">Главное</div>
+      <div class="quote-text">{c.saving}</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sec" style="text-align:center;">
+  <div class="fade">
+    <div class="sec-label" style="justify-content:center;"><div class="sec-label-line"></div><span class="sec-label-text">Похожая задача?</span><div class="sec-label-line"></div></div>
+    <h2 class="title" style="margin-bottom:16px;">Расскажите свою</h2>
+    <p class="desc" style="max-width:520px;margin:0 auto 28px;">Менеджер свяжется в течение 30 минут — обсудим задачу, предложим решение, рассчитаем стоимость.</p>
+    <a class="btn btn-gold" href="/kontakty" style="font-size:13px;padding:16px 40px;"><Fragment set:html={ARR} /> Оставить заявку</a>
+  </div>
+</section>
+
+</Layout>

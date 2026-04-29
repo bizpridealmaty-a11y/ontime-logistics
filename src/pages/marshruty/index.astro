@@ -1,0 +1,65 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { ROUTES } from '../../data/routes.js';
+import { ARR } from '../../data/icons.js';
+
+const SITE_PHONE = '+7 775 242 77 44';
+const SITE_URL = 'https://ontimeservice.kz';
+
+const marshrutyIndexSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Главная", "item": `${SITE_URL}/`},
+    {"@type": "ListItem", "position": 2, "name": "Маршруты", "item": `${SITE_URL}/marshruty`}
+  ]
+};
+---
+<Layout
+  title="Маршруты грузоперевозок — On Time Service | Алматы, Москва, Хоргос"
+  description={`Регулярные маршруты грузоперевозок из Алматы. Астана, Шымкент, Атырау, Москва, Бишкек, Ташкент, Актау, Хоргос. ✓ Точные сроки и тарифы. Тел: ${SITE_PHONE}`}
+  canonical="/marshruty"
+  schema={marshrutyIndexSchema}
+>
+
+<div class="breadcrumb">
+  <a href="/">Главная</a><span class="sep"> / </span><span class="current">Маршруты</span>
+</div>
+
+<div class="page-header">
+  <div class="sec-label anim-1"><div class="sec-label-line"></div><span class="sec-label-text">География перевозок</span></div>
+  <h1 class="title anim-2">Маршруты</h1>
+  <p class="desc anim-3" style="max-width:640px;">Регулярные грузовые рейсы по ключевым направлениям из Алматы. Казахстан, Россия, Кыргызстан, Узбекистан, Китай — точные сроки и фиксированные тарифы.</p>
+</div>
+
+<section class="sec">
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:18px;">
+    {ROUTES.map(route => (
+      <a class="route-card card-link fade" href={`/marshruty/${route.slug}`}>
+        <div class="route-from-to">
+          <div class="route-city">{route.from}</div>
+          <div class="route-arr-icon">→</div>
+          <div class="route-city">{route.to}</div>
+        </div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:12px;">
+          <div class="route-tag">{route.distance}</div>
+          <div class="route-tag">{route.timeAuto}</div>
+          <div class="route-tag">{route.frequency}</div>
+        </div>
+        <div class="route-desc">{route.intro.slice(0, 140)}…</div>
+        <div style="margin-top:14px;font-family:Bebas Neue,sans-serif;font-size:18px;color:var(--gold);letter-spacing:1px;">от {route.priceGazel.replace('от ','')}</div>
+      </a>
+    ))}
+  </div>
+</section>
+
+<section class="sec" style="background:var(--dark2);text-align:center;">
+  <div class="fade">
+    <div class="sec-label" style="justify-content:center;"><div class="sec-label-line"></div><span class="sec-label-text">Не нашли маршрут?</span><div class="sec-label-line"></div></div>
+    <h2 class="title" style="margin-bottom:16px;">Доставим в любую точку</h2>
+    <p class="desc" style="max-width:540px;margin:0 auto 28px;">Перевозки по всему Казахстану, России, СНГ и Китаю. Свяжитесь с нами — рассчитаем индивидуальный маршрут.</p>
+    <a class="btn btn-gold" href="/kontakty" style="font-size:13px;padding:16px 40px;"><Fragment set:html={ARR} /> Оставить заявку</a>
+  </div>
+</section>
+
+</Layout>
